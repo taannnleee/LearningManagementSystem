@@ -13,17 +13,17 @@
         android:theme="@style/Theme.LearningManagementSystem"
         tools:targetApi="31">
         <activity
-
-            android:name=".InforClassActivity"
+            android:name=".SupportActivity"
+            android:exported="false" />
+        <activity
+            android:name=".helper.TestActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
-        <activity android:name=".AbsenceRequestActivity"
-            android:exported="false" >
-        </activity>
-
+        <activity
+            android:name=".AbsenceRequestActivity"
+            android:exported="false"></activity>
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
@@ -31,7 +31,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".helper.TestActivity"
+            android:name=".InforClassActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
