@@ -1,14 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">LearningManagementSystem</string>
-<string-array name="student_list">
-    <item>Phạm Quốc Trung</item>
-    <item>Lê Tân</item>
-    <item>Trần Đỗ Thanh An</item>
-</string-array>
-<string-array name="support_type_list">
-    <item>Complant</item>
-    <item>Help</item>
-    <item>Fix</item>
-</string-array>
+    <string name="app_name">Register</string>
+    <string name="title_activity_register">RegisterActivity</string>
 </resources>
