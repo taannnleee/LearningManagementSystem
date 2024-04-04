@@ -1,5 +1,6 @@
 <resources>
 <<<<<<< HEAD
+<<<<<<< HEAD
     <string name="app_name">LearningManagementSystem</string>
     <string-array name="student_list">
         <item>Phạm Quốc Trung</item>
@@ -22,4 +23,8 @@
     <string name="app_name">Register</string>
     <string name="title_activity_register">RegisterActivity</string>
 >>>>>>> 10cdff6 (done view login)
+=======
+    <string name="app_name">Register</string>
+    <string name="title_activity_register">RegisterActivity</string>
+>>>>>>> 10cdff616021ffecf30eeaff4c83e4ed849b5673
 </resources>
