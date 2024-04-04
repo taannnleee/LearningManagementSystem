@@ -2,5 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+<<<<<<< HEAD
     <color name="color_selected_bottom_nav">#FFEB3B</color>
+=======
+    <color name="lavender">#8692f7</color>
+
+>>>>>>> 10cdff6 (done view login)
 </resources>

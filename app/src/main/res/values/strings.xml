@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <string name="app_name">LearningManagementSystem</string>
     <string-array name="student_list">
         <item>Phạm Quốc Trung</item>
@@ -18,4 +18,8 @@
 
 
     <string name="dsfj"> LeTan</string>
+=======
+    <string name="app_name">Register</string>
+    <string name="title_activity_register">RegisterActivity</string>
+>>>>>>> 10cdff6 (done view login)
 </resources>
