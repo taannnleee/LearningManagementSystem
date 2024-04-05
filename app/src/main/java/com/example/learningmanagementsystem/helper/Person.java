@@ -2,7 +2,7 @@ package com.example.learningmanagementsystem.helper;
 
 public class Person {
 
-    private long id;
+    private int id;
 
     private String name;
 
@@ -16,7 +16,7 @@ public class Person {
 
 
 
-    public void setId(long id) {
+    public void setId(int id) {
 
         this.id = id;
 
