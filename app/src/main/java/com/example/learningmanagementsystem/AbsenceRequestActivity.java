@@ -19,6 +19,7 @@ public class AbsenceRequestActivity extends AppCompatActivity {
             editTextEndAbsenceDate;
     ImageView btnBack;
     TextView btnSend;
+    "text"
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
