@@ -1,4 +1,4 @@
-package com.example.learningmanagementsystem.helper;
+package com.example.learningmanagementsystem.models;
 
 public class Person {
 
