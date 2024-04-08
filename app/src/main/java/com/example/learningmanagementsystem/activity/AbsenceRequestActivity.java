@@ -1,4 +1,4 @@
-package com.example.learningmanagementsystem.controller;
+package com.example.learningmanagementsystem.activity;
 
 import android.os.Bundle;
 import android.view.View;

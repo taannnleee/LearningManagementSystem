@@ -1,4 +1,4 @@
-package com.example.learningmanagementsystem.controller;
+package com.example.learningmanagementsystem.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,14 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.StudentDAO;
 import com.example.learningmanagementsystem.models.Student;
-
-import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText edtEmail;

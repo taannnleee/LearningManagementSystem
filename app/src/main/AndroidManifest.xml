@@ -13,31 +13,31 @@
         android:theme="@style/Theme.LearningManagementSystem"
         tools:targetApi="31">
         <activity
-            android:name=".controller.TopNavigationBarActivity"
+            android:name=".activity.TopNavigationBarActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.NavigationBarActivity"
+            android:name=".activity.NavigationBarActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.SupportActivity"
+            android:name=".activity.SupportActivity"
             android:exported="false" />
         <activity
             android:name=".helper.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.InforClassActivity"
+            android:name=".activity.InforClassActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.AbsenceRequestActivity"
+            android:name=".activity.AbsenceRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.MainActivity"
+            android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.RegisterActivity"
+            android:name=".activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
