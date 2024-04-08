@@ -31,13 +31,13 @@
             android:name=".controller.AbsenceRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.RegisterActivity"
+            android:name=".controller.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".controller.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".controller.LoginActivity"
+            android:name=".controller.RegisterActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

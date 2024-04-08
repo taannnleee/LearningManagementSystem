@@ -1,7 +1,6 @@
 package com.example.learningmanagementsystem.helper;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -106,5 +105,4 @@ public class StudentSQLiteHelper extends SQLiteOpenHelper {
 //        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STUDENT_CLASS);
         onCreate(db);
     }
-
 }
