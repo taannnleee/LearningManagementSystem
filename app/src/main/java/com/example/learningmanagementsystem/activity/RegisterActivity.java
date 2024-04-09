@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
         newStudent.setAddress(edtAddress.getText().toString());
         newStudent.setRole("student");
         //active,inactive, lock, pendingConfirmation,
-        newStudent.setStatus("inactive");
+        newStudent.setStatus("active");
 
         return newStudent;
     }

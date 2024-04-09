@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.learningmanagementsystem.models.Student;
-import com.example.learningmanagementsystem.helper.StudentSQLiteHelper;
+import com.example.learningmanagementsystem.helper.SQLiteHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,30 +15,30 @@ public class StudentDAO {
     private SQLiteDatabase db;
 
     public StudentDAO(Context context) {
-        StudentSQLiteHelper dbHelper = new StudentSQLiteHelper(context);
+        SQLiteHelper dbHelper = new SQLiteHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
     public void registerStudent (Student student) {
 
         ContentValues values = new ContentValues();
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_NAME, student.getName());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_ADDRESS, student.getAddress());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_PHONE, student.getPhone());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_EMAIL, student.getEmail());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_PASSWORD, student.getPassword());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_ROLE, student.getRole());
-        values.put(StudentSQLiteHelper.COLUMN_STUDENT_STATUS, student.getStatus());
+        values.put(SQLiteHelper.COLUMN_STUDENT_NAME, student.getName());
+        values.put(SQLiteHelper.COLUMN_STUDENT_ADDRESS, student.getAddress());
+        values.put(SQLiteHelper.COLUMN_STUDENT_PHONE, student.getPhone());
+        values.put(SQLiteHelper.COLUMN_STUDENT_EMAIL, student.getEmail());
+        values.put(SQLiteHelper.COLUMN_STUDENT_PASSWORD, student.getPassword());
+        values.put(SQLiteHelper.COLUMN_STUDENT_ROLE, student.getRole());
+        values.put(SQLiteHelper.COLUMN_STUDENT_STATUS, student.getStatus());
 
         // Thực hiện chèn dữ liệu vào bảng sinh viên
-        long newRowId = db.insert(StudentSQLiteHelper.TABLE_STUDENTS, null, values);
+        long newRowId = db.insert(SQLiteHelper.TABLE_STUDENTS, null, values);
         // Đóng kết nối tới cơ sở dữ liệu
         db.close();
     }
 
     public List<Student> getAllStudent() {
         List<Student> danhSachCongViec = new ArrayList<>();
-        String selectQuery = "SELECT * FROM "+ StudentSQLiteHelper.TABLE_STUDENTS;
+        String selectQuery = "SELECT * FROM "+ SQLiteHelper.TABLE_STUDENTS;
         Cursor cursor = db.rawQuery (selectQuery, null);
         int a = cursor.getCount();
         if (cursor.moveToFirst()) {
@@ -56,7 +56,7 @@ public class StudentDAO {
 
 //    @SuppressLint("Range")
     public Student getFirstStudent() {
-        String selectQuery = "SELECT " + StudentSQLiteHelper.COLUMN_STUDENT_NAME + " FROM " + StudentSQLiteHelper.TABLE_STUDENTS + " LIMIT 1";
+        String selectQuery = "SELECT " + SQLiteHelper.COLUMN_STUDENT_NAME + " FROM " + SQLiteHelper.TABLE_STUDENTS + " LIMIT 1";
         Cursor cursor = db.rawQuery(selectQuery, null);
 
 
