@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AccountSectionActivity"
+    android:orientation="vertical"
+    android:background="@drawable/pagepicture">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="257dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width= "70dp"
+            android:layout_height="70dp"
+            android:src="@drawable/avatar_editing"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="70dp"/>
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hành Phúc Công"
+                android:textSize="20dp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Account:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1234567890"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*">
+        <TableRow>
+            <ImageView
+                android:layout_width= "40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/switch_account"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="Switch account"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width= "30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/profile"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="Student profile"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width= "30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/change_password"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="Change password"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width= "30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/settings"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="Setting"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width= "30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/about"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="About"/>
+        </TableRow>
+        <TableRow
+            android:layout_marginTop="40dp">
+            <ImageView
+                android:layout_width= "30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/log_out"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textSize="17dp"
+                android:text="Log out"/>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
