@@ -13,6 +13,7 @@
         android:theme="@style/Theme.LearningManagementSystem"
         tools:targetApi="31">
         <activity
+
             android:name=".AccountSectionActivity"
             android:exported="true">
             <intent-filter>
@@ -22,35 +23,36 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TopNavigationBarActivity"
+            android:name=".activity.TopNavigationBarActivity"
             android:exported="false" />
         <activity
-            android:name=".NavigationBarActivity"
+            android:name=".activity.NavigationBarActivity"
             android:exported="false" />
         <activity
-            android:name=".SupportActivity"
+            android:name=".activity.SupportActivity"
             android:exported="false" />
         <activity
             android:name=".helper.TestActivity"
             android:exported="false" />
         <activity
-            android:name=".InforClassActivity"
+            android:name=".activity.InforClassActivity"
             android:exported="false" />
         <activity
-            android:name=".AbsenceRequestActivity"
+            android:name=".activity.AbsenceRequestActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
             android:name=".InteractionActivity"
 
             android:exported="false"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

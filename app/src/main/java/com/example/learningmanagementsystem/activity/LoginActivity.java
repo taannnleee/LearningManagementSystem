@@ -1,8 +1,10 @@
-package com.example.learningmanagementsystem;
+package com.example.learningmanagementsystem.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.learningmanagementsystem.R;
 
 public class LoginActivity extends AppCompatActivity {
 
