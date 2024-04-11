@@ -1,8 +1,15 @@
 package com.example.learningmanagementsystem.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Student {
 
+    @PrimaryKey(autoGenerate = true)
     private int id;
+    @ColumnInfo(name = "student_name")
     private String name;
     private String email;
     private String password;

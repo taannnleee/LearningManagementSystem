@@ -9,6 +9,7 @@ import android.widget.EditText;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.StudentDAO;
+import com.example.learningmanagementsystem.database.Database;
 import com.example.learningmanagementsystem.models.Student;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -18,12 +19,10 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText edtPhoneNumber;
     private EditText edtAddress;
     private Button btnRegister;
-    private StudentDAO studentDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-        studentDAO = new StudentDAO(getApplicationContext());
         getFormWidgets();
         addEvent();
 
@@ -38,12 +37,14 @@ public class RegisterActivity extends AppCompatActivity {
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Student student = setStudentData();
-
-                studentDAO.registerStudent(student);
+                addStudent();
             }
         });
+    }
+
+    private void addStudent() {
+        Student student = setStudentData();
+        Database.getInstance(this).studentDAO().insertStudent(student);
     }
 
     private void getFormWidgets() {
