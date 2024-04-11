@@ -20,7 +20,10 @@
         <activity
             android:name=".AccountSectionActivity"
             android:exported="false"/>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 37291fc85215890483680a028d8d7c29dbe1a0c5
         <activity
             android:name=".activity.TopNavigationBarActivity"
             android:exported="false" />
@@ -50,6 +53,7 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
