@@ -75,5 +75,25 @@ public class StudentDAO {
             return null;
         }
     }
+    public Boolean checkEmail(String email) {
+        String selectQuery = "SELECT * FROM "+ SQLiteHelper.TABLE_STUDENTS+" WHERE COLUMN_STUDENT_EMAIL = ?";
+        Cursor cursor = db.rawQuery(selectQuery,  new String[]{email});
+        int a = cursor.getCount();
+        if(a > 0) {
+            return true;
+        }
+        else return false;
+    }
+    public Boolean checkEmailPassword(String email, String password) {
+        String selectQuery = "SELECT * FROM "+ SQLiteHelper.TABLE_STUDENTS+" WHERE COLUMN_STUDENT_EMAIL = ? AND COLUMN_STUDENT_PASSWORD = ?";
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{email, password});
+        int a = cursor.getCount();
+
+        if(a > 0) {
+            return true;
+        }
+        else return false;
+    }
+
 
 }
