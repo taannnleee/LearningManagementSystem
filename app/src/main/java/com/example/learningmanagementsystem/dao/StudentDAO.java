@@ -11,15 +11,9 @@ import androidx.room.Query;
 
 import com.example.learningmanagementsystem.models.Student;
 
-
-import java.util.ArrayList;
-import java.util.List;
 @Dao
 public interface StudentDAO {
+
     @Insert
-    void insertStudent(Student student);
-
-//    @Query("Select * from Student")
-//    List<Student> getListStudent();
-
+    void insertStudent(Student... student);
 }

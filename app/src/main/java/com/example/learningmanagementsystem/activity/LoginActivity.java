@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.StudentDAO;
-import com.example.learningmanagementsystem.helper.SQLiteHelper;
 import com.example.learningmanagementsystem.models.Student;
 
 public class LoginActivity extends AppCompatActivity {
@@ -31,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        studentDAO = new StudentDAO(getApplicationContext());
         getFormWidgets(); // Call this method first to initialize widgets
         addEvent();
     }
@@ -48,15 +46,15 @@ public class LoginActivity extends AppCompatActivity {
                     if(selectedRole =="") {
                         Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
                     } else if(selectedRole == "student") {
-                        Boolean checkCredentials = studentDAO.checkEmailPassword(student.getEmail(), student.getPassword());
-                        if(checkCredentials) {
-                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
-                        }
-                        else {
-                            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-                        }
+//                        Boolean checkCredentials = studentDAO.checkEmailPassword(student.getEmail(), student.getPassword());
+//                        if(checkCredentials) {
+//                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
+//                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                            startActivity(intent);
+//                        }
+//                        else {
+//                            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+//                        }
                     }
                     else Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
 
