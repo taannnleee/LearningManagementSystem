@@ -13,8 +13,11 @@
         android:theme="@style/Theme.LearningManagementSystem"
         tools:targetApi="31">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 =======
+=======
+>>>>>>> 33a2ef15c32398669a2b551fadc8f128451daebc
         <activity
             android:name=".activity.CreationClassActivity"
             android:windowSoftInputMode="adjustPan"
