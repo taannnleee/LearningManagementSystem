@@ -22,6 +22,4 @@ public interface StudentDAO {
 //    @Query("Select * from Student")
 //    List<Student> getListStudent();
 
-
-
 }

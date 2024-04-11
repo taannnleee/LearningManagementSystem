@@ -2,10 +2,12 @@ package com.example.learningmanagementsystem.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.StudentDAO;
@@ -19,6 +21,8 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText edtPhoneNumber;
     private EditText edtAddress;
     private Button btnRegister;
+    private TextView txtviewLogin;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
                 addStudent();
             }
         });
+
+        //Ham quay lai login
+        txtviewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void addStudent() {
@@ -54,6 +67,9 @@ public class RegisterActivity extends AppCompatActivity {
         edtPhoneNumber = findViewById(R.id.register_phoneNumber);
         edtAddress = findViewById(R.id.register_address);
         btnRegister = findViewById(R.id.register_button);
+
+        //Lam nut quay lai dang nhap
+        txtviewLogin = findViewById(R.id.loginRedirectText);
 
 
     }

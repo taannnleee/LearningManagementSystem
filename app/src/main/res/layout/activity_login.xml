@@ -78,15 +78,16 @@
                     android:text="Teacher"
                     android:textColor="@color/lavender"
                     android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:layout_marginStart="1dp"/>
+
                 <RadioButton
                     android:id="@+id/radio_admin"
-                    android:layout_width="wrap_content"
+                    android:layout_width="104dp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="1dp"
                     android:text="Admin"
                     android:textColor="@color/lavender"
-                    android:textSize="18sp"
-                    android:layout_marginStart="10dp"/>
+                    android:textSize="18sp" />
             </RadioGroup>
 
             <Button
