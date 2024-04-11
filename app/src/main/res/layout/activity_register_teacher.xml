@@ -13,8 +13,168 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical"
-        tools:context=".activity.InforClassActivity"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        tools:context=".activity.InforClassActivity">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginStart="158dp"
+            android:layout_marginTop="765dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="282dp"
+            android:layout_height="108dp"
+            android:layout_marginTop="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.62"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvRegister"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:text="Register"
+            app:layout_constraintEnd_toEndOf="@+id/imageView"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/tvtext1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Phone number"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.121"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtfirstname" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="45dp"
+            android:layout_height="31dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="24dp"
+            android:text="+84"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toTopOf="@+id/edtemail"
+            app:layout_constraintEnd_toStartOf="@+id/edtphone"
+            app:layout_constraintHorizontal_bias="0.727"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="84dp"
+            android:text="Create a teacher account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+        <EditText
+            android:id="@+id/edtphone"
+            android:layout_width="288dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="248dp"
+            android:hint="Phone Number"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.707"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtfirstname"
+            app:layout_constraintVertical_bias="0.888" />
+
+        <EditText
+            android:id="@+id/edtpassword"
+            android:layout_width="339dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="132dp"
+            android:hint="Password"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edtemail"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/edtemail" />
+
+        <EditText
+            android:id="@+id/edtemail"
+            android:layout_width="339dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="196dp"
+            android:hint="Email"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edtphone"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/edtphone" />
+
+        <EditText
+            android:id="@+id/edtfirstname"
+            android:layout_width="339dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="360dp"
+            android:hint="First name"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/edtlastname"
+            app:layout_constraintHorizontal_bias="0.472"
+            app:layout_constraintStart_toStartOf="@+id/edtlastname" />
+
+        <EditText
+            android:id="@+id/edtlastname"
+            android:layout_width="339dp"
+            android:layout_height="42dp"
+            android:layout_marginBottom="420dp"
+            android:hint="Last name"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/spinner_gender"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/spinner_gender" />
+
+        <Button
+            android:id="@+id/btnCreateTeacher"
+            android:layout_width="343dp"    
+            android:layout_height="48dp"
+            android:layout_marginBottom="76dp"
+            android:backgroundTint="@color/lavender"
+            android:text="Create"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.514"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Spinner
+            android:id="@+id/spinner_gender"
+            android:layout_width="301dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/textView7"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/textView7"
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
