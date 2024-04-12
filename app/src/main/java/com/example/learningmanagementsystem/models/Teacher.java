@@ -1,6 +1,7 @@
 package com.example.learningmanagementsystem.models;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity (tableName = "teachers")
@@ -13,6 +14,7 @@ public class Teacher {
     private String teacherPassword;
     private String teacherAddress;
     private String teacherPhone;
+
 
     public Teacher() {
     }

@@ -1,6 +1,7 @@
 package com.example.learningmanagementsystem.models;
 
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 import java.sql.Time;
@@ -24,8 +25,6 @@ public class Classes {
 
     private String classLevel;
 
-    private Date startDate;
-    private Date endDate;
 
 
     public Classes() {
@@ -87,4 +86,5 @@ public class Classes {
     public void setClassLevel(String classLevel) {
         this.classLevel = classLevel;
     }
+
 }
