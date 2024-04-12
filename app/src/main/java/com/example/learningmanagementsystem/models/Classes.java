@@ -3,8 +3,11 @@ package com.example.learningmanagementsystem.models;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "classs")
-public class Class {
+import java.sql.Time;
+import java.util.Date;
+
+@Entity(tableName = "classes")
+public class Classes {
 
     @PrimaryKey(autoGenerate = true)
     private int classId;
@@ -21,12 +24,15 @@ public class Class {
 
     private String classLevel;
 
+    private Date startDate;
+    private Date endDate;
 
-    public Class() {
+
+    public Classes() {
         // Default constructor required by Room
     }
 
-    public Class(String className, String classDescription, String classInstructor, String classDuration, String classLevel) {
+    public Classes(String className, String classDescription, String classInstructor, String classDuration, String classLevel) {
         this.className = className;
         this.classDescription = classDescription;
         this.classInstructor = classInstructor;
@@ -34,51 +40,51 @@ public class Class {
         this.classLevel = classLevel;
     }
 
-    public int getclassId() {
+    public int getClassId() {
         return classId;
     }
 
-    public String getclassName() {
+    public String getClassName() {
         return className;
     }
 
-    public String getclassDescription() {
+    public String getClassDescription() {
         return classDescription;
     }
 
-    public String getclassInstructor() {
+    public String getClassInstructor() {
         return classInstructor;
     }
 
-    public String getclassDuration() {
+    public String getClassDuration() {
         return classDuration;
     }
 
-    public String getclassLevel() {
+    public String getClassLevel() {
         return classLevel;
     }
 
-    public void setclassId(int classId) {
+    public void setClassId(int classId) {
         this.classId = classId;
     }
 
-    public void setclassName(String className) {
+    public void setClassName(String className) {
         this.className = className;
     }
 
-    public void setclassDescription(String classDescription) {
+    public void setClassDescription(String classDescription) {
         this.classDescription = classDescription;
     }
 
-    public void setclassInstructor(String classInstructor) {
+    public void setClassInstructor(String classInstructor) {
         this.classInstructor = classInstructor;
     }
 
-    public void setclassDuration(String classDuration) {
+    public void setClassDuration(String classDuration) {
         this.classDuration = classDuration;
     }
 
-    public void setclassLevel(String classLevel) {
+    public void setClassLevel(String classLevel) {
         this.classLevel = classLevel;
     }
 }
