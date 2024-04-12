@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.StudentDAO;
+import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Student;
 
 public class LoginActivity extends AppCompatActivity {
@@ -35,30 +36,21 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void addEvent() {
+        // Xử lý sự kiện khi nhấn nút Đăng nhập
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Student student = setStudentData();
-//                if(student.getEmail().equals("") || student.getPassword().equals("")) {
-//                    Toast.makeText(LoginActivity.this, "Please complete all information", Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    if(selectedRole =="") {
-//                        Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
-//                    } else if(selectedRole == "student") {
-//                        Boolean checkCredentials = studentDAO.checkEmailPassword(student.getEmail(), student.getPassword());
-//                        if(checkCredentials) {
-//                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                            startActivity(intent);
-//                        }
-//                        else {
-//                            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                    else Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-//
-//                }
+
+                if (!isValidEmail(student.getStudentEmail())) {
+                    Toast.makeText(LoginActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
+                } else if (student.getStudentPassword().isEmpty()) {
+                    Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
+                } else if(selectedRole == "student"){
+                    loginStudent(student);
+                } else {
+                    Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
+                }
             }
         });
         txtviewregister.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +65,6 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if (isChecked) {
                     selectedRole = "student";
-                    // Xử lý khi RadioButton "Student" được chọn
                 }
             }
         });
@@ -98,9 +89,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-
-
     }
 
     private void getFormWidgets() {
@@ -118,6 +106,33 @@ public class LoginActivity extends AppCompatActivity {
         newStudent.setStudentEmail(edtEmail.getText().toString());
         newStudent.setStudentPassword(edtPassword.getText().toString());
         return newStudent;
+    }
+    private boolean isValidEmail(String email) {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
+        String emailPatternPart2 = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+";
+        String emailPatternPart3 = "[a-zA-Z0-9._-]+@";
+        String emailPatternPart4 = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]";
+        if(email.matches(emailPattern) || email.matches(emailPatternPart2) || email.matches(emailPatternPart3) || email.matches(emailPatternPart4))
+            return true;
+        else return false;
+    }
+
+    private void loginStudent(Student student) {
+        StudentDAO studentDAO = DatabaseLearningManagerSystem.getInstance(this).studentDAO();
+        Student existingStudent = studentDAO.getStudentByEmail(student.getStudentEmail());
+
+        if (existingStudent != null) {
+
+            if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "Incorrect password", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(LoginActivity.this, "Email does not exist", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

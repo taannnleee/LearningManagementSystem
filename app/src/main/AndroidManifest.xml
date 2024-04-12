@@ -42,7 +42,7 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.RegisterTeacherActivity"
             android:exported="false" />
         <activity
             android:name=".InteractionActivity"
@@ -52,7 +52,7 @@
             android:exported="false"/>
 
         <activity
-            android:name=".activity.RegisterTeacherActivity"
+            android:name=".activity.LoginActivity"
 
             android:exported="true">
             <intent-filter>

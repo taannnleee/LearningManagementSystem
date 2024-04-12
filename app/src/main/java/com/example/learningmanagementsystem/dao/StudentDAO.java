@@ -21,4 +21,6 @@ public interface StudentDAO {
 
     @Query("select * from students")
     List<Student> getAllStudent();
+    @Query("SELECT * FROM students WHERE studentEmail = :email")
+    Student getStudentByEmail(String email);
 }
