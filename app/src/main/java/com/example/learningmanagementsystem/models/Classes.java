@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey;
 import java.sql.Time;
 import java.util.Date;
 
-@Entity(tableName = "classes")
+@Entity(tableName = "classes", foreignKeys = @ForeignKey(entity = Teacher.class, parentColumns = "teacherId", childColumns = "teacherId"))
 public class Classes {
 
     @PrimaryKey(autoGenerate = true)
@@ -25,6 +25,15 @@ public class Classes {
 
     private String classLevel;
 
+    private int teacherId; // Khóa ngoại đến giáo viên
+
+    public int getTeacherId() {
+        return teacherId;
+    }
+
+    public void setTeacherId(int teacherId) {
+        this.teacherId = teacherId;
+    }
 
     public Classes() {
         // Default constructor required by Room
