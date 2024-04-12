@@ -8,11 +8,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
-import com.example.learningmanagementsystem.dao.StudentDAO;
-import com.example.learningmanagementsystem.database.Database;
+import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Student;
+
+import java.util.List;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText edtEmail;
@@ -50,15 +52,21 @@ public class RegisterActivity extends AppCompatActivity {
         txtviewLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
             }
         });
     }
 
     private void addStudent() {
         Student student = setStudentData();
-        Database.getInstance(this).studentDAO().insertStudent(student);
+        DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
+
+        List<Student> students =  DatabaseLearningManagerSystem.getInstance(this).studentDAO().getAllStudent();
+        for(Student student1 : students){
+            Toast.makeText(this, student1.getStudentAddress(), Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     private void getFormWidgets() {
@@ -76,14 +84,13 @@ public class RegisterActivity extends AppCompatActivity {
     }
     private Student setStudentData(){
         Student newStudent = new Student();
-        newStudent.setEmail(edtEmail.getText().toString());
-        newStudent.setPassword(edtPassword.getText().toString());
-        newStudent.setName(edtName.getText().toString());
-        newStudent.setPhone(edtPhoneNumber.getText().toString());
-        newStudent.setAddress(edtAddress.getText().toString());
-        newStudent.setRole("student");
+        newStudent.setStudentEmail(edtEmail.getText().toString());
+        newStudent.setStudentPassword(edtPassword.getText().toString());
+        newStudent.setStudentName(edtName.getText().toString());
+        newStudent.setStudentPhone(edtPhoneNumber.getText().toString());
+        newStudent.setStudentAddress(edtAddress.getText().toString());
         //active,inactive, lock, pendingConfirmation,
-        newStudent.setStatus("active");
+        newStudent.setStudentStatus("active");
 
         return newStudent;
     }

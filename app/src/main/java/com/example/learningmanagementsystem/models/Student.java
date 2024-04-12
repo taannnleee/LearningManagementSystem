@@ -8,92 +8,80 @@ import androidx.room.PrimaryKey;
 public class Student {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
-    @ColumnInfo(name = "student_name")
-    private String name;
-    private String email;
-    private String password;
-    private String address;
-    private String role;
-    private String status;
-    private String phone;
+    private int studentId;
+    private String studentName;
+    private String studentEmail;
+    private String studentPassword;
+    private String studentAddress;
+    private String studentStatus;
+    private String studentPhone;
 
     public Student() {
     }
 
-    public Student(int id, String name, String email, String password, String address, String role, String status, String phone) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.address = address;
-        this.role = role;
-        this.status = status;
-        this.phone = phone;
+    public Student(String studentName, String studentEmail, String studentPassword, String studentAddress, String studentStatus, String studentPhone) {
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentPassword = studentPassword;
+        this.studentAddress = studentAddress;
+        this.studentStatus = studentStatus;
+        this.studentPhone = studentPhone;
     }
 
-    public int getId() {
-        return id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public String getName() {
-        return name;
+    public String getStudentName() {
+        return studentName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getStudentEmail() {
+        return studentEmail;
     }
 
-    public String getPassword() {
-        return password;
+    public String getStudentPassword() {
+        return studentPassword;
     }
 
-    public String getAddress() {
-        return address;
+    public String getStudentAddress() {
+        return studentAddress;
     }
 
-    public String getRole() {
-        return role;
+
+    public String getStudentStatus() {
+        return studentStatus;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStudentPhone() {
+        return studentPhone;
     }
 
-    public String getPhone() {
-        return phone;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStudentEmail(String studentEmail) {
+        this.studentEmail = studentEmail;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setStudentPassword(String studentPassword) {
+        this.studentPassword = studentPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setStudentAddress(String studentAddress) {
+        this.studentAddress = studentAddress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setStudentStatus(String studentStatus) {
+        this.studentStatus = studentStatus;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setStudentPhone(String studentPhone) {
+        this.studentPhone = studentPhone;
     }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
 }

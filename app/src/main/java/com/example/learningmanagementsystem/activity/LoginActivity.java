@@ -39,13 +39,13 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Student student = setStudentData();
-                if(student.getEmail().equals("") || student.getPassword().equals("")) {
-                    Toast.makeText(LoginActivity.this, "Please complete all information", Toast.LENGTH_SHORT).show();
-                }
-                else {
-                    if(selectedRole =="") {
-                        Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
-                    } else if(selectedRole == "student") {
+//                if(student.getEmail().equals("") || student.getPassword().equals("")) {
+//                    Toast.makeText(LoginActivity.this, "Please complete all information", Toast.LENGTH_SHORT).show();
+//                }
+//                else {
+//                    if(selectedRole =="") {
+//                        Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
+//                    } else if(selectedRole == "student") {
 //                        Boolean checkCredentials = studentDAO.checkEmailPassword(student.getEmail(), student.getPassword());
 //                        if(checkCredentials) {
 //                            Toast.makeText(LoginActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
@@ -55,10 +55,10 @@ public class LoginActivity extends AppCompatActivity {
 //                        else {
 //                            Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
 //                        }
-                    }
-                    else Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
-
-                }
+//                    }
+//                    else Toast.makeText(LoginActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
+//
+//                }
             }
         });
         txtviewregister.setOnClickListener(new View.OnClickListener() {
@@ -115,8 +115,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private Student setStudentData(){
         Student newStudent = new Student();
-        newStudent.setEmail(edtEmail.getText().toString());
-        newStudent.setPassword(edtPassword.getText().toString());
+        newStudent.setStudentEmail(edtEmail.getText().toString());
+        newStudent.setStudentPassword(edtPassword.getText().toString());
         return newStudent;
     }
 
