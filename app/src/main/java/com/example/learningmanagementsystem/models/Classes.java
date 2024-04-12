@@ -26,7 +26,6 @@ public class Classes {
     private String classLevel;
 
 
-
     public Classes() {
         // Default constructor required by Room
     }
