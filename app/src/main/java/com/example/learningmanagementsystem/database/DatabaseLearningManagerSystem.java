@@ -28,6 +28,6 @@ public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
     }
     public abstract StudentDAO studentDAO();
     public abstract TeacherDAO teacherDAO();
-    public abstract ClassesDAO classAO();
+    public abstract ClassesDAO classDAO();
     public abstract AdminDAO adminDAO();
 }
