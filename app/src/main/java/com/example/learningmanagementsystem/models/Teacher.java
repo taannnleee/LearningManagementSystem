@@ -27,6 +27,11 @@ public class Teacher {
         this.teacherPhone = teacherPhone;
     }
 
+    @Override
+    public String toString() {
+        return teacherId + " + " + teacherAddress;
+    }
+
     public int getTeacherId() {
         return teacherId;
     }

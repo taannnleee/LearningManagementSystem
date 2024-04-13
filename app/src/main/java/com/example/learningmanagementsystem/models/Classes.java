@@ -3,29 +3,80 @@ package com.example.learningmanagementsystem.models;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverter;
+import androidx.room.TypeConverters;
 
-import java.sql.Time;
+import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
+import com.example.learningmanagementsystem.database.DateTypeConverter;
+
+import java.time.LocalTime;
 import java.util.Date;
 
 @Entity(tableName = "classes", foreignKeys = @ForeignKey(entity = Teacher.class, parentColumns = "teacherId", childColumns = "teacherId"))
 public class Classes {
-
     @PrimaryKey(autoGenerate = true)
     private int classId;
-
     private String className;
-
-    private String classDescription;
-
-
-    private String classInstructor;
-
-
-    private String classDuration;
-
-    private String classLevel;
-
+    private String classCourse; //loại khoá học
+    private int classSize;
     private int teacherId; // Khóa ngoại đến giáo viên
+    @TypeConverters({DateTypeConverter.class})
+    private Date courseStart; //ngày khai giảng
+    @TypeConverters({DateTypeConverter.class})
+    private Date courseEnd; //ngày bế giảng
+    private String studyingDates; //học vào các ngày thứ mấy
+    @TypeConverters({DateTypeConverter.class})
+    private Date classStart; //thời gian bắt đầu lớp học
+    @TypeConverters({DateTypeConverter.class})
+    private Date classEnd; //thời gian kết thúc lớp học
+
+    public Classes() {
+        // Default constructor required by Room
+    }
+
+    public Classes(String className, String classCourse, int classSize, int teacherId, Date courseStart, Date courseEnd, String studyingDates, Date classStart, Date classEnd) {
+        this.className = className;
+        this.classCourse = classCourse;
+        this.classSize = classSize;
+        this.teacherId = teacherId;
+        this.courseStart = courseStart;
+        this.courseEnd = courseEnd;
+        this.studyingDates = studyingDates;
+        this.classStart = classStart;
+        this.classEnd = classEnd;
+    }
+
+    public int getClassId() {
+        return classId;
+    }
+
+    public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public String getClassName() {
+        return className;
+    }
+
+    public void setClassName(String className) {
+        this.className = className;
+    }
+
+    public String getClassCourse() {
+        return classCourse;
+    }
+
+    public void setClassCourse(String classCourse) {
+        this.classCourse = classCourse;
+    }
+
+    public int getClassSize() {
+        return classSize;
+    }
+
+    public void setClassSize(int classSize) {
+        this.classSize = classSize;
+    }
 
     public int getTeacherId() {
         return teacherId;
@@ -35,64 +86,43 @@ public class Classes {
         this.teacherId = teacherId;
     }
 
-    public Classes() {
-        // Default constructor required by Room
+    public Date getCourseStart() {
+        return courseStart;
     }
 
-    public Classes(String className, String classDescription, String classInstructor, String classDuration, String classLevel) {
-        this.className = className;
-        this.classDescription = classDescription;
-        this.classInstructor = classInstructor;
-        this.classDuration = classDuration;
-        this.classLevel = classLevel;
+    public void setCourseStart(Date courseStart) {
+        this.courseStart = courseStart;
     }
 
-    public int getClassId() {
-        return classId;
+    public Date getCourseEnd() {
+        return courseEnd;
     }
 
-    public String getClassName() {
-        return className;
+    public void setCourseEnd(Date courseEnd) {
+        this.courseEnd = courseEnd;
     }
 
-    public String getClassDescription() {
-        return classDescription;
+    public String getStudyingDates() {
+        return studyingDates;
     }
 
-    public String getClassInstructor() {
-        return classInstructor;
+    public void setStudyingDates(String studyingDates) {
+        this.studyingDates = studyingDates;
     }
 
-    public String getClassDuration() {
-        return classDuration;
+    public Date getClassStart() {
+        return classStart;
     }
 
-    public String getClassLevel() {
-        return classLevel;
+    public void setClassStart(Date classStart) {
+        this.classStart = classStart;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public Date getClassEnd() {
+        return classEnd;
     }
 
-    public void setClassName(String className) {
-        this.className = className;
+    public void setClassEnd(Date classEnd) {
+        this.classEnd = classEnd;
     }
-
-    public void setClassDescription(String classDescription) {
-        this.classDescription = classDescription;
-    }
-
-    public void setClassInstructor(String classInstructor) {
-        this.classInstructor = classInstructor;
-    }
-
-    public void setClassDuration(String classDuration) {
-        this.classDuration = classDuration;
-    }
-
-    public void setClassLevel(String classLevel) {
-        this.classLevel = classLevel;
-    }
-
 }

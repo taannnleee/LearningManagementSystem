@@ -16,4 +16,7 @@ public interface TeacherDAO {
 
     @Query("select * from teachers")
     List<Teacher> getAllTeacher();
+
+    @Query("SELECT * FROM teachers WHERE teacherId = :id")
+    public Teacher getTeacherById(int id);
 }

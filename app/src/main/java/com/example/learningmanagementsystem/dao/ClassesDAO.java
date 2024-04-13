@@ -12,8 +12,8 @@ import java.util.List;
 @Dao
 public interface ClassesDAO {
     @Insert
-    void insertStudent(Classes... classes);
+    void insertNewClass(Classes... classes);
 
     @Query("select * from classes")
-    List<Classes> getAllClasst();
+    List<Classes> getAllClasses();
 }
