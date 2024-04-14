@@ -2,6 +2,7 @@ package com.example.learningmanagementsystem.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     private EditText edtPhoneNumber;
     private EditText edtEmail;
     private EditText edtPassword;
-    private Button btnCreateTeacher;
+    private Button btnCreateTeacher, btnBackInteraction;
 
 
     @Override
@@ -39,6 +40,13 @@ public class RegisterTeacherActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addTeacher();
+            }
+        });
+        btnBackInteraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), InteractionAdminActivity.class);
+                startActivity(intent);
             }
         });
 
