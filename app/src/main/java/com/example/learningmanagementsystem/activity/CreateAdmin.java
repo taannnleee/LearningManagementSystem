@@ -1,4 +1,4 @@
-package com.example.learningmanagementsystem;
+package com.example.learningmanagementsystem.activity;
 
 import android.app.Application;
 

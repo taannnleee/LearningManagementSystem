@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".activity.CreateAdmin"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,8 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.LearningManagementSystem"
-        tools:targetApi="31"
-        android:name=".CreateAdmin">
+        tools:targetApi="31">
+        <activity
+            android:name=".activity.RegisterTeacherActivity"
+            android:exported="false" />
         <activity
             android:name=".activity.CreationClassActivity"
             android:windowSoftInputMode="adjustPan"
@@ -22,9 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".AccountSectionActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".activity.TopNavigationBarActivity"
             android:exported="false" />
@@ -47,20 +51,23 @@
             android:name=".activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.RegisterTeacherActivity"
+            android:name=".activity.ListClassesByTopic"
             android:exported="false" />
         <activity
-            android:name=".InteractionActivity"
+            android:name=".activity.InteractionActivity"
             android:exported="false" />
         <activity
             android:name=".activity.RegisterActivity"
-            android:exported="false"/>
-
+            android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
+            android:exported="true">
 
-            android:exported="false">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
