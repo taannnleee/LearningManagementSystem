@@ -32,7 +32,7 @@
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_list_classes_by_topic);
             lvClass = findViewById(R.id.lvclasses);
-            arrClasses = (ArrayList<Classes>) DatabaseLearningManagerSystem.getInstance(this).classDAO().getAllClasst();
+            arrClasses = (ArrayList<Classes>) DatabaseLearningManagerSystem.getInstance(this).classDAO().getAllClasses();
             showListClass();
             lvClass.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
