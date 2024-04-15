@@ -3,6 +3,11 @@ package com.example.learningmanagementsystem.models;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.learningmanagementsystem.database.DateTypeConverter;
+
+import java.util.Date;
 
 @Entity (tableName = "teachers")
 public class Teacher {
@@ -14,17 +19,20 @@ public class Teacher {
     private String teacherPassword;
     private String teacherAddress;
     private String teacherPhone;
+    @TypeConverters({DateTypeConverter.class})
+    private Date birthday;
 
 
     public Teacher() {
     }
 
-    public Teacher(String teacherName, String teacherEmail, String teacherPassword, String teacherAddress, String teacherPhone) {
+    public Teacher(String teacherName, String teacherEmail, String teacherPassword, String teacherAddress, String teacherPhone, Date birthday) {
         this.teacherName = teacherName;
         this.teacherEmail = teacherEmail;
         this.teacherPassword = teacherPassword;
         this.teacherAddress = teacherAddress;
         this.teacherPhone = teacherPhone;
+        this.birthday = birthday;
     }
 
     @Override
@@ -78,5 +86,13 @@ public class Teacher {
 
     public void setTeacherPhone(String teacherPhone) {
         this.teacherPhone = teacherPhone;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 }
