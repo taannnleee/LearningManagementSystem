@@ -62,6 +62,9 @@
         <activity
             android:name=".activity.CreationClassActivity"
             android:exported="false" />
+        <activity
+            android:name=".MainAdminActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
