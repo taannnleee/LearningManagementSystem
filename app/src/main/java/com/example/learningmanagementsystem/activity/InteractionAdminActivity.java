@@ -73,13 +73,6 @@ public class InteractionAdminActivity extends AppCompatActivity {
         imgVPosts = findViewById(R.id.imageViewPosts);
         imgVAnnouncements = findViewById(R.id.imageViewAnnouncements);
         imgVSupports = findViewById(R.id.imageViewSupports);
-
-
-
-
-
-
-
     }
 
 }

@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 public interface ClassesDAO {
     @Insert
-    long insertNewClass(Classes... classes);
+    void insertNewClass(Classes... classes);
 
     @Query("select * from classes")
     List<Classes> getAllClasses();

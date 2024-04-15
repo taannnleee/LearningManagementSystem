@@ -3,6 +3,10 @@ package com.example.learningmanagementsystem.models;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
+
+import com.example.learningmanagementsystem.database.DateTypeConverter;
+import com.example.learningmanagementsystem.database.TimeTypeConverter;
 
 import java.sql.Time;
 
@@ -10,7 +14,9 @@ import java.sql.Time;
 public class Schedule {
     @PrimaryKey(autoGenerate = true)
     private int scheduleId;
+    @TypeConverters({TimeTypeConverter.class})
     private Time startTime;
+    @TypeConverters({TimeTypeConverter.class})
     private Time endTime;
 
     private int classId; // khoa ngoai

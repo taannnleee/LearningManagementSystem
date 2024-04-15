@@ -97,9 +97,9 @@ public class CreationClassActivity extends AppCompatActivity {
 
     public void CreateClass() throws ParseException {
         Classes newClass = SetClassData();
-        long a = DatabaseLearningManagerSystem.getInstance(this).classDAO().insertNewClass(newClass);
+        DatabaseLearningManagerSystem.getInstance(this).classDAO().insertNewClass(newClass);
 
-        Toast.makeText(CreationClassActivity.this, String.valueOf(a), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(CreationClassActivity.this, String.valueOf(a), Toast.LENGTH_SHORT).show();
 
         insertSchedule();
     }
