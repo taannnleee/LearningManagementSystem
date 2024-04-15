@@ -12,10 +12,16 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.learningmanagementsystem.MainAdminActivity;
+import com.example.learningmanagementsystem.MainTeacherActivity;
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.dao.AdminDAO;
 import com.example.learningmanagementsystem.dao.StudentDAO;
+import com.example.learningmanagementsystem.dao.TeacherDAO;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
+import com.example.learningmanagementsystem.models.Admin;
 import com.example.learningmanagementsystem.models.Student;
+import com.example.learningmanagementsystem.models.Teacher;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText edtEmail;
@@ -24,7 +30,6 @@ public class LoginActivity extends AppCompatActivity {
     private TextView txtviewregister;
     private RadioButton radioStudent, radioTeacher, radioAdmin;
     private String selectedRole = "";
-    private StudentDAO studentDAO;
 
 
     @Override
@@ -41,15 +46,20 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Student student = setStudentData();
-
+                Teacher teacher = setTeacherData();
+                Admin admin = setAdminData();
                 if (!isValidEmail(student.getStudentEmail())) {
                     Toast.makeText(LoginActivity.this, "Invalid email address", Toast.LENGTH_SHORT).show();
                 } else if (student.getStudentPassword().isEmpty()) {
                     Toast.makeText(LoginActivity.this, "Please enter password", Toast.LENGTH_SHORT).show();
                 } else if(selectedRole == "student"){
                     loginStudent(student);
+                } else if(selectedRole =="teacher"){
+                    loginTeacher(teacher);
+                } else if(selectedRole =="admin"){
+                    loginAdmin(admin);
                 } else {
-                    Toast.makeText(LoginActivity.this, "Please select role", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Please fill in the information accurately", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -107,6 +117,19 @@ public class LoginActivity extends AppCompatActivity {
         newStudent.setStudentPassword(edtPassword.getText().toString());
         return newStudent;
     }
+    private Teacher setTeacherData(){
+        Teacher newTeacher = new Teacher();
+        newTeacher.setTeacherEmail(edtEmail.getText().toString());
+        newTeacher.setTeacherPassword(edtPassword.getText().toString());
+        return newTeacher;
+    }
+    private Admin setAdminData(){
+        Admin newAdmin = new Admin();
+        newAdmin.setAdminEmail(edtEmail.getText().toString());
+        newAdmin.setAdminPassword(edtPassword.getText().toString());
+        return newAdmin;
+    }
+
     private boolean isValidEmail(String email) {
         String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}";
         String emailPatternPart2 = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+";
@@ -129,10 +152,48 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             } else {
-                Toast.makeText(LoginActivity.this, "Incorrect password", Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "Incorrect student password", Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(LoginActivity.this, "Email does not exist", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginActivity.this, "Email student does not exist", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void loginTeacher(Teacher teacher) {
+        TeacherDAO teacherDAO = DatabaseLearningManagerSystem.getInstance(this).teacherDAO();
+        Teacher existingTeacher = teacherDAO.getTeacherByEmail(teacher.getTeacherEmail());
+
+        if (existingTeacher != null) {
+
+            if (existingTeacher.getTeacherPassword().equals(teacher.getTeacherPassword())) {
+
+                Intent intent = new Intent(LoginActivity.this, MainTeacherActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "Incorrect teacher password", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(LoginActivity.this, "Email teacher does not exist", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void loginAdmin(Admin admin) {
+        AdminDAO adminDAO = DatabaseLearningManagerSystem.getInstance(this).adminDAO();
+        Admin existingAdmin = adminDAO.getAdminByEmail(admin.getAdminEmail());
+
+        if (existingAdmin != null) {
+
+            if (existingAdmin.getAdminPassword().equals(admin.getAdminPassword())) {
+
+                Intent intent = new Intent(LoginActivity.this, MainAdminActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                Toast.makeText(LoginActivity.this, "Incorrect admin password", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            Toast.makeText(LoginActivity.this, "Email admin does not exist", Toast.LENGTH_SHORT).show();
         }
     }
 
