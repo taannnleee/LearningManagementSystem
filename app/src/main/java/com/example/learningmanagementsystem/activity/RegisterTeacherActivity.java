@@ -3,6 +3,7 @@ package com.example.learningmanagementsystem.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     private EditText edtPhoneNumber;
     private EditText edtEmail;
     private EditText edtPassword;
-    private Button btnCreateTeacher;
+    private Button btnCreateTeacher, btnBackInteraction;
 
     private ImageView imgBirthday;
 
@@ -71,6 +72,13 @@ public class RegisterTeacherActivity extends AppCompatActivity {
                     }
                 }, year ,month,day);
                 dialog.show();
+            }
+        });
+        btnBackInteraction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), InteractionAdminActivity.class);
+                startActivity(intent);
             }
         });
 
