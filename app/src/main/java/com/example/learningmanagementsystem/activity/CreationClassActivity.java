@@ -50,6 +50,27 @@ public class CreationClassActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
                     CreateClass();
+                    Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
+                }
+                catch (Exception e) {
+                    Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btn_clearText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    et_className.setText("");
+                    et_classSize.setText("");
+                    cmbBox_course.setText("");
+                    cmbBox_teacherInfo.setText("");
+                    et_courseStart.setText("");
+                    et_courseEnd.setText("");
+                    et_studyingDates.setText("");
+                    et_classStart.setText("");
+                    et_classEnd.setText("");
                 }
                 catch (Exception e) {
                     Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -106,15 +127,21 @@ public class CreationClassActivity extends AppCompatActivity {
         int size = Integer.valueOf(et_classSize.getText().toString());
         String teacherInfo = cmbBox_teacherInfo.getText().toString();
         Teacher teacher = FindTeacher(teacherInfo);
+
         String temp_courseStart = et_courseStart.getText().toString();
         Date courseStart = new SimpleDateFormat("dd/MM/yyyy").parse(temp_courseStart);
         String temp_courseEnd = et_courseEnd.getText().toString();
         Date courseEnd = new SimpleDateFormat("dd/MM/yyyy").parse(temp_courseEnd);
+
         String studyDates = et_studyingDates.getText().toString();
-        String temp_classStart = et_classStart.getText().toString();
-        Date classStart = new SimpleDateFormat("hh:mm").parse(temp_classStart); //thêm giờ sai
-        String temp_classEnd = et_classEnd.getText().toString();
-        Date classEnd = new SimpleDateFormat("hh:mm").parse(temp_classEnd); //thêm giờ sai
+
+        String tempTime_classStart = et_classStart.getText().toString();
+        String tempTime_classEnd = et_classEnd.getText().toString();
+        String tempDate_classStart = "01/01/1999 " + tempTime_classStart; //gắn đại ngày tháng năm vào để cho thành kiểu Date, chủ yếu lấy time
+        String tempDate_classEnd = "01/01/1999 " + tempTime_classEnd;
+        Date classStart = new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(tempDate_classStart);
+        Date classEnd = new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(tempDate_classEnd);
+
         Classes newClass = new Classes(name, course, size, teacher.getTeacherId(), courseStart, courseEnd, studyDates, classStart, classEnd);
         return newClass;
     }

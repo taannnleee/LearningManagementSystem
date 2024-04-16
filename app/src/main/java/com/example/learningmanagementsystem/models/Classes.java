@@ -3,13 +3,10 @@ package com.example.learningmanagementsystem.models;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
-import androidx.room.TypeConverter;
 import androidx.room.TypeConverters;
 
-import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.database.DateTypeConverter;
 
-import java.time.LocalTime;
 import java.util.Date;
 
 @Entity(tableName = "classes", foreignKeys = @ForeignKey(entity = Teacher.class, parentColumns = "teacherId", childColumns = "teacherId"))
