@@ -35,7 +35,7 @@ public class ClassesArrayAdapter extends ArrayAdapter<Classes> {
             final TextView txtdisplay = (TextView)convertView.findViewById(R.id.txtitem);
 
             final Classes emp = myArray.get(position);
-            txtdisplay.setText(emp.getClassDuration());
+            txtdisplay.setText(emp.getClassName());
 //            txtdisplay.setText(emp.toString());
         }
         return convertView;

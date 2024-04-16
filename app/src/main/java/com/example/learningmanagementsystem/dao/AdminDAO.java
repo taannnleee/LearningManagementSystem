@@ -18,4 +18,6 @@ public interface AdminDAO {
 
     @Query("SELECT COUNT(*) FROM admin")
     int getAdminCount();
+    @Query("SELECT * FROM admin WHERE adminEmail = :email")
+    Admin getAdminByEmail(String email);
 }

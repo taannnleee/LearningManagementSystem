@@ -14,18 +14,21 @@
         android:theme="@style/Theme.LearningManagementSystem"
         tools:targetApi="31">
         <activity
+            android:name=".MainTeacherActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.RegisterTeacherActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CreationClassActivity"
-            android:windowSoftInputMode="adjustPan"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".AccountSectionActivity"
             android:exported="false" />
@@ -37,9 +40,6 @@
             android:exported="false" />
         <activity
             android:name=".activity.SupportActivity"
-            android:exported="false" />
-        <activity
-            android:name=".helper.TestActivity"
             android:exported="false" />
         <activity
             android:name=".activity.InforClassActivity"
@@ -61,14 +61,10 @@
             android:exported="false" />
         <activity
             android:name=".activity.LoginActivity"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:exported="false" />
+        <activity
+            android:name=".MainAdminActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

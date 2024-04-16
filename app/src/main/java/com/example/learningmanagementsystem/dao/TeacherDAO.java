@@ -19,4 +19,6 @@ public interface TeacherDAO {
 
     @Query("SELECT * FROM teachers WHERE teacherId = :id")
     public Teacher getTeacherById(int id);
+    @Query("SELECT * FROM teachers WHERE teacherEmail = :email")
+    Teacher getTeacherByEmail(String email);
 }

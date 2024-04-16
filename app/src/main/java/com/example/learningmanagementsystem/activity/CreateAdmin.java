@@ -16,7 +16,7 @@ public class CreateAdmin  extends Application {
         if (adminCount > 0) {
             return;
         }
-        Admin admin = new Admin( "letan", "123123");
+        Admin admin = new Admin( "letan@gmail.com", "123123");
         DatabaseLearningManagerSystem.getInstance(this).adminDAO().insertAdmin(admin);
     }
 }
