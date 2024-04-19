@@ -185,8 +185,7 @@ public class LoginActivity extends AppCompatActivity {
         if (existingAdmin != null) {
 
             if (existingAdmin.getAdminPassword().equals(admin.getAdminPassword())) {
-
-                Intent intent = new Intent(LoginActivity.this, MainAdminActivity.class);
+                Intent intent = new Intent(LoginActivity.this, InteractionAdminActivity.class);
                 startActivity(intent);
                 finish();
             } else {

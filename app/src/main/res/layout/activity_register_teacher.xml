@@ -13,10 +13,10 @@
         android:layout_height="match_parent"
         android:background="@android:color/white"
         android:orientation="vertical"
-        tools:context=".activity.InforClassActivity">
+        tools:context=".activity.RegisterTeacherActivity">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewPage"
             android:layout_width="387dp"
             android:layout_height="159dp"
             android:layout_marginTop="4dp"
@@ -198,16 +198,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="Back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.05"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

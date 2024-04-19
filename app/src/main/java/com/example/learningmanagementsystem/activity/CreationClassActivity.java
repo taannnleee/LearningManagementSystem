@@ -1,5 +1,6 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -56,6 +57,14 @@ public class CreationClassActivity extends AppCompatActivity {
                 }
             }
         });
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreationClassActivity.this, InteractionAdminActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     public void getFormWidget() {

@@ -20,7 +20,7 @@
             android:name=".activity.RegisterTeacherActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.CreationClassActivity"
+            android:name=".activity.LoginActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -57,10 +57,19 @@
             android:name=".activity.InteractionActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.InteractionAdminActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name=".activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.CreationClassActivity"
             android:exported="false" />
         <activity
             android:name=".MainAdminActivity"

@@ -74,13 +74,13 @@ public class RegisterTeacherActivity extends AppCompatActivity {
                 dialog.show();
             }
         });
-        btnBackInteraction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), InteractionAdminActivity.class);
-                startActivity(intent);
-            }
-        });
+//        btnBackInteraction.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getApplicationContext(), InteractionAdminActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 
