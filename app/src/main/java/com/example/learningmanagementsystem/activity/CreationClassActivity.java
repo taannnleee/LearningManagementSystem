@@ -78,6 +78,26 @@ public class CreationClassActivity extends AppCompatActivity {
                 }
             }
         });
+
+        btn_clearText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    et_className.setText("");
+                    et_classSize.setText("");
+                    cmbBox_course.setText("");
+                    cmbBox_teacherInfo.setText("");
+                    et_courseStart.setText("");
+                    et_courseEnd.setText("");
+                    et_studyingDates.setText("");
+                    et_classStart.setText("");
+                    et_classEnd.setText("");
+                }
+                catch (Exception e) {
+                    Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
