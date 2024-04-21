@@ -13,6 +13,7 @@ import java.util.Date;
 public class Classes {
     @PrimaryKey(autoGenerate = true)
     private int classId;
+    private byte[] classPicture;
     private String className;
     private String classCourse; //loại khoá học
     private int classSize;
@@ -26,12 +27,15 @@ public class Classes {
     private Date classStart; //thời gian bắt đầu lớp học
     @TypeConverters({DateTypeConverter.class})
     private Date classEnd; //thời gian kết thúc lớp học
+    private String classDescription;
+    private long classFee;
 
     public Classes() {
         // Default constructor required by Room
     }
 
-    public Classes(String className, String classCourse, int classSize, int teacherId, Date courseStart, Date courseEnd, String studyingDates, Date classStart, Date classEnd) {
+    public Classes(byte[] classPicture, String className, String classCourse, int classSize, int teacherId, Date courseStart, Date courseEnd, String studyingDates, Date classStart, Date classEnd, long classFee, String classDescription) {
+        this.classPicture = classPicture;
         this.className = className;
         this.classCourse = classCourse;
         this.classSize = classSize;
@@ -41,10 +45,20 @@ public class Classes {
         this.studyingDates = studyingDates;
         this.classStart = classStart;
         this.classEnd = classEnd;
+        this.classFee = classFee;
+        this.classDescription = classDescription;
     }
 
     public int getClassId() {
         return classId;
+    }
+
+    public byte[] getClassPicture() {
+        return classPicture;
+    }
+
+    public void setClassPicture(byte[] classPicture) {
+        this.classPicture = classPicture;
     }
 
     public void setClassId(int classId) {
@@ -121,5 +135,21 @@ public class Classes {
 
     public void setClassEnd(Date classEnd) {
         this.classEnd = classEnd;
+    }
+
+    public String getClassDescription() {
+        return classDescription;
+    }
+
+    public void setClassDescription(String classDescription) {
+        this.classDescription = classDescription;
+    }
+
+    public long getClassFee() {
+        return classFee;
+    }
+
+    public void setClassFee(long classFee) {
+        this.classFee = classFee;
     }
 }

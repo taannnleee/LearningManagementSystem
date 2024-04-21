@@ -41,7 +41,7 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return teacherId + " + " + teacherAddress;
+        return this.teacherId + " + " + this.teacherName;
     }
 
     public int getTeacherId() {
