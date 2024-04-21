@@ -1,14 +1,17 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learningmanagementsystem.R;
 
 public class InteractionActivity extends AppCompatActivity {
-    private ImageView imgVSchedules, imgVClasses, imgVCompenstate;
+    private ImageView imgVToeic, imgVIelts, imgVCommunication;
     private ImageView imgVAssignments, imgVHomework, imgVAbsence;
     private  ImageView imgVPosts, imgVAnnouncements, imgVSupports;
     @Override
@@ -21,12 +24,34 @@ public class InteractionActivity extends AppCompatActivity {
 
     private void addEvent() {
         // cac ham chuyen trang
+        imgVToeic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+                Intent  intent  = new Intent(InteractionActivity.this, ListClassesShowStudent.class);
+                startActivity(intent);
+            }
+        });
+        imgVIelts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+            }
+        });
+        imgVCommunication.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void getFormWidgets() {
-        imgVSchedules = findViewById(R.id.imageViewSchedules);
-        imgVClasses = findViewById(R.id.imageViewClasses);
-        imgVCompenstate = findViewById(R.id.imageViewCompensate);
+        imgVToeic = findViewById(R.id.imageViewToeic);
+        imgVIelts = findViewById(R.id.imageViewIelts);
+        imgVCommunication = findViewById(R.id.imageViewCommunication);
+
+        //mấy cái dưới chưa dùng đến nha Trung
         imgVAssignments = findViewById(R.id.imageViewAssignments);
         imgVHomework = findViewById(R.id.imageViewHomework);
         imgVAbsence = findViewById(R.id.imageViewAbsence);

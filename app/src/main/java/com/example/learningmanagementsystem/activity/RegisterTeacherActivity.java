@@ -1,10 +1,19 @@
 package com.example.learningmanagementsystem.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -13,15 +22,23 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.activity.hepler.DialogHelper;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Teacher;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.text.ParseException;
+import android.view.ViewGroup;
 
 public class RegisterTeacherActivity extends AppCompatActivity {
+    final int RESQUEST_TAKE_PHOTO = 123;
+    final int REQUEST_CHOOSE_PHOTO = 321;
+    final int REQUEST_DIALOG_HELPER = 113;
 
     private EditText edtLastName;
     private EditText edtFirstName;
@@ -33,6 +50,23 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     private ImageView imgBirthday;
 
     private EditText edtBirthday;
+    private ImageView imvpictureTeacher;
+    private Dialog dialog;
+    private Button btnYes, btnNo;
+
+    private Dialog dialogSure;
+    private Button btnSure, btnCancle;
+
+
+    private byte[] getByteArrayFromImageView(ImageView imgv) {
+        BitmapDrawable drawable =  (BitmapDrawable) imgv.getDrawable();
+        Bitmap bmp = drawable.getBitmap();
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        bmp.compress (Bitmap.CompressFormat. PNG, 100, stream);
+        byte[] byteArray =  stream.toByteArray();
+        return byteArray;
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +78,23 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
+
         btnCreateTeacher.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    addTeacher();
-                } catch (ParseException e) {
+                    dialogSure = new Dialog(RegisterTeacherActivity.this);
+                    dialogSure.setContentView(R.layout.custom_dialog_sure);
+                    dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                    dialogSure.setCancelable(false);
+                    dialogSure.show(); // Hiển thị dialog
+
+                    btnSure = dialogSure.findViewById(R.id.btnYes);
+                    btnCancle = dialogSure.findViewById(R.id.btnCancle);
+                    eventDialogSure();
+
+                } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }
@@ -82,6 +127,44 @@ public class RegisterTeacherActivity extends AppCompatActivity {
 //            }
 //        });
 
+        imvpictureTeacher.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog = new Dialog(RegisterTeacherActivity.this);
+                dialog.setContentView(R.layout.custom_dialog_box);
+                dialog.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                dialog.setCancelable(false);
+                dialog.show(); // Hiển thị dialog
+                btnYes = dialog.findViewById(R.id.btnYes);
+                btnNo = dialog.findViewById(R.id.btnNo);
+                eventDialog();
+            }
+        });
+
+
+    }
+
+    private void eventDialogSure() {
+        btnSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    addTeacher();
+                    dialogSure.dismiss();
+                    Toast.makeText(RegisterTeacherActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                } catch (ParseException e) {
+                    Toast.makeText(RegisterTeacherActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        btnCancle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSure.dismiss();
+            }
+        });
     }
 
     private void addTeacher() throws ParseException {
@@ -99,8 +182,11 @@ public class RegisterTeacherActivity extends AppCompatActivity {
         edtBirthday = findViewById(R.id.edtBirthday11);
 
         btnCreateTeacher = findViewById(R.id.btnCreateTeacher);
+        imvpictureTeacher = findViewById(R.id.imvpictureTeacher);
     }
     private Teacher setTeacherData() throws ParseException {
+        byte[] picture = getByteArrayFromImageView(imvpictureTeacher);
+
         Teacher newTeacher = new Teacher();
         newTeacher.setTeacherEmail(edtEmail.getText().toString());
         newTeacher.setTeacherPassword(edtPassword.getText().toString());
@@ -110,6 +196,47 @@ public class RegisterTeacherActivity extends AppCompatActivity {
         String birthday_ = edtBirthday.getText().toString();
         Date birthday = new SimpleDateFormat("dd/MM/yyyy").parse(birthday_);
         newTeacher.setBirthday(birthday);
+        newTeacher.setPictureTeacher(picture);
         return newTeacher;
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == REQUEST_CHOOSE_PHOTO) {
+                try {
+                    Uri imageUri =  data.getData();
+                    InputStream is =
+                            getContentResolver().openInputStream(imageUri);
+                    Bitmap bitmap =  BitmapFactory.decodeStream(is);
+                    imvpictureTeacher.setImageBitmap(bitmap);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            } else if (requestCode == RESQUEST_TAKE_PHOTO) {
+                Bitmap bitmap = (Bitmap) data.getExtras().get("data");
+                imvpictureTeacher.setImageBitmap(bitmap);
+            }
+
+        }
+    }
+    private void eventDialog(){
+        btnYes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType("image/*");
+                startActivityForResult(intent, REQUEST_CHOOSE_PHOTO);
+                dialog.dismiss();
+            }
+        });
+        btnNo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent, RESQUEST_TAKE_PHOTO);
+                dialog.dismiss();
+            }
+        });
     }
 }

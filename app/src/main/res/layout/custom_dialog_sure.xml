@@ -17,9 +17,10 @@
             android:layout_height="46dp"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/bebas_neue"
-            android:text="Do you have a picture yet?"
+            android:text="Are you sure?"
             android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.715"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -53,7 +54,7 @@
             app:layout_constraintVertical_bias="0.391" />
 
         <Button
-            android:id="@+id/btnNo"
+            android:id="@+id/btnCancle"
             android:layout_width="80dp"
             android:layout_height="45dp"
             android:layout_marginTop="108dp"

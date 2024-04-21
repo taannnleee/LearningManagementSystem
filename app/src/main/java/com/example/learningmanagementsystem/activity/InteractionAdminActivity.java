@@ -72,7 +72,7 @@ public class InteractionAdminActivity extends AppCompatActivity {
     }
 
     private void getFormWidgets() {
-        btnclass = findViewById(R.id.imageViewClasses);
+//        btnclass = findViewById(R.id.imageViewClasses); coi chỉnh lại cái này nha Trung
         imageViewAddTeacher = findViewById(R.id.imageViewAddTeacher);
         imageViewAddCourse = findViewById(R.id.imageViewAddCourse);
         imageViewConfirm = findViewById(R.id.imageViewConfirm);

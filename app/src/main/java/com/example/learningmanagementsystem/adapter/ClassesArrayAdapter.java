@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.models.Classes;
@@ -28,16 +29,16 @@ public class ClassesArrayAdapter extends ArrayAdapter<Classes> {
 
     @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
-        convertView = inflater.inflate(layoutId, null);
-        if(myArray.size()>0 && position >=0){
-            final TextView txtdisplay = (TextView)convertView.findViewById(R.id.txtitem);
+        View listItemView = inflater.inflate(R.layout.item_classes_layout, null, true);
 
-            final Classes emp = myArray.get(position);
-            txtdisplay.setText(emp.getClassName());
-//            txtdisplay.setText(emp.toString());
-        }
-        return convertView;
+        TextView tvshow = listItemView.findViewById(R.id.txtitem);
+
+
+        Classes  classes   = myArray.get(position);
+
+        tvshow.setText(classes.getClassName());
+        return listItemView;
     }
 }

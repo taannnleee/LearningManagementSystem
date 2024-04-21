@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ListClassesByTopic">
+    tools:context=".activity.ListClassesShowStudent">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
@@ -16,9 +16,11 @@
         android:textColor="#FFFFFF"
         android:textSize="20dp"/>
 
-    <ListView
-        android:id="@+id/lvclasses"
+    <GridView
+        android:id="@+id/gird_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </ListView>
+        android:layout_height="match_parent"
+        android:listSelector="@android:color/holo_blue_bright"
+        android:numColumns="2"/>
+
 </LinearLayout>

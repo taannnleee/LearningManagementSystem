@@ -1,5 +1,7 @@
 package com.example.learningmanagementsystem.models;
 
+import android.graphics.Bitmap;
+
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -19,6 +21,7 @@ public class Teacher {
     private String teacherPassword;
     private String teacherAddress;
     private String teacherPhone;
+    private  byte[] pictureTeacher;
     @TypeConverters({DateTypeConverter.class})
     private Date birthday;
 
@@ -26,13 +29,14 @@ public class Teacher {
     public Teacher() {
     }
 
-    public Teacher(String teacherName, String teacherEmail, String teacherPassword, String teacherAddress, String teacherPhone, Date birthday) {
+    public Teacher(String teacherName, String teacherEmail, String teacherPassword, String teacherAddress, String teacherPhone, Date birthday, byte[] pictureTeacher) {
         this.teacherName = teacherName;
         this.teacherEmail = teacherEmail;
         this.teacherPassword = teacherPassword;
         this.teacherAddress = teacherAddress;
         this.teacherPhone = teacherPhone;
         this.birthday = birthday;
+        this. pictureTeacher = pictureTeacher;
     }
 
     @Override
@@ -94,5 +98,13 @@ public class Teacher {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
+    }
+
+    public byte[] getPictureTeacher() {
+        return pictureTeacher;
+    }
+
+    public void setPictureTeacher(byte[] pictureTeacher) {
+        this.pictureTeacher = pictureTeacher;
     }
 }

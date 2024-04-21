@@ -12,7 +12,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.learningmanagementsystem.MainAdminActivity;
 import com.example.learningmanagementsystem.MainTeacherActivity;
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.AdminDAO;
@@ -104,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
     private void getFormWidgets() {
         edtEmail = findViewById(R.id.login_email);
         edtPassword = findViewById(R.id.login_password);
-        btnLogin = findViewById(R.id.login_button);
+        btnLogin = findViewById(R.id.btnYes);
         txtviewregister = findViewById(R.id.loginRedirectText);
         radioStudent = findViewById(R.id.radio_student);
         radioTeacher = findViewById(R.id.radio_teacher);
@@ -148,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, InteractionActivity.class);
                 startActivity(intent);
                 finish();
             } else {

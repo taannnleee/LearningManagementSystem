@@ -285,7 +285,7 @@
                         android:background="@drawable/category_backgroud">
 
                         <ImageView
-                            android:id="@+id/imageViewSchedules"
+                            android:id="@+id/imageViewToeic"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -296,11 +296,11 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textViewSchedules"
+                        android:id="@+id/textViewToeic"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Schedule"
+                        android:text="Toeic"
                         android:textAlignment="center"
                         android:textColor="#1e4368"
                         android:textSize="17sp" />
@@ -319,7 +319,7 @@
                         android:background="@drawable/category_backgroud">
 
                         <ImageView
-                            android:id="@+id/imageViewClasses"
+                            android:id="@+id/imageViewIelts"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -330,11 +330,11 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textViewClasses"
+                        android:id="@+id/textViewIelts"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Classes"
+                        android:text="Ielts"
                         android:textAlignment="center"
                         android:textColor="#1e4368"
                         android:textSize="17sp" />
@@ -353,7 +353,7 @@
                         android:background="@drawable/category_backgroud">
 
                         <ImageView
-                            android:id="@+id/imageViewCompensate"
+                            android:id="@+id/imageViewCommunication"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -364,11 +364,11 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textViewCompensate"
+                        android:id="@+id/textViewCommunication"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:text="Compensate"
+                        android:text="Communication"
                         android:textAlignment="center"
                         android:textColor="#1e4368"
                         android:textSize="17sp" />
