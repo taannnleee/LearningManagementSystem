@@ -60,6 +60,9 @@
             android:name=".activity.InteractionActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.CourseDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.ListClassesShowStudent"
             android:exported="true">
             <intent-filter>
