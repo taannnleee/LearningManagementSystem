@@ -291,12 +291,12 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
                 android:hint="Description"
-                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense">
-                <EditText
-                    android:id="@+id/et_class_description"
+                style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+                <AutoCompleteTextView
+                    android:id="@+id/auto_compl_tv_class_description"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="textMultiLine"
+                    android:inputType="none"
                     android:lines="5"/>
             </com.google.android.material.textfield.TextInputLayout>
             <TableLayout

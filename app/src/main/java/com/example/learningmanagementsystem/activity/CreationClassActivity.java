@@ -51,8 +51,8 @@ public class CreationClassActivity extends AppCompatActivity {
     final int REQUEST_CHOOSE_PHOTO = 321;
     EditText et_className, et_classSize, et_courseStart,
             et_courseEnd, et_studyingDates, et_classStart, et_classEnd,
-            et_classFee, et_classDescription;
-    AutoCompleteTextView cmbBox_course, cmbBox_teacherInfo;
+            et_classFee;
+    AutoCompleteTextView cmbBox_course, cmbBox_teacherInfo, cmbBox_classDescription;
     Button btn_createClass, btn_clearText, btn_yes, btn_no;
     TextView btn_back;
     ImageView imv_classPicture, btn_courseStart, btn_courseEnd, img_classStart, img_classEnd;
@@ -104,6 +104,8 @@ public class CreationClassActivity extends AppCompatActivity {
                     et_studyingDates.setText("");
                     et_classStart.setText("");
                     et_classEnd.setText("");
+                    et_classFee.setText("");
+                    cmbBox_classDescription.setText("");
                 }
                 catch (Exception e) {
                     Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -189,6 +191,21 @@ public class CreationClassActivity extends AppCompatActivity {
             }
         });
 
+        img_classEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar calendar = Calendar.getInstance();
+                int hour = calendar.get(Calendar.HOUR_OF_DAY);
+                int minute = calendar.get(Calendar.MINUTE);
+                TimePickerDialog timePickerDialog = new TimePickerDialog(CreationClassActivity.this, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minutes) {
+                        et_classEnd.setText(hourOfDay + ":" + minutes);
+                    }
+                }, hour, minute, true);
+                timePickerDialog.show();
+            }
+        });
     }
 
     @Override
@@ -255,7 +272,7 @@ public class CreationClassActivity extends AppCompatActivity {
         btn_courseStart = findViewById(R.id.img_courseStart);
         btn_courseEnd = findViewById(R.id.img_courseEnd);
         et_classFee = findViewById(R.id.et_class_fee);
-        et_classDescription = findViewById(R.id.et_class_description);
+        cmbBox_classDescription = findViewById(R.id.auto_compl_tv_class_description);
         img_classStart = findViewById(R.id.img_class_start);
         img_classEnd = findViewById(R.id.img_class_end);
 
@@ -278,6 +295,23 @@ public class CreationClassActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 cmbBox_course.showDropDown();
+            }
+        });
+        String[] classDescriptions = {
+                "Khoá học TOEIC Prep giúp bạn nâng cao điểm số TOEIC của mình một cách hiệu quả và nhanh chóng. Tập trung vào hai phần chính của bài kiểm tra, Listening và Reading, khoá học này cung cấp chiến lược làm bài thi, bài tập thực hành, và phản hồi cá nhân để bạn tự tin vượt qua thử thách của bài kiểm tra TOEIC.",
+                "Khoá học Mastering TOEIC là chìa khóa cho sự thành công trong bài kiểm tra TOEIC. Với phương pháp học tiên tiến và tài liệu giảng dạy chất lượng, bạn sẽ được trang bị những kỹ năng cần thiết để tự tin đối mặt với cả hai phần Listening và Reading của bài thi TOEIC. Vượt qua khoá học này, bạn sẽ không chỉ nắm vững kiến thức ngôn ngữ mà còn có khả năng áp dụng chúng một cách linh hoạt và hiệu quả trong môi trường làm việc và học tập.",
+                "Khoá học \"IELTS Success\" là hành trang không thể thiếu cho những ai đang chuẩn bị cho kỳ thi IELTS. Với sự hỗ trợ chuyên sâu từ giảng viên có kinh nghiệm và tài liệu ôn luyện chất lượng, bạn sẽ được trang bị những kỹ năng cần thiết để tự tin đối mặt với cả bốn phần của bài kiểm tra: Listening, Reading, Writing và Speaking. Với phương pháp học linh hoạt và tập trung vào các kỹ năng cần thiết, khoá học này giúp bạn chuẩn bị một cách hiệu quả và đạt được kết quả tốt nhất trong kỳ thi IELTS.",
+                "Khoá học \"IELTS Mastery\" là hành trình đưa bạn từ nơi bạn đang đứng đến mục tiêu điểm số IELTS mơ ước của bạn. Với phương pháp học đa dạng và tập trung, bạn sẽ học cách xử lý mỗi phần của bài kiểm tra IELTS với sự tự tin và hiệu quả. Từ việc cải thiện kỹ năng nghe và đọc đến viết và giao tiếp, khoá học này cung cấp một môi trường học tập tích cực và động viên, giúp bạn vượt qua mọi thách thức và đạt được thành công đỉnh cao trong kỳ thi quan trọng này.",
+                "Khoá học \"Effective English Communication\" là bước đệm quan trọng cho việc xây dựng sự tự tin trong việc giao tiếp bằng tiếng Anh. Bằng cách kết hợp các phương pháp học tập đa dạng, bài tập thực hành và các hoạt động tương tác, khoá học này giúp bạn phát triển và nâng cao kỹ năng nghe, nói, đọc và viết tiếng Anh một cách tự tin và linh hoạt.",
+                "Khoá học \"Confident Conversations\" là điểm xuất phát hoàn hảo cho việc phát triển kỹ năng giao tiếp tiếng Anh của bạn. Với sự tập trung vào việc xây dựng sự tự tin trong giao tiếp hàng ngày, khoá học này cung cấp một môi trường học tập thân thiện và động viên, giúp bạn thảo luận, trao đổi ý kiến và thực hành kỹ năng giao tiếp một cách tự tin và trôi chảy.",
+                "Khoá học \"TOEIC Mastery\" là hành trình đi đến sự thành công tối đa trong bài kiểm tra TOEIC của bạn. Với sự kết hợp của lộ trình học tập cấp tiến, bài tập thực hành và phản hồi cá nhân, khoá học này mang đến cho bạn một cơ hội tuyệt vời để nắm vững cả hai phần Listening và Reading của bài kiểm tra TOEIC."
+        };
+        ArrayAdapter<String> classDescriptionArrayAdapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, classDescriptions);
+        cmbBox_classDescription.setAdapter(classDescriptionArrayAdapter);
+        cmbBox_classDescription.setOnClickListener(new AdapterView.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cmbBox_classDescription.showDropDown();
             }
         });
     }
@@ -317,7 +351,7 @@ public class CreationClassActivity extends AppCompatActivity {
         Date classStart = new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(tempDate_classStart);
         Date classEnd = new SimpleDateFormat("dd/MM/yyyy HH:MM").parse(tempDate_classEnd);
         long classFee = Long.valueOf(et_classFee.getText().toString());
-        String classDescription = et_classDescription.getText().toString();
+        String classDescription = cmbBox_classDescription.getText().toString();
 
         Classes newClass = new Classes(picture, name, course, size, teacher.getTeacherId(), courseStart, courseEnd, studyDates, classStart, classEnd, classFee, classDescription);
         return newClass;
