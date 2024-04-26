@@ -23,6 +23,7 @@ deploymentTargetDropDown.xml
 render.experimental.xml
 .idea/deploymentTargetDropDown.xml
 
+.idea/deploymentTargetDropDown.xml
 # Keystore files
 *.jks
 *.keystore
