@@ -23,7 +23,7 @@
             android:name=".activity.RegisterTeacherActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.InteractionAdminActivity"
+            android:name=".activity.InteractionActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
@@ -57,7 +57,7 @@
             android:name=".activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.InteractionActivity"
+            android:name=".activity.InteractionAdminActivity"
             android:exported="false" />
         <activity
             android:name=".activity.CourseDetailsActivity"

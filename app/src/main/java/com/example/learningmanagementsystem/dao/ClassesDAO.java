@@ -16,4 +16,7 @@ public interface ClassesDAO {
 
     @Query("select * from classes")
     List<Classes> getAllClasses();
+
+    @Query("SELECT * FROM classes WHERE classCourse = :classCourse")
+    List<Classes> getClassesByClassCourse(String classCourse);
 }

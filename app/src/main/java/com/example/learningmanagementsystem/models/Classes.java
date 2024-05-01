@@ -1,5 +1,9 @@
 package com.example.learningmanagementsystem.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
@@ -10,7 +14,7 @@ import com.example.learningmanagementsystem.database.DateTypeConverter;
 import java.util.Date;
 
 @Entity(tableName = "classes", foreignKeys = @ForeignKey(entity = Teacher.class, parentColumns = "teacherId", childColumns = "teacherId"))
-public class Classes {
+public class Classes implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int classId;
     private byte[] classPicture;
@@ -151,5 +155,32 @@ public class Classes {
 
     public void setClassFee(long classFee) {
         this.classFee = classFee;
+    }
+
+
+    protected Classes(Parcel in) {
+        // Đọc dữ liệu từ Parcel vào các thành viên của lớp
+    }
+
+    public static final Creator<Classes> CREATOR = new Creator<Classes>() {
+        @Override
+        public Classes createFromParcel(Parcel in) {
+            return new Classes(in);
+        }
+
+        @Override
+        public Classes[] newArray(int size) {
+            return new Classes[size];
+        }
+    };
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        // Viết dữ liệu từ các thành viên của lớp vào Parcel
     }
 }

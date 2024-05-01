@@ -27,21 +27,28 @@ public class InteractionActivity extends AppCompatActivity {
         imgVToeic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InteractionActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 Intent  intent  = new Intent(InteractionActivity.this, ListClassesShowStudent.class);
+                intent.putExtra("classCourse", "TOEIC");
                 startActivity(intent);
             }
         });
         imgVIelts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InteractionActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                Intent  intent  = new Intent(InteractionActivity.this, ListClassesShowStudent.class);
+                intent.putExtra("classCourse", "IELTS");
+                startActivity(intent);
             }
         });
         imgVCommunication.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(InteractionActivity.this, "Thanfcong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(InteractionActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                Intent  intent  = new Intent(InteractionActivity.this, ListClassesShowStudent.class);
+                intent.putExtra("classCourse", "Giao tiếp cơ bản");
+                startActivity(intent);
             }
         });
     }
