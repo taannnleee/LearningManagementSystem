@@ -270,7 +270,7 @@ public class CreationClassActivity extends AppCompatActivity {
             }
         });
 
-        String[] array = {"TOIEC", "IELTS", "Giao tiếp cơ bản"};
+        String[] array = {"TOEIC", "IELTS", "Giao tiếp cơ bản"};
         ArrayAdapter<String> adapter = new ArrayAdapter<String>
                 (this, android.R.layout.select_dialog_item, array);
         cmbBox_course.setAdapter(adapter);
