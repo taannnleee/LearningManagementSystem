@@ -489,6 +489,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <include layout="@layout/activity_bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

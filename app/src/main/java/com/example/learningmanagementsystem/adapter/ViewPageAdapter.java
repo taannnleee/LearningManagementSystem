@@ -6,6 +6,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.learningmanagementsystem.activity.InteractionActivity;
+import com.example.learningmanagementsystem.activity.MainActivity;
+
 
 public class ViewPageAdapter extends FragmentStatePagerAdapter {
 
@@ -19,7 +22,7 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0:
-                return new BlankFragment();
+                return new MainActivity();
             case 1:
                 return new InteractionActivity();
             case 2:
@@ -27,7 +30,7 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
             case 3:
                 return new BlankFragment4();
             default:
-                return new BlankFragment();
+                return new MainActivity();
         }
     }
 

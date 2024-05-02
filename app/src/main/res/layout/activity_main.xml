@@ -30,18 +30,18 @@
             app:layout_constraintVertical_bias="0.688" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="383dp"
-            android:layout_height="33dp"
+            android:layout_width="376dp"
+            android:layout_height="54dp"
             android:layout_margin="16dp"
             android:background="@color/material_dynamic_primary50"
             app:cardCornerRadius="128dp"
             app:cardElevation="140dp"
             app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.25"
+            app:layout_constraintHorizontal_bias="0.542"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-            app:layout_constraintVertical_bias="0.142">
+            app:layout_constraintVertical_bias="0.213">
 
             <TextView
                 android:id="@+id/textView11"
@@ -57,8 +57,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
-            android:layout_width="365dp"
-            android:layout_height="220dp"
+            android:layout_width="375dp"
+            android:layout_height="257dp"
             android:layout_margin="16dp"
             android:background="@drawable/spinner_backgroud"
             app:cardCornerRadius="28dp"
@@ -78,10 +78,10 @@
                 android:src="@drawable/iconlocation"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.023"
+                app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.244" />
+                app:layout_constraintVertical_bias="0.206" />
 
             <ImageView
                 android:id="@+id/vectorImageView1"
@@ -141,18 +141,18 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="120dp"
+                android:layout_marginTop="72dp"
                 android:text="Learned"
                 android:textColor="@color/design_default_color_secondary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.778"
+                app:layout_constraintHorizontal_bias="0.843"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
 
             <TextView
                 android:id="@+id/textView11"
@@ -203,20 +203,22 @@
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageView2"
+                    android:id="@+id/imageView22"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
                     android:background="@drawable/circle_background"
                     android:scaleType="centerCrop"
                     android:src="@drawable/imgavt" />
+
             </androidx.cardview.widget.CardView>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="285dp"
-            android:layout_height="56dp"
+            android:id="@+id/constraintLayout"
+            android:layout_width="373dp"
+            android:layout_height="112dp"
             android:layout_margin="16dp"
             android:background="@drawable/spinner_backgroud"
             app:cardCornerRadius="128dp"
@@ -236,21 +238,14 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:text="Announcement"
                 android:textSize="16sp"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp" />
-
-            <TextView
-                android:id="@+id/textView11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="News"
-                android:textColor="@color/design_default_color_primary_dark"
-                android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.202" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
@@ -262,20 +257,20 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintHorizontal_bias="0.221"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.333" />
+            app:layout_constraintVertical_bias="0.315" />
 
         <ImageView
             android:id="@+id/vectorImageView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="204dp"
+            android:layout_marginTop="224dp"
             android:src="@drawable/baseline_calendar_month_24"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.041"
+            app:layout_constraintHorizontal_bias="0.077"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -283,11 +278,11 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="204dp"
+            android:layout_marginTop="228dp"
             android:text="select other day"
             android:textColor="@color/design_default_color_primary_dark"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.889"
+            app:layout_constraintHorizontal_bias="0.783"
             app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -296,10 +291,12 @@
             android:layout_width="365dp"
             android:layout_height="93dp"
             android:layout_margin="16dp"
+            android:layout_marginTop="60dp"
             android:background="@drawable/spinner_backgroud"
             app:cardCornerRadius="128dp"
             app:cardElevation="140dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.521"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -311,39 +308,89 @@
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="52dp"
                 android:text="Absent"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/textView12"
-                app:layout_constraintHorizontal_bias="0.453"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.774" />
+                app:layout_constraintVertical_bias="0.816" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="40dp"
+                android:layout_marginEnd="64dp"
                 android:text="Support"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.774" />
+                app:layout_constraintVertical_bias="0.816" />
 
             <TextView
                 android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="52dp"
-                android:text="Chào mừng Tũn và Trôn đến với app "
+                android:layout_width="289dp"
+                android:layout_height="45dp"
+                android:layout_marginEnd="16dp"
+                android:text="Welcome to TAT center. Let's interact with center now! "
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.225" />
+                app:layout_constraintVertical_bias="0.266" />
+
+            <ImageView
+                android:id="@+id/vectorImageView1212"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="28dp"
+                android:src="@drawable/baseline_add_card_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.84" />
+
+            <ImageView
+                android:id="@+id/vectorImageView12122"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="220dp"
+                android:src="@drawable/baseline_add_ic_call_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.811" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="42dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/circle_background"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.244" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <include layout="@layout/activity_bottom_navigation_bar" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="News"
+            android:textColor="@color/design_default_color_primary_dark"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
+            app:layout_constraintVertical_bias="0.2" />
+        <!--        <include layout="@layout/activity_bottom_navigation_bar" />-->
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
