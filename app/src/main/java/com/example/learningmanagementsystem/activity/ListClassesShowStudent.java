@@ -1,6 +1,8 @@
     package com.example.learningmanagementsystem.activity;
 
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.fragment.app.FragmentManager;
+    import androidx.fragment.app.FragmentTransaction;
 
     import android.app.Dialog;
     import android.content.Intent;
@@ -51,7 +53,7 @@
             back_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(ListClassesShowStudent.this, InteractionActivity.class);
+                    Intent intent = new Intent(ListClassesShowStudent.this, NavigationBarActivity.class);
                     startActivity(intent);
                 }
             });

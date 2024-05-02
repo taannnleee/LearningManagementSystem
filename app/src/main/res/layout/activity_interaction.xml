@@ -6,9 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.InteractionActivity">
 
-
-
-
     <ScrollView
         android:id="@+id/scrollView3"
         android:layout_width="match_parent"
@@ -492,6 +489,5 @@
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
-    <include layout="@layout/activity_bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 
