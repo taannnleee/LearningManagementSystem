@@ -21,7 +21,7 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
             case 0:
                 return new BlankFragment();
             case 1:
-                return new BlankFragment2();
+                return new InteractionActivity();
             case 2:
                 return new BlankFragment3();
             case 3:
