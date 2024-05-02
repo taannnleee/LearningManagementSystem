@@ -45,6 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addStudent();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -63,9 +65,9 @@ public class RegisterActivity extends AppCompatActivity {
         DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
 
         List<Student> students =  DatabaseLearningManagerSystem.getInstance(this).studentDAO().getAllStudent();
-        for(Student student1 : students){
-            Toast.makeText(this, student1.getStudentAddress(), Toast.LENGTH_SHORT).show();
-        }
+//        for(Student student1 : students){
+//            Toast.makeText(this, student1.getStudentAddress(), Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
