@@ -6,122 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".activity.InteractionActivity">
 
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollView3">
-
-        <com.google.android.material.bottomappbar.BottomAppBar
-            android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_gravity="bottom"
-            android:backgroundTint="#ffffff"
-            >
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:backgroundTint="@color/blue"
-                        android:layout_margin="5dp"
-                        app:srcCompat="@drawable/home_icon" />
-
-                    <TextView
-                        android:id="@+id/textHome"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Home"
-                        android:textAlignment="center"
-                        android:textColor="#707070" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:background="@color/blue"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="18dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:srcCompat="@drawable/interaction_icon" />
-
-                    <TextView
-                        android:id="@+id/textInteraction"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Interaction"
-                        android:textAlignment="center"
-                        android:textColor="#ffffff" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:srcCompat="@drawable/notification_icon" />
-
-                    <TextView
-                        android:id="@+id/textNotification"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Notification"
-                        android:textAlignment="center"
-                        android:textColor="#707070" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.25"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:layout_margin="5dp"
-                        app:srcCompat="@drawable/account_icon" />
-
-                    <TextView
-                        android:id="@+id/textAccount"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Account"
-                        android:textAlignment="center"
-                        android:textColor="#707070" />
-
-                </LinearLayout>
 
 
-            </LinearLayout>
-
-        </com.google.android.material.bottomappbar.BottomAppBar>
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <ScrollView
         android:id="@+id/scrollView3"
@@ -603,17 +489,9 @@
                         android:textColor="#1e4368"
                         android:textSize="17sp" />
                 </LinearLayout>
-
-
-
             </LinearLayout>
-
-
-
-
-
         </LinearLayout>
-
-
     </ScrollView>
+    <include layout="@layout/activity_bottom_navigation_bar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -23,6 +23,7 @@ import com.example.learningmanagementsystem.database.DatabaseLearningManagerSyst
 import com.example.learningmanagementsystem.models.Admin;
 import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.Teacher;
+import com.example.learningmanagementsystem.utilidades.KeyboardUtil;
 
 public class LoginActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
@@ -44,15 +45,37 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        KeyboardUtil.hideKeyboard(LoginActivity.this);
         getFormWidgets(); // Call this method first to initialize widgets
         addEvent();
         initPreferences();
+//        addFocusChangeListeners();
 
     }
 
     private void setPreferences( Student student) {
         editor.putString("current_studentId",student.getStudentId()+"" );
         editor.commit();
+    }
+    private void addFocusChangeListeners() {
+        edtEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    KeyboardUtil.hideKeyboard(LoginActivity.this);
+                }
+            }
+        });
+        edtPassword.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    KeyboardUtil.hideKeyboard(LoginActivity.this);
+                }
+            }
+        });
+
+
     }
 
     public void addEvent() {
@@ -164,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
             if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
 
                 setPreferences(existingStudent);
-                Intent intent = new Intent(LoginActivity.this, InteractionActivity.class);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             } else {
