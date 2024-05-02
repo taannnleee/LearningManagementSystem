@@ -113,17 +113,7 @@ public class CreationClassActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    et_className.setText("");
-                    et_classSize.setText("");
-                    cmbBox_course.setText("");
-                    cmbBox_teacherInfo.setText("");
-                    et_courseStart.setText("");
-                    et_courseEnd.setText("");
-                    et_studyingDates.setText("");
-                    et_classStart.setText("");
-                    et_classEnd.setText("");
-                    et_classFee.setText("");
-                    cmbBox_classDescription.setText("");
+                    clearInput();
                 }
                 catch (Exception e) {
                     Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -226,6 +216,20 @@ public class CreationClassActivity extends AppCompatActivity {
         });
     }
 
+    protected void clearInput() {
+        et_className.setText("");
+        et_classSize.setText("");
+        cmbBox_course.setText("");
+        cmbBox_teacherInfo.setText("");
+        et_courseStart.setText("");
+        et_courseEnd.setText("");
+        et_studyingDates.setText("");
+        et_classStart.setText("");
+        et_classEnd.setText("");
+        et_classFee.setText("");
+        cmbBox_classDescription.setText("");
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -275,6 +279,7 @@ public class CreationClassActivity extends AppCompatActivity {
                 try {
                     CreateClass();
                     Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
+                    clearInput();
                     dialogSure.dismiss();
                 } catch (ParseException e) {
                     Toast.makeText(CreationClassActivity.this, "Fail", Toast.LENGTH_SHORT).show();

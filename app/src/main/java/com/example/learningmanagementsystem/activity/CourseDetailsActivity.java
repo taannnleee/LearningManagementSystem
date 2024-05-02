@@ -1,10 +1,12 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
 import com.example.learningmanagementsystem.models.Teacher;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class CourseDetailsActivity extends AppCompatActivity {
@@ -28,8 +31,10 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private  ArrayList<Classes> arrClasses;
     String classCourse;
     String selectedClassId;
-    Button button, btn_send;
+    Button button, btn_send, btn_OK;
     TextView tv_teacher_name_value, tv_price_value, tv_course_details_value;
+
+    Dialog dialog_buyCourse;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +94,28 @@ public class CourseDetailsActivity extends AppCompatActivity {
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                try {
+                    dialog_buyCourse = new Dialog(CourseDetailsActivity.this);
+                    dialog_buyCourse.setContentView(R.layout.dialog_buy_course);
+                    dialog_buyCourse.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialog_buyCourse.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                    dialog_buyCourse.setCancelable(false);
+                    dialog_buyCourse.show(); // Hiển thị dialog
 
+                    btn_OK = dialog_buyCourse.findViewById(R.id.btn_OK_buy_course);
+                    eventDialogOK();
+                } catch (Exception e) {
+                    Toast.makeText(CourseDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    protected void eventDialogOK() {
+        btn_OK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_buyCourse.dismiss();
             }
         });
     }
