@@ -84,4 +84,9 @@ public class Student {
     public void setStudentPhone(String studentPhone) {
         this.studentPhone = studentPhone;
     }
+
+    public Student(String studentEmail, String studentPassword) {
+        this.studentEmail = studentEmail;
+        this.studentPassword = studentPassword;
+    }
 }
