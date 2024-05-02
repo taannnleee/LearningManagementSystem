@@ -55,8 +55,8 @@ public class StudentItemAdapter extends BaseAdapter {
         Classes classes = findClasses(studentClassCrossRef.getCourseId(), parent);
 
         ((TextView) viewStudent.findViewById(R.id.tv_Id)).setText(studentClassCrossRef.getId()+"");
-        ((TextView) viewStudent.findViewById(R.id.tv_StudentName)).setText(student.getStudentName().toString());
-        ((TextView) viewStudent.findViewById(R.id.tv_className)).setText(classes.getClassName().toString());
+        ((TextView) viewStudent.findViewById(R.id.tv_StudentName)).setText(student.getStudentName()+"");
+        ((TextView) viewStudent.findViewById(R.id.tv_className)).setText(classes.getClassName()+"");
 
 
         return viewStudent;
