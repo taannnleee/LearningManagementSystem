@@ -48,15 +48,25 @@ import java.util.List;
 
 public class CreationClassActivity extends AppCompatActivity {
     final int RESQUEST_TAKE_PHOTO = 123;
+
     final int REQUEST_CHOOSE_PHOTO = 321;
+
     EditText et_className, et_classSize, et_courseStart,
             et_courseEnd, et_studyingDates, et_classStart, et_classEnd,
             et_classFee;
+
     AutoCompleteTextView cmbBox_course, cmbBox_teacherInfo, cmbBox_classDescription;
-    Button btn_createClass, btn_clearText, btn_yes, btn_no;
+
+    Button btn_createClass, btn_clearText, btn_yes, btn_no, btnSure, btnCancel;
+
     TextView btn_back;
+
     ImageView imv_classPicture, btn_courseStart, btn_courseEnd, img_classStart, img_classEnd;
+
     Dialog dialog;
+
+    Dialog dialogSure;
+
     private byte[] getByteArrayFromImageView(ImageView imgv) {
         BitmapDrawable drawable =  (BitmapDrawable) imgv.getDrawable();
         Bitmap bmp = drawable.getBitmap();
@@ -82,8 +92,16 @@ public class CreationClassActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    CreateClass();
-                    Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
+                    dialogSure = new Dialog(CreationClassActivity.this);
+                    dialogSure.setContentView(R.layout.custom_dialog_sure);
+                    dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                    dialogSure.setCancelable(false);
+                    dialogSure.show(); // Hiển thị dialog
+
+                    btnSure = dialogSure.findViewById(R.id.btnYes);
+                    btnCancel = dialogSure.findViewById(R.id.btnCancle);
+                    eventDialogSure();
                 }
                 catch (Exception e) {
                     Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
@@ -250,6 +268,28 @@ public class CreationClassActivity extends AppCompatActivity {
         });
     }
 
+    private void eventDialogSure() {
+        btnSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    CreateClass();
+                    Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
+                    dialogSure.dismiss();
+                } catch (ParseException e) {
+                    Toast.makeText(CreationClassActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSure.dismiss();
+            }
+        });
+    }
+
     protected void setAdjustScreen(){
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
@@ -276,7 +316,7 @@ public class CreationClassActivity extends AppCompatActivity {
         img_classStart = findViewById(R.id.img_class_start);
         img_classEnd = findViewById(R.id.img_class_end);
 
-        List<Teacher> allTeachers = new ArrayList<>();
+        List<Teacher> allTeachers;
         allTeachers = DatabaseLearningManagerSystem.getInstance(this).teacherDAO().getAllTeacher();
         ArrayAdapter<Teacher> teachersAdapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item, allTeachers);
         cmbBox_teacherInfo.setAdapter(teachersAdapter);
