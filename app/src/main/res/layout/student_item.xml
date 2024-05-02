@@ -5,14 +5,6 @@
     android:orientation="horizontal"
     android:padding="8dp">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:src="@drawable/addstudent_icon"
-        android:layout_gravity="start"
-        android:paddingEnd="8dp"/>
-
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,33 +12,65 @@
         android:layout_gravity="end"
         android:layout_weight="2">
 
-        <TextView
-            android:id="@+id/textViewName"
-            android:layout_width="wrap_content"
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="18sp"
-            android:text="Name: John Doe"/>
+            android:stretchColumns="*">
 
-        <TextView
-            android:id="@+id/textViewClass"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Class: THH200"/>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="ID:"/>
+                <TextView
+                    android:id="@+id/tv_Id"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="null"/>
+            </TableRow>
 
-        <TextView
-            android:id="@+id/textViewDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="16sp"
-            android:text="Date: 2024-05-02"/>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="Name:"/>
+                <TextView
+                    android:id="@+id/tv_StudentName"
+                    android:layout_width="170dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:text="null"/>
+            </TableRow>
 
-        <CheckBox
-            android:id="@+id/checkBoxConform"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange"
-            android:text="Confirm"/>
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="Class:"/>
+
+                <TextView
+                    android:id="@+id/tv_className"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:text="null"/>
+            </TableRow>
+
+            <TableRow/>
+
+            <TableRow>
+                <CheckBox
+                    android:id="@+id/checkBoxConfirm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/orange"
+                    android:text="Confirm"/>
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 
 </LinearLayout>

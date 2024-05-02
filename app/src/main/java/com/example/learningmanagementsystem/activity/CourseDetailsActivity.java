@@ -31,10 +31,10 @@ public class CourseDetailsActivity extends AppCompatActivity {
     private  ArrayList<Classes> arrClasses;
     String classCourse;
     String selectedClassId;
-    Button button, btn_send, btn_OK;
+    Button button, btn_send, btn_OK, btnSure, btnCancel;
     TextView tv_teacher_name_value, tv_price_value, tv_course_details_value;
 
-    Dialog dialog_buyCourse;
+    Dialog dialog_buyCourse, dialogSure;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,36 +77,73 @@ public class CourseDetailsActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //lấy id student đang tương tác với hệ thống
-                SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
-                Toast.makeText(CourseDetailsActivity.this, current_studentId, Toast.LENGTH_SHORT).show();
-                // từ id lấy ra student
-                Student student = DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).studentDAO().getStudentById(Integer.parseInt(current_studentId));
-                //lấy id khóa học
-                Classes classes =  (Classes) DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).classDAO().getClassesById(Integer.parseInt(selectedClassId));
-                setDataStudentClassCrossRef(student, classes);
-
-
+                buyCourse();
             }
 
         });
         btn_send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    dialog_buyCourse = new Dialog(CourseDetailsActivity.this);
-                    dialog_buyCourse.setContentView(R.layout.dialog_buy_course);
-                    dialog_buyCourse.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    dialog_buyCourse.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
-                    dialog_buyCourse.setCancelable(false);
-                    dialog_buyCourse.show(); // Hiển thị dialog
+                buyCourse();
+            }
+        });
+    }
 
-                    btn_OK = dialog_buyCourse.findViewById(R.id.btn_OK_buy_course);
-                    eventDialogOK();
-                } catch (Exception e) {
-                    Toast.makeText(CourseDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
-                }
+    public void buyCourse() {
+        //lấy id student đang tương tác với hệ thống
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
+        Toast.makeText(CourseDetailsActivity.this, current_studentId, Toast.LENGTH_SHORT).show();
+        // từ id lấy ra student
+        Student student = DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).studentDAO().getStudentById(Integer.parseInt(current_studentId));
+        //lấy id khóa học
+        Classes classes =  (Classes) DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).classDAO().getClassesById(Integer.parseInt(selectedClassId));
+        if (!registered(student, classes)) {
+            try {
+                dialogSure = new Dialog(CourseDetailsActivity.this);
+                dialogSure.setContentView(R.layout.custom_dialog_sure);
+                dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                dialogSure.setCancelable(false);
+                dialogSure.show(); // Hiển thị dialog
+
+                btnSure = dialogSure.findViewById(R.id.btnYes);
+                btnCancel = dialogSure.findViewById(R.id.btnCancle);
+                eventDialogSure(student, classes);
+            } catch (Exception e) {
+                Toast.makeText(CourseDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
+        else {
+            Toast.makeText(CourseDetailsActivity.this, "Đang xử lý", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    protected void eventDialogSure(Student student, Classes classes) {
+        btnSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog_buyCourse = new Dialog(CourseDetailsActivity.this);
+                dialog_buyCourse.setContentView(R.layout.dialog_buy_course);
+                dialog_buyCourse.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                dialog_buyCourse.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                dialog_buyCourse.setCancelable(false);
+                dialog_buyCourse.show(); // Hiển thị dialog
+
+                btn_OK = dialog_buyCourse.findViewById(R.id.btn_OK_buy_course);
+                eventDialogOK();
+
+
+                setDataStudentClassCrossRef(student, classes);
+                Toast.makeText(CourseDetailsActivity.this, "Successfully course registration!", Toast.LENGTH_SHORT).show();
+                dialogSure.dismiss();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSure.dismiss();
             }
         });
     }
@@ -118,6 +155,15 @@ public class CourseDetailsActivity extends AppCompatActivity {
                 dialog_buyCourse.dismiss();
             }
         });
+    }
+
+    protected boolean registered(Student student, Classes classes) {
+        //kiếm dữ liệu trong db
+        StudentClassCrossRef registerdCourse = DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getStudentClassCrossRefByStudentAndCourse(student.getStudentId(), classes.getClassId());
+        //nếu mà chưa đăng ký thì trả về null
+        if (registerdCourse == null)
+            return false;
+        return true;
     }
 
     private void getFormWidgets() {
