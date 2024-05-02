@@ -19,7 +19,7 @@ import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
 import com.example.learningmanagementsystem.models.Teacher;
 
-@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class}, version = 52)
+@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class}, version = 53)
 public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
 
     private static final String DATABASE_NAME = "learning_management_system.db";
