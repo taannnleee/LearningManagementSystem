@@ -6,7 +6,6 @@ import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
-import com.example.learningmanagementsystem.activity.NavigationBarActivity;
 import com.example.learningmanagementsystem.dao.AdminDAO;
 import com.example.learningmanagementsystem.dao.ClassesDAO;
 import com.example.learningmanagementsystem.dao.ScheduleDAO;

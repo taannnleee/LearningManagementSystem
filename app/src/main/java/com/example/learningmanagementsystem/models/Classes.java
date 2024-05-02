@@ -31,14 +31,14 @@ public class Classes implements Parcelable {
     private Date classStart; //thời gian bắt đầu lớp học
     @TypeConverters({DateTypeConverter.class})
     private Date classEnd; //thời gian kết thúc lớp học
-    private String classDescription;
+    private String description;
     private long classFee;
 
     public Classes() {
         // Default constructor required by Room
     }
 
-    public Classes(byte[] classPicture, String className, String classCourse, int classSize, int teacherId, Date courseStart, Date courseEnd, String studyingDates, Date classStart, Date classEnd, long classFee, String classDescription) {
+    public Classes(byte[] classPicture, String className, String classCourse, int classSize, int teacherId, Date courseStart, Date courseEnd, String studyingDates, Date classStart, Date classEnd, long classFee, String description) {
         this.classPicture = classPicture;
         this.className = className;
         this.classCourse = classCourse;
@@ -50,7 +50,7 @@ public class Classes implements Parcelable {
         this.classStart = classStart;
         this.classEnd = classEnd;
         this.classFee = classFee;
-        this.classDescription = classDescription;
+        this.description = description;
     }
 
     public int getClassId() {
@@ -141,12 +141,12 @@ public class Classes implements Parcelable {
         this.classEnd = classEnd;
     }
 
-    public String getClassDescription() {
-        return classDescription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setClassDescription(String classDescription) {
-        this.classDescription = classDescription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public long getClassFee() {
