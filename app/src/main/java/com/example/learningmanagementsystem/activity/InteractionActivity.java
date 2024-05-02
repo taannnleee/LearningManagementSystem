@@ -16,8 +16,7 @@ public class InteractionActivity extends AppCompatActivity {
     private ImageView imgVToeic, imgVIelts, imgVCommunication;
     private ImageView imgVAssignments, imgVHomework, imgVAbsence;
     private  ImageView imgVPosts, imgVAnnouncements, imgVSupports;
-    private BottomNavigationItemView action_home;
-    private BottomNavigationItemView  interaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,19 +27,6 @@ public class InteractionActivity extends AppCompatActivity {
 
     private void addEvent() {
         // cac ham chuyen trang
-        interaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
-        action_home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InteractionActivity.this, MainActivity.class);
-                startActivity(intent);
-
-            }
-        });
         imgVToeic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,8 +60,6 @@ public class InteractionActivity extends AppCompatActivity {
         imgVToeic = findViewById(R.id.imageViewToeic);
         imgVIelts = findViewById(R.id.imageViewIelts);
         imgVCommunication = findViewById(R.id.imageViewCommunication);
-        action_home = findViewById(R.id.action_home);
-        interaction = findViewById(R.id.interaction);
 
 
 

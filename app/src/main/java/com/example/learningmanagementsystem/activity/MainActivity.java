@@ -11,8 +11,7 @@ import com.example.learningmanagementsystem.R;
 import com.google.android.material.bottomnavigation.BottomNavigationItemView;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationItemView action_home;
-    private BottomNavigationItemView interaction;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,18 +21,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvent() {
-        interaction.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, InteractionActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
 
     private void getFormWidgets() {
-        action_home = findViewById(R.id.action_home);
-        interaction = findViewById(R.id.interaction);
+
 
     }
 }

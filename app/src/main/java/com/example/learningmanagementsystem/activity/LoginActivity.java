@@ -187,7 +187,7 @@ public class LoginActivity extends AppCompatActivity {
             if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
 
                 setPreferences(existingStudent);
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 startActivity(intent);
                 finish();
             } else {
