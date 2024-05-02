@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,14 +59,15 @@ public class ClassesArrayAdapter extends ArrayAdapter<Classes> {
 
 
 
-        Date date_start = classes.getClassStart();
-        Date date_end = classes.getClassEnd();
+        Date date_start = classes.getCourseStart();
+        Log.e("ok", date_start.toString());
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // Định dạng mong muốn
+        Date date_end = classes.getCourseEnd();
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         String formattedDateStart = sdf.format(date_start);
         String formattedDateEnd = sdf.format(date_end);
         txttimeclass.setText(formattedDateStart + " - "+formattedDateEnd);
-
 
         return listItemView;
     }
