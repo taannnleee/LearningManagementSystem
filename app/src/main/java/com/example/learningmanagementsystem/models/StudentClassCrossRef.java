@@ -45,8 +45,7 @@ public class StudentClassCrossRef {
         this.courseId = courseId;
     }
 
-    public StudentClassCrossRef(int id, int studentId, int courseId, String status) {
-        this.id = id;
+    public StudentClassCrossRef(int studentId, int courseId, String status) {
         this.studentId = studentId;
         this.courseId = courseId;
         this.status = status;

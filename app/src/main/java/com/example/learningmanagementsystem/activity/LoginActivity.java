@@ -3,7 +3,9 @@ package com.example.learningmanagementsystem.activity;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -23,6 +25,8 @@ import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.Teacher;
 
 public class LoginActivity extends AppCompatActivity {
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     private EditText edtEmail;
     private EditText edtPassword;
     private Button btnLogin; // Initialize Button object
@@ -31,12 +35,24 @@ public class LoginActivity extends AppCompatActivity {
     private String selectedRole = "";
 
 
+    private void initPreferences() {
+
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        editor = sharedPreferences.edit();
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getFormWidgets(); // Call this method first to initialize widgets
         addEvent();
+        initPreferences();
+
+    }
+
+    private void setPreferences( Student student) {
+        editor.putString("current_studentId",student.getStudentId()+"" );
+        editor.commit();
     }
 
     public void addEvent() {
@@ -147,6 +163,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
 
+                setPreferences(existingStudent);
                 Intent intent = new Intent(LoginActivity.this, InteractionActivity.class);
                 startActivity(intent);
                 finish();
