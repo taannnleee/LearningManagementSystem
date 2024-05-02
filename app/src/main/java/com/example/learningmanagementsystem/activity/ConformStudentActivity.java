@@ -1,5 +1,6 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -17,7 +18,7 @@ import java.util.Arrays;
 
 public class ConformStudentActivity extends AppCompatActivity {
     private ListView listViewStudents;
-    private Button buttonTickAll;
+    private Button buttonTickAll, btnBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class ConformStudentActivity extends AppCompatActivity {
 
         listViewStudents = findViewById(R.id.listViewStudents);
         buttonTickAll = findViewById(R.id.buttonTickAll);
+        btnBack = findViewById(R.id.btn_back_interaction);
 
         // Sample data for students
         ArrayList<String> studentsList = new ArrayList<>(Arrays.asList("John Doe", "Jane Smith", "Michael Johnson"));
@@ -40,6 +42,14 @@ public class ConformStudentActivity extends AppCompatActivity {
                 tickAllCheckBoxes();
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConformStudentActivity.this, InteractionAdminActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     private void tickAllCheckBoxes() {
@@ -49,6 +59,5 @@ public class ConformStudentActivity extends AppCompatActivity {
             CheckBox checkBox = view.findViewById(R.id.checkBoxConform);
             checkBox.setChecked(true);
         }
-        Toast.makeText(this, "All checkboxes ticked!", Toast.LENGTH_SHORT).show();
     }
 }

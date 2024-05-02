@@ -52,7 +52,7 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     private EditText edtBirthday;
     private ImageView imvpictureTeacher;
     private Dialog dialog;
-    private Button btnYes, btnNo;
+    private Button btnYes, btnNo, btnBack;
 
     private Dialog dialogSure;
     private Button btnSure, btnCancle;
@@ -141,6 +141,13 @@ public class RegisterTeacherActivity extends AppCompatActivity {
                 eventDialog();
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterTeacherActivity.this, InteractionAdminActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -165,6 +172,7 @@ public class RegisterTeacherActivity extends AppCompatActivity {
                 dialogSure.dismiss();
             }
         });
+
     }
 
     private void addTeacher() throws ParseException {
@@ -183,6 +191,7 @@ public class RegisterTeacherActivity extends AppCompatActivity {
 
         btnCreateTeacher = findViewById(R.id.btnCreateTeacher);
         imvpictureTeacher = findViewById(R.id.imvpictureTeacher);
+        btnBack = findViewById(R.id.btn_back);
     }
     private Teacher setTeacherData() throws ParseException {
         byte[] picture = getByteArrayFromImageView(imvpictureTeacher);

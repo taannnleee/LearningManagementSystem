@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_gravity="bottom"
-            android:backgroundTint="#f0f0f0"
+            android:backgroundTint="#ffffff"
             >
             <LinearLayout
                 android:layout_width="match_parent"
@@ -32,6 +32,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center"
+                        android:backgroundTint="@color/blue"
                         android:layout_margin="5dp"
                         app:srcCompat="@drawable/home_icon" />
 
@@ -49,11 +50,12 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="0.25"
+                    android:background="@color/blue"
                     android:orientation="vertical">
 
                     <ImageView
                         android:layout_width="24dp"
-                        android:layout_height="24dp"
+                        android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:layout_margin="5dp"
                         app:srcCompat="@drawable/interaction_icon" />
@@ -64,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="Interaction"
                         android:textAlignment="center"
-                        android:textColor="#707070" />
+                        android:textColor="#ffffff" />
 
                 </LinearLayout>
 
