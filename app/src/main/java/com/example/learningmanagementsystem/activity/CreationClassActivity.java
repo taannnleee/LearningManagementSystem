@@ -64,7 +64,7 @@ public class CreationClassActivity extends AppCompatActivity {
     ImageView imv_classPicture, btn_courseStart, btn_courseEnd, img_classStart, img_classEnd;
 
     Dialog dialog;
-    
+
     Dialog dialogSure;
 
     private byte[] getByteArrayFromImageView(ImageView imgv) {
