@@ -280,7 +280,6 @@ public class CreationClassActivity extends AppCompatActivity {
                     CreateClass();
                     Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
                     clearInput();
-
                     dialogSure.dismiss();
                 } catch (ParseException e) {
                     Toast.makeText(CreationClassActivity.this, "Fail", Toast.LENGTH_SHORT).show();
