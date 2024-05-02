@@ -38,14 +38,13 @@ public class InteractionAdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //Chua co Activity
-//        imageViewConfirm.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(InteractionAdminActivity.this, CreationClassActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+        imageViewConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InteractionAdminActivity.this, ConformStudentActivity.class);
+                startActivity(intent);
+            }
+        });
 
 //        imageViewPosts.setOnClickListener(new View.OnClickListener() {
 //            @Override
