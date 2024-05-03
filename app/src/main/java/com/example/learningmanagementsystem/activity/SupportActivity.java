@@ -150,7 +150,6 @@ public class SupportActivity extends AppCompatActivity {
 
     private boolean isFieldsNotEmpty() {
         return !edt_message.getText().toString().isEmpty();
-
     }
     private Support setSupportData() throws ParseException {
         byte[] picture = getByteArrayFromImageView(btn_add_image);

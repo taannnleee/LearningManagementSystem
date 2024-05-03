@@ -192,6 +192,7 @@ public class LoginActivity extends AppCompatActivity {
                 setPreferencesStudent(existingStudent);
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 startActivity(intent);
+                finish();
             } else {
                 Toast.makeText(LoginActivity.this, "Incorrect student password", Toast.LENGTH_SHORT).show();
             }
