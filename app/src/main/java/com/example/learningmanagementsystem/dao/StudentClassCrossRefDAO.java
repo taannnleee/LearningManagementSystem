@@ -6,6 +6,7 @@ import androidx.room.Query;
 import androidx.room.Update;
 
 import com.example.learningmanagementsystem.adapter.StudentItemAdapter;
+import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Schedule;
 import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
@@ -30,8 +31,10 @@ public interface StudentClassCrossRefDAO {
     void update(StudentClassCrossRef... studentClassCrossRef);
 
     @Query("SELECT * FROM student_class_crossref WHERE courseId = :courseId AND status=:status")
-    List<Student> getListStudentByClassIdAndStatus(int courseId, String status);
+    List<StudentClassCrossRef> getListStudentByClassIdAndStatus(int courseId, String status);
 
     @Query("SELECT * FROM student_class_crossref WHERE studentId = :studentId AND status=:status")
-    List<Student> getListClassByStudentIdAndStatus(int studentId, String status);
+    List<StudentClassCrossRef> getLisstudentIdByStudentIdAndStatus(int studentId, String status);
+
+
 }

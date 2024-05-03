@@ -17,6 +17,7 @@ import com.example.learningmanagementsystem.adapter.StudentArrayShowTeacherAdapt
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Student;
+import com.example.learningmanagementsystem.models.StudentClassCrossRef;
 
 import java.util.ArrayList;
 
@@ -43,8 +44,18 @@ public class ShowListStudentTeacherActivity extends AppCompatActivity {
             }
         }
 
+        ArrayList<StudentClassCrossRef> arrStudentClassCrossRef = new ArrayList<StudentClassCrossRef>();
+        arrStudentClassCrossRef= (ArrayList<StudentClassCrossRef>) DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getListStudentByClassIdAndStatus(Integer.parseInt(classId), "active");
 
-        arrStudent = (ArrayList<Student>) DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getListStudentByClassIdAndStatus(Integer.parseInt(classId), "active");
+        for (int i = 0; i < arrStudentClassCrossRef.size(); i++) {
+            StudentClassCrossRef studentClassCrossRef = arrStudentClassCrossRef.get(i);
+            int temp = studentClassCrossRef.getStudentId();
+
+            Student student= new Student();
+            student =  (Student) DatabaseLearningManagerSystem.getInstance(this).studentDAO().getStudentById(temp);
+            arrStudent.add(student);
+        }
+
         adapter = new StudentArrayShowTeacherAdapter(ShowListStudentTeacherActivity.this, R.layout.student_show_teacher_item,arrStudent);
         lvListStudent.setAdapter(adapter);
 

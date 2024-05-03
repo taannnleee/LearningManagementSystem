@@ -1,4 +1,4 @@
-package com.example.learningmanagementsystem;
+package com.example.learningmanagementsystem.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,13 +12,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.learningmanagementsystem.activity.LoginActivity;
-import com.example.learningmanagementsystem.activity.MainTeacherActivity;
-import com.example.learningmanagementsystem.activity.NavigationBarActivity;
-import com.example.learningmanagementsystem.activity.ShowListStudentTeacherActivity;
+import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.adapter.ClassesArrayAdapterTeacher;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Classes;
+import com.example.learningmanagementsystem.models.StudentClassCrossRef;
 
 import java.util.ArrayList;
 
@@ -42,9 +40,18 @@ public class MainAbsentActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
 
-//        DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getStudentClassCrossRefByStudentAndCourse(current_studentId, "active");
+        ArrayList<StudentClassCrossRef> arrStudentClassCrossRef = new ArrayList<StudentClassCrossRef>();
+        arrStudentClassCrossRef= (ArrayList<StudentClassCrossRef>) DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getLisstudentIdByStudentIdAndStatus(Integer.parseInt(current_studentId), "active");
 
-        arrClasses = (ArrayList<Classes>) DatabaseLearningManagerSystem.getInstance(this).classDAO().getAllClasses();
+        for (int i = 0; i < arrStudentClassCrossRef.size(); i++) {
+            StudentClassCrossRef studentClassCrossRef = arrStudentClassCrossRef.get(i);
+            int temp = studentClassCrossRef.getCourseId();
+
+            Classes classes = new Classes();
+            classes =  (Classes) DatabaseLearningManagerSystem.getInstance(this).classDAO().getClassesById(temp);
+            arrClasses.add(classes);
+        }
+
         adapter = new ClassesArrayAdapterTeacher(MainAbsentActivity.this, R.layout.item_classes_layout_teacher,arrClasses);
         lvListClass.setAdapter(adapter);
     }
@@ -57,7 +64,7 @@ public class MainAbsentActivity extends AppCompatActivity {
                 Classes selectedClass = arrClasses.get(position);
                 String selectedClassId = String.valueOf(selectedClass.getClassId());
                 // Tạo Intent
-                Intent intent = new Intent(MainAbsentActivity.this, ShowListStudentTeacherActivity.class);
+                Intent intent = new Intent(MainAbsentActivity.this, ScheduleActivity.class);
                 intent.putExtra("selectedClassId", selectedClassId);
                 startActivity(intent);
 
