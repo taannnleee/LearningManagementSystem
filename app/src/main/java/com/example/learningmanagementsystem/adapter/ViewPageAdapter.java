@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.learningmanagementsystem.activity.AccountActivity;
 import com.example.learningmanagementsystem.activity.InteractionActivity;
 import com.example.learningmanagementsystem.activity.MainActivity;
 
@@ -26,7 +27,7 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
             case 1:
                 return new InteractionActivity();
             case 3:
-                return new Account();
+                return new AccountActivity();
             default:
                 return new MainActivity();
         }
