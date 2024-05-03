@@ -47,16 +47,17 @@
                 android:drawablePadding="8dp"
                 android:textColor="@android:color/black"/>
             <EditText
+                android:id="@+id/login_password"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:id="@+id/login_password"
-                android:background="@drawable/custom_edittext"
                 android:layout_marginTop="30dp"
-                android:padding="8dp"
-                android:hint="Password"
+                android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_lock_24"
                 android:drawablePadding="8dp"
-                android:textColor="@android:color/black"/>
+                android:hint="Password"
+                android:padding="8dp"
+                android:inputType="textPassword"
+                android:textColor="@android:color/black" />
 
             <RadioGroup
                 android:id="@+id/role_radio_group"
