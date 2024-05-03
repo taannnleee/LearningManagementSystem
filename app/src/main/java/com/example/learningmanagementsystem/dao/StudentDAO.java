@@ -9,6 +9,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
+import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Student;
 
 import java.util.List;
@@ -28,4 +29,6 @@ public interface StudentDAO {
     Student getStudentByEmail(String email);
     @Query("SELECT * FROM students WHERE studentId = :studentId")
     Student getStudentById(int studentId);
+
+
 }

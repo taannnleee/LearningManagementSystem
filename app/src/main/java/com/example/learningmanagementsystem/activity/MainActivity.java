@@ -1,5 +1,6 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,7 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.learningmanagementsystem.MainAbsentActivity;
 import com.example.learningmanagementsystem.R;
 
 /**
@@ -15,7 +19,8 @@ import com.example.learningmanagementsystem.R;
  * Use the {@link MainActivity#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MainActivity extends Fragment {
+public class MainActivity extends Fragment  {
+    private TextView tv_absent;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +66,27 @@ public class MainActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_main, container, false);
+        View  view =  inflater.inflate(R.layout.activity_main, container, false);
+
+
+        getFormWidgets(view);
+        addEvent();
+        return view;
+    }
+
+    private void addEvent() {
+        tv_absent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getContext(), "Succes", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), MainAbsentActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void getFormWidgets(View view) {
+        tv_absent = view.findViewById(R.id.tv_absent);
+
     }
 }

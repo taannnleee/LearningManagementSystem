@@ -53,6 +53,7 @@ public class Schedule {
         this.classId = classId;
     }
 
+    public Schedule(){}
     public Schedule(Date specificDate, String classScheduleCode, int classId) {
         this.specificDate = specificDate;
         this.classScheduleCode = classScheduleCode;

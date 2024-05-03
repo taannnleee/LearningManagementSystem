@@ -24,4 +24,7 @@ public interface ClassesDAO {
     @Query("SELECT * FROM classes WHERE classid = :classid")
     Classes getClassesById(int classid);
 
+    @Query("SELECT * FROM classes WHERE teacherId = :teacherId")
+    List<Classes> getClassesByTeacherId(int teacherId);
+
 }
