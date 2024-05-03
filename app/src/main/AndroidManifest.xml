@@ -17,7 +17,7 @@
             android:name=".ListClassesShowAdminActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.AnnouncementsActivity"
             android:exported="true"
             android:windowSoftInputMode="stateHidden">
             <intent-filter>
@@ -94,7 +94,12 @@
         <activity
             android:name=".MainAdminActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".activity.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.PostActivity"
+            android:exported="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

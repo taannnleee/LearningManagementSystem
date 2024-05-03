@@ -102,6 +102,14 @@ public class InteractionActivity extends Fragment {
                 startActivity(intent);
             }
         });
+        imgVAnnouncements.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(InteractionActivity.this, "Success", Toast.LENGTH_SHORT).show();
+                Intent  intent  = new Intent(InteractionActivity.this, AnnouncementsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getFormWidgets(View view) {
