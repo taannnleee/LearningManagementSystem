@@ -19,7 +19,9 @@ import java.util.List;
 
 public class ConformStudentActivity extends AppCompatActivity {
     private ListView listViewStudents;
-    private Button buttonTickAll, buttonConfirm, btn_back_interaction;
+
+    private Button buttonTickAll, buttonConfirm, btn_back_interaction,buttonBack;
+
 
     List<StudentClassCrossRef> studentClassCrossRefs;
 
@@ -31,7 +33,11 @@ public class ConformStudentActivity extends AppCompatActivity {
         listViewStudents = findViewById(R.id.listViewStudents);
         buttonTickAll = findViewById(R.id.buttonTickAll);
         buttonConfirm = findViewById(R.id.buttonConfirm);
+
         btn_back_interaction = findViewById(R.id.btn_back_interaction);
+
+        buttonBack = findViewById(R.id.btn_back_interaction);
+
 
         //get data from db and set to list
         uploadStudentsListWithInactiveStatus();
@@ -60,6 +66,13 @@ public class ConformStudentActivity extends AppCompatActivity {
             public void onClick(View v) {
                 confirmStudents();
                 uploadStudentsListWithInactiveStatus();
+            }
+        });
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConformStudentActivity.this, InteractionAdminActivity.class);
+                startActivity(intent);
             }
         });
     }

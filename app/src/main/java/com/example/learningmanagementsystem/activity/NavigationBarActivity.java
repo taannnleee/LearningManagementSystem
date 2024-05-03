@@ -45,9 +45,6 @@ public class NavigationBarActivity extends AppCompatActivity {
                     case 1:
                         bottomNavigationView.getMenu().findItem(R.id.interaction).setChecked(true);
                         break;
-                    case 2:
-                        bottomNavigationView.getMenu().findItem(R.id.action_notification).setChecked(true);
-                        break;
                     case 3:
                         bottomNavigationView.getMenu().findItem(R.id.action_account).setChecked(true);
                         break;
@@ -67,8 +64,6 @@ public class NavigationBarActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(0);
                 } else if (item.getItemId() == R.id.interaction) {
                     viewPager.setCurrentItem(1);
-                } else if (item.getItemId() == R.id.action_notification) {
-                    viewPager.setCurrentItem(2);
                 } else if (item.getItemId() == R.id.action_account) {
                     viewPager.setCurrentItem(3);
                 }

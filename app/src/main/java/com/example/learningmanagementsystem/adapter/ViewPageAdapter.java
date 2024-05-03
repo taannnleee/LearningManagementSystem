@@ -25,10 +25,8 @@ public class ViewPageAdapter extends FragmentStatePagerAdapter {
                 return new MainActivity();
             case 1:
                 return new InteractionActivity();
-            case 2:
-                return new BlankFragment3();
             case 3:
-                return new BlankFragment4();
+                return new Account();
             default:
                 return new MainActivity();
         }

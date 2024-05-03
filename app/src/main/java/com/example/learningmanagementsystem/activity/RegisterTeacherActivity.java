@@ -65,7 +65,6 @@ public class RegisterTeacherActivity extends AppCompatActivity {
         bmp.compress (Bitmap.CompressFormat. PNG, 100, stream);
         byte[] byteArray =  stream.toByteArray();
         return byteArray;
-
     }
 
     @Override

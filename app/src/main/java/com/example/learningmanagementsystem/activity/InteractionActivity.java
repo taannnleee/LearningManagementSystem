@@ -110,6 +110,14 @@ public class InteractionActivity extends Fragment {
                 startActivity(intent);
             }
         });
+        imgVSupports.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent  intent  = new Intent(getContext(), SupportActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getFormWidgets(View view) {
@@ -120,8 +128,6 @@ public class InteractionActivity extends Fragment {
 
 
         //mấy cái dưới chưa dùng đến nha Trung nhớ xóa
-        imgVAssignments = view.findViewById(R.id.imageViewAssignments);
-        imgVHomework = view.findViewById(R.id.imageViewHomework);
         imgVAbsence = view.findViewById(R.id.imageViewAbsence);
         imgVPosts = view.findViewById(R.id.imageViewPosts);
         imgVAnnouncements = view.findViewById(R.id.imageViewAnnouncements);

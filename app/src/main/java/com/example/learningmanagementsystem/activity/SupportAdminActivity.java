@@ -3,40 +3,37 @@ package com.example.learningmanagementsystem.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learningmanagementsystem.R;
-import com.example.learningmanagementsystem.adapter.ClassesArrayAdapter;
 import com.example.learningmanagementsystem.adapter.PostArrayAdapter;
+import com.example.learningmanagementsystem.adapter.SupportArrayAdapter;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
-import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Post;
+import com.example.learningmanagementsystem.models.Support;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
-public class AnnouncementsActivity extends AppCompatActivity {
+public class SupportAdminActivity extends AppCompatActivity {
     private ListView listViewAnnouncements;
     private Button btnBack;
-    private ArrayList<Post> arrPost;
-    private PostArrayAdapter adapter;
+    private ArrayList<Support> arrSupport;
+    private SupportArrayAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_announcements);
+        setContentView(R.layout.activity_admin_support);
         getFormWidgets();
         addEvent();
-        arrPost = new ArrayList<>();
-        arrPost.addAll(DatabaseLearningManagerSystem.getInstance(this).postDAO().getAllPost());
-        adapter = new PostArrayAdapter(AnnouncementsActivity.this, R.layout.announcements_item, arrPost);
+
+        arrSupport = new ArrayList<>();
+        arrSupport.addAll(DatabaseLearningManagerSystem.getInstance(this).supportDAO().getAllSupport());
+
+        adapter = new SupportArrayAdapter(SupportAdminActivity.this, R.layout.support_item, arrSupport);
         listViewAnnouncements.setAdapter(adapter);
     }
 
@@ -44,7 +41,7 @@ public class AnnouncementsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnnouncementsActivity.this, InteractionAdminActivity.class);
+                Intent intent = new Intent(SupportAdminActivity.this, InteractionAdminActivity.class);
                 startActivity(intent);
             }
         });
@@ -54,5 +51,4 @@ public class AnnouncementsActivity extends AppCompatActivity {
         listViewAnnouncements = findViewById(R.id.listViewAnnouncements);
         btnBack = findViewById(R.id.buttonBack);
     }
-
 }
