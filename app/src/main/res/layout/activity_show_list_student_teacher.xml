@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.ListClassesShowStudent">
+    tools:context=".activity.ShowListStudentTeacherActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -12,19 +12,17 @@
         android:layout_height="wrap_content"
         android:background="#008000"
         android:gravity="center"
-        android:text="List Class"
+        android:text="List Student"
         android:textColor="#FFFFFF"
         android:textSize="20dp"/>
 
     <ListView
-        android:id="@+id/lvData"
+        android:id="@+id/lvListStudent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@id/back_button"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
         tools:layout_editor_absoluteX="16dp" />
 
     <Button

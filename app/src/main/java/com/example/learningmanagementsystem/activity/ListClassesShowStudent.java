@@ -77,6 +77,6 @@
 
         private void getFormWidgets() {
             lvClass = findViewById(R.id.lvData);
-            back_button = findViewById(R.id.back_button);
+            
         }
     }

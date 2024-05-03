@@ -26,6 +26,7 @@ import com.example.learningmanagementsystem.models.Support;
 import com.example.learningmanagementsystem.models.Teacher;
 
 @Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class, Post.class, Attendance.class, Support.class}, version = 73)
+
 public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
 
     private static final String DATABASE_NAME = "learning_management_system.db";

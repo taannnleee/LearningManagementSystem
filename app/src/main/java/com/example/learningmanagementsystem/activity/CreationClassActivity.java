@@ -34,6 +34,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Classes;
+import com.example.learningmanagementsystem.models.Schedule;
 import com.example.learningmanagementsystem.models.Teacher;
 
 import java.io.ByteArrayOutputStream;
@@ -45,6 +46,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Random;
 
 public class CreationClassActivity extends AppCompatActivity {
     final int RESQUEST_TAKE_PHOTO = 123;
@@ -272,12 +274,61 @@ public class CreationClassActivity extends AppCompatActivity {
         });
     }
 
+    private void insertSchedule(long id) {
+        try {
+            Classes classes = DatabaseLearningManagerSystem.getInstance(this).classDAO().getClassesById((int) id);
+            Date courseStart = classes.getCourseStart();
+            Date courseEnd = classes.getCourseEnd();
+
+            // Khởi tạo một calendar bắt đầu từ classStart
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(courseStart);
+
+            while (calendar.getTime().before(courseEnd)) {
+                Schedule schedule = new Schedule();
+                schedule.setClassId(classes.getClassId());
+
+                //code random
+                String randomCode = generateRandomCode();
+                schedule.setClassScheduleCode(randomCode);
+
+                schedule.setSpecificDate(calendar.getTime());
+
+                // Insert schedule vào database
+                DatabaseLearningManagerSystem.getInstance(this).scheduleDAO().insertSchedule(schedule);
+
+                // Tăng ngày trong calendar lên 1
+                calendar.add(Calendar.DATE, 1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String generateRandomCode() {
+        int length = 6;
+
+        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+        StringBuilder codeBuilder = new StringBuilder();
+        Random random = new Random();
+
+        for (int i = 0; i < length; i++) {
+            char randomChar = characters.charAt(random.nextInt(characters.length()));
+            codeBuilder.append(randomChar);
+        }
+
+        return codeBuilder.toString();
+    }
+
+
     private void eventDialogSure() {
         btnSure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    CreateClass();
+                    long id = CreateClass();
+                    insertSchedule(id);
                     Toast.makeText(CreationClassActivity.this, "Created class successfully!", Toast.LENGTH_SHORT).show();
                     clearInput();
                     dialogSure.dismiss();
@@ -361,18 +412,14 @@ public class CreationClassActivity extends AppCompatActivity {
         });
     }
 
-    public void CreateClass() throws ParseException {
+    public long CreateClass() throws ParseException {
+        long a;
         Classes newClass = SetClassData();
-        long a = DatabaseLearningManagerSystem.getInstance(this).classDAO().insertNewClass(newClass);
-
-        Toast.makeText(CreationClassActivity.this, String.valueOf(a), Toast.LENGTH_SHORT).show();
-
-        insertSchedule();
+        a = DatabaseLearningManagerSystem.getInstance(this).classDAO().insertNewClass(newClass);
+        return a;
     }
 
-    private void insertSchedule() {
 
-    }
 
     public Classes SetClassData() throws ParseException {
         byte[] picture = getByteArrayFromImageView(imv_classPicture);

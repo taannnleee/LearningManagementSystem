@@ -14,7 +14,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.learningmanagementsystem.MainTeacherActivity;
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.dao.AdminDAO;
 import com.example.learningmanagementsystem.dao.StudentDAO;
@@ -53,8 +52,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void setPreferences( Student student) {
+    private void setPreferencesStudent( Student student) {
         editor.putString("current_studentId",student.getStudentId()+"" );
+        editor.commit();
+    }
+    private void setPreferencesTeacher(Teacher teacher) {
+        editor.putString("current_teacher_Id", teacher.getTeacherId()+"");
         editor.commit();
     }
     private void addFocusChangeListeners() {
@@ -186,7 +189,7 @@ public class LoginActivity extends AppCompatActivity {
 
             if (existingStudent.getStudentPassword().equals(student.getStudentPassword())) {
 
-                setPreferences(existingStudent);
+                setPreferencesStudent(existingStudent);
                 Intent intent = new Intent(LoginActivity.this, NavigationBarActivity.class);
                 startActivity(intent);
                 finish();
@@ -205,7 +208,7 @@ public class LoginActivity extends AppCompatActivity {
         if (existingTeacher != null) {
 
             if (existingTeacher.getTeacherPassword().equals(teacher.getTeacherPassword())) {
-
+                setPreferencesTeacher(existingTeacher);
                 Intent intent = new Intent(LoginActivity.this, MainTeacherActivity.class);
                 startActivity(intent);
                 finish();
