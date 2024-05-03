@@ -1,5 +1,6 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class ConformStudentActivity extends AppCompatActivity {
     private ListView listViewStudents;
-    private Button buttonTickAll, buttonConfirm;
+    private Button buttonTickAll, buttonConfirm, btn_back_interaction;
 
     List<StudentClassCrossRef> studentClassCrossRefs;
 
@@ -30,6 +31,7 @@ public class ConformStudentActivity extends AppCompatActivity {
         listViewStudents = findViewById(R.id.listViewStudents);
         buttonTickAll = findViewById(R.id.buttonTickAll);
         buttonConfirm = findViewById(R.id.buttonConfirm);
+        btn_back_interaction = findViewById(R.id.btn_back_interaction);
 
         //get data from db and set to list
         uploadStudentsListWithInactiveStatus();
@@ -37,6 +39,14 @@ public class ConformStudentActivity extends AppCompatActivity {
         // Adapter for populating data into the ListView
         //ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.student_item, R.id.textViewName, studentsList);
         //listViewStudents.setAdapter(adapter);
+        btn_back_interaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConformStudentActivity.this, InteractionAdminActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         buttonTickAll.setOnClickListener(new View.OnClickListener() {
             @Override
