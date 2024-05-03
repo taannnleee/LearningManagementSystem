@@ -65,7 +65,6 @@ public class RegisterTeacherActivity extends AppCompatActivity {
         bmp.compress (Bitmap.CompressFormat. PNG, 100, stream);
         byte[] byteArray =  stream.toByteArray();
         return byteArray;
-
     }
 
     @Override
@@ -176,8 +175,22 @@ public class RegisterTeacherActivity extends AppCompatActivity {
     }
 
     private void addTeacher() throws ParseException {
-        Teacher Teacher = setTeacherData();
-        DatabaseLearningManagerSystem.getInstance(this).teacherDAO().insertTeacher(Teacher);
+        if (isFieldsNotEmpty()) {
+            Teacher teacher = setTeacherData();
+            DatabaseLearningManagerSystem.getInstance(this).teacherDAO().insertTeacher(teacher);
+            Toast.makeText(this, "Teacher registered successfully!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isFieldsNotEmpty() {
+        return !edtEmail.getText().toString().isEmpty() &&
+                !edtPassword.getText().toString().isEmpty() &&
+                !edtFirstName.getText().toString().isEmpty() &&
+                !edtPhoneNumber.getText().toString().isEmpty() &&
+                !edtLastName.getText().toString().isEmpty() &&
+                !edtBirthday.getText().toString().isEmpty();
     }
 
     private void getFormWidgets() {

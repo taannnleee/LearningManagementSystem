@@ -14,6 +14,7 @@
 
     <string name="action_home">Home</string>
     <string name="action_notification">Notification</string>
+    <string name="action_interaction">Interaction</string>
     <string name="action_account">Account</string>
 
 

@@ -66,9 +66,17 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void addPost() {
-        Post post = setPostData();
-        DatabaseLearningManagerSystem.getInstance(this).postDAO().insertPost(post);
-        List<Post> posts = DatabaseLearningManagerSystem.getInstance(this).postDAO().getAllPost();
+        String topic = editTextTopic.getText().toString();
+        String content = editTextContent.getText().toString();
+
+        if (!topic.isEmpty() && !content.isEmpty()) {
+            Post post = setPostData();
+            DatabaseLearningManagerSystem.getInstance(this).postDAO().insertPost(post);
+            Toast.makeText(this, "Bài viết đã được đăng", Toast.LENGTH_SHORT).show();
+            finish();
+        } else {
+            Toast.makeText(this, "Vui lòng nhập đủ chủ đề và nội dung", Toast.LENGTH_SHORT).show();
+        }
     }
     private Post setPostData() {
         Post newpost = new Post();

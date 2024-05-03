@@ -45,8 +45,8 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 addStudent();
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+//                startActivity(intent);
             }
         });
 
@@ -56,19 +56,32 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
 
     private void addStudent() {
-        Student student = setStudentData();
-        DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
+        if (isFieldsNotEmpty()) {
+            Student student = setStudentData();
+            DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
 
-        List<Student> students =  DatabaseLearningManagerSystem.getInstance(this).studentDAO().getAllStudent();
-//        for(Student student1 : students){
-//            Toast.makeText(this, student1.getStudentAddress(), Toast.LENGTH_SHORT).show();
-//        }
+            Toast.makeText(this, "Student registered successfully!", Toast.LENGTH_SHORT).show();
 
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+            finish();
+        } else {
+            Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isFieldsNotEmpty() {
+        return !edtEmail.getText().toString().isEmpty() &&
+                !edtPassword.getText().toString().isEmpty() &&
+                !edtName.getText().toString().isEmpty() &&
+                !edtPhoneNumber.getText().toString().isEmpty() &&
+                !edtAddress.getText().toString().isEmpty();
     }
 
     private void getFormWidgets() {

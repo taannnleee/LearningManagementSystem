@@ -13,6 +13,7 @@ import com.example.learningmanagementsystem.dao.PostDAO;
 import com.example.learningmanagementsystem.dao.ScheduleDAO;
 import com.example.learningmanagementsystem.dao.StudentClassCrossRefDAO;
 import com.example.learningmanagementsystem.dao.StudentDAO;
+import com.example.learningmanagementsystem.dao.SupportDAO;
 import com.example.learningmanagementsystem.dao.TeacherDAO;
 import com.example.learningmanagementsystem.models.Admin;
 import com.example.learningmanagementsystem.models.Attendance;
@@ -21,9 +22,10 @@ import com.example.learningmanagementsystem.models.Post;
 import com.example.learningmanagementsystem.models.Schedule;
 import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
+import com.example.learningmanagementsystem.models.Support;
 import com.example.learningmanagementsystem.models.Teacher;
 
-@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class, Post.class, Attendance.class}, version = 70)
+@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class, Post.class, Attendance.class, Support.class}, version = 73)
 public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
 
     private static final String DATABASE_NAME = "learning_management_system.db";
@@ -42,4 +44,6 @@ public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
     public abstract StudentClassCrossRefDAO studentClassCrossRefDAO();
     public abstract PostDAO postDAO();
     public abstract AttendanceDAO attendanceDAO();
+    public abstract SupportDAO supportDAO();
+
 }
