@@ -111,6 +111,18 @@
         <activity
             android:name=".activity.SupportAdminActivity"
             android:exported="false" />
+        <activity
+            android:name=".activity.AccountActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.ProfileActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

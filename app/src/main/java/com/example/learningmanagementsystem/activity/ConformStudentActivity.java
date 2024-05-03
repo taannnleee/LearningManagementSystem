@@ -33,6 +33,7 @@ public class ConformStudentActivity extends AppCompatActivity {
         listViewStudents = findViewById(R.id.listViewStudents);
         buttonTickAll = findViewById(R.id.buttonTickAll);
         buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonBack = findViewById(R.id.btn_back_interaction);
 
         btn_back_interaction = findViewById(R.id.btn_back_interaction);
 

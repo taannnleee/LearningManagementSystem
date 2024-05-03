@@ -27,9 +27,6 @@ public class PostActivity extends AppCompatActivity {
         getFormWidgets();
         addEvent();
 
-
-
-
     }
 
     private void addEvent() {
