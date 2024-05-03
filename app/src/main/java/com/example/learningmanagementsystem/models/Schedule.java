@@ -9,35 +9,28 @@ import com.example.learningmanagementsystem.database.DateTypeConverter;
 import com.example.learningmanagementsystem.database.TimeTypeConverter;
 
 import java.sql.Time;
+import java.util.Date;
 
 @Entity(tableName = "schedule", foreignKeys = @ForeignKey(entity = Classes.class, parentColumns = "classId", childColumns = "classId"))
 public class Schedule {
     @PrimaryKey(autoGenerate = true)
     private int scheduleId;
-    @TypeConverters({TimeTypeConverter.class})
-    private Time startTime;
-    @TypeConverters({TimeTypeConverter.class})
-    private Time endTime;
+    @TypeConverters({DateTypeConverter.class})
+    private Date specificDate;
 
-    private int classId; // khoa ngoai
-
-    public Schedule(){}
-    public Schedule(Time startTime, Time endTime, int classId){
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.classId = classId;
-    }
+    private String classScheduleCode;
+    private int classId; // khoa ngoai đến bảng lớp học
 
     public int getScheduleId() {
         return scheduleId;
     }
 
-    public Time getStartTime() {
-        return startTime;
+    public Date getSpecificDate() {
+        return specificDate;
     }
 
-    public Time getEndTime() {
-        return endTime;
+    public String getClassScheduleCode() {
+        return classScheduleCode;
     }
 
     public int getClassId() {
@@ -48,15 +41,21 @@ public class Schedule {
         this.scheduleId = scheduleId;
     }
 
-    public void setStartTime(Time startTime) {
-        this.startTime = startTime;
+    public void setSpecificDate(Date specificDate) {
+        this.specificDate = specificDate;
     }
 
-    public void setEndTime(Time endTime) {
-        this.endTime = endTime;
+    public void setClassScheduleCode(String classScheduleCode) {
+        this.classScheduleCode = classScheduleCode;
     }
 
     public void setClassId(int classId) {
+        this.classId = classId;
+    }
+
+    public Schedule(Date specificDate, String classScheduleCode, int classId) {
+        this.specificDate = specificDate;
+        this.classScheduleCode = classScheduleCode;
         this.classId = classId;
     }
 }
