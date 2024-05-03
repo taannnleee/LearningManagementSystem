@@ -52,4 +52,10 @@ public class Schedule {
     public void setClassId(int classId) {
         this.classId = classId;
     }
+
+    public Schedule(Date specificDate, String classScheduleCode, int classId) {
+        this.specificDate = specificDate;
+        this.classScheduleCode = classScheduleCode;
+        this.classId = classId;
+    }
 }
