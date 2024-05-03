@@ -50,5 +50,7 @@ public class Attendance {
         this.studentClassCrossRefId = studentClassCrossRefId;
         this.status = status;
     }
+    public Attendance() {
+    }
 }
 
