@@ -30,5 +30,8 @@ public interface StudentDAO {
     @Query("SELECT * FROM students WHERE studentId = :studentId")
     Student getStudentById(int studentId);
 
+    @Query("SELECT * FROM students WHERE studentId = :studentId")
+    List<Student> getListStudentById(int studentId);
+
 
 }
