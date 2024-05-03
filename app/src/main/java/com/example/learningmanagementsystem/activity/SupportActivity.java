@@ -139,8 +139,17 @@ public class SupportActivity extends AppCompatActivity {
 
     }
     private void addSupport() throws ParseException {
-        Support support = setSupportData();
-        DatabaseLearningManagerSystem.getInstance(this).supportDAO().insertSupport(support);
+        if (isFieldsNotEmpty()) {
+            Support support = setSupportData();
+            DatabaseLearningManagerSystem.getInstance(this).supportDAO().insertSupport(support);
+            Toast.makeText(this, "Support added successfully!", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private boolean isFieldsNotEmpty() {
+        return !edt_message.getText().toString().isEmpty();
     }
     private Support setSupportData() throws ParseException {
         byte[] picture = getByteArrayFromImageView(btn_add_image);
