@@ -44,7 +44,7 @@ public class ShowListStudentTeacherActivity extends AppCompatActivity {
         }
 
 
-        arrStudent = (ArrayList<Student>) DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getListStudentByClassIdAndStatus(Integer.parseInt(classId), "inactive");
+        arrStudent = (ArrayList<Student>) DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getListStudentByClassIdAndStatus(Integer.parseInt(classId), "active");
         adapter = new StudentArrayShowTeacherAdapter(ShowListStudentTeacherActivity.this, R.layout.student_show_teacher_item,arrStudent);
         lvListStudent.setAdapter(adapter);
 
@@ -54,10 +54,11 @@ public class ShowListStudentTeacherActivity extends AppCompatActivity {
         lvListStudent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Classes selectedClass = arrClasses.get(position);
-//                int selectedClassId = selectedClass.getClassId();
-                // Tạo Intent
+//                Student selectedStudent = arrStudent.get(position);
+//                String selectedClassId = String.valueOf(selectedStudent.getStudentId());
+//                // Tạo Intent
 //                Intent intent = new Intent(MainTeacherActivity.this, ShowListStudentTeacherActivity.class);
+//                intent.putExtra("selectedClassId", selectedClassId);
 //                startActivity(intent);
             }
         });
