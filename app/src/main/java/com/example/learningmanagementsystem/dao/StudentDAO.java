@@ -33,5 +33,6 @@ public interface StudentDAO {
     @Query("SELECT * FROM students WHERE studentId = :studentId")
     List<Student> getListStudentById(int studentId);
 
-
+    @Query("UPDATE students SET studentPassword = :newPassword WHERE studentId = :id")
+    void updatePassword(String newPassword, int id);
 }
