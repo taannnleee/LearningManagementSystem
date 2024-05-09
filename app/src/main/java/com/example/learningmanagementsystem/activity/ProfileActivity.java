@@ -1,38 +1,48 @@
 package com.example.learningmanagementsystem.activity;
 
+import static java.security.AccessController.getContext;
+
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Student;
 
 public class ProfileActivity extends AppCompatActivity {
-    private TextView textViewName, textViewEmail, textViewPhone, textViewAddress;
+    private TextView tv_email, tv_password, tv_name, tv_phoneNumber, tv_address;
+    Student student;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.profile_account);
+        getFormWidgets();
+        setStudent();
+    }
 
-        textViewName = findViewById(R.id.register_name);
-        textViewEmail = findViewById(R.id.register_email);
-        textViewPhone = findViewById(R.id.register_phoneNumber);
-        textViewAddress = findViewById(R.id.register_address);
+    public void setStudent() {
+        SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(this);
+        String id_string = shared.getString("current_studentId", "defaultValue");
+        student = DatabaseLearningManagerSystem.getInstance(this).studentDAO().getStudentById(Integer.parseInt(id_string));
 
-        // Lấy dữ liệu sinh viên từ Intent
-        Bundle bundle = getIntent().getExtras();
-        if(bundle != null){
-            // Khởi tạo đối tượng sinh viên từ dữ liệu nhận được
-            Student student = (Student) bundle.getSerializable("student");
+        tv_name.setText(student.getStudentName());
+        tv_email.setText(student.getStudentEmail());
+        tv_address.setText(student.getStudentAddress());
+        tv_password.setText(student.getStudentPassword());
+        tv_phoneNumber.setText(student.getStudentPhone());
 
-            if(student != null){
-                textViewName.setText(student.getStudentName());
-                textViewEmail.setText(student.getStudentEmail());
-                textViewPhone.setText(student.getStudentPhone());
-                textViewAddress.setText(student.getStudentAddress());
-            }
-        }
+    }
+
+    public void getFormWidgets() {
+        tv_name = findViewById(R.id.tv_name);
+        tv_email = findViewById(R.id.tv_email);
+        tv_address = findViewById(R.id.tv_profile_address);
+        tv_password = findViewById(R.id.tv_password);
+        tv_phoneNumber = findViewById(R.id.tv_phoneNumer);
     }
 }

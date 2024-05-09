@@ -1,7 +1,10 @@
 package com.example.learningmanagementsystem.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +14,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
+import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.utilidades.KeyboardUtil;
 
 public class AccountActivity extends Fragment {
-    TextView textViewStudentProfile, textViewChangePassword, textViewLogout;
+    TextView textViewStudentProfile, textViewChangePassword, textViewLogout, tv_studentName, tv_studentId;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    Student student;
 
     // TODO: Rename and change types of parameters
     private String mParam1;
@@ -61,6 +67,7 @@ public class AccountActivity extends Fragment {
         View view = inflater.inflate(R.layout.activity_account_section, container, false);
         getFormWidgets(view);
         addEvent();
+        setStudent();
         return view;
     }
 
@@ -69,18 +76,19 @@ public class AccountActivity extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent  intent  = new Intent(getContext(), ProfileActivity.class);
-                intent.putExtra("classCourse", "Giao tiếp cơ bản");
                 startActivity(intent);
             }
         });
-//        textViewChangePassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                Intent  intent  = new Intent(getContext(), AnnouncementsActivity.class);
-//                startActivity(intent);
-//            }
-//        });
+
+        textViewChangePassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent  intent  = new Intent(getContext(), PasswordChangeActivity.class);
+                startActivity(intent);
+            }
+        });
+
         textViewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -96,5 +104,15 @@ public class AccountActivity extends Fragment {
         textViewLogout = view.findViewById(R.id.textViewLogout);
 
 
+        tv_studentName = view.findViewById(R.id.tv_studentName_accountSection);
+        tv_studentId = view.findViewById(R.id.tv_studentID);
+    }
+
+    public void setStudent() {
+        SharedPreferences shared = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String id_string = shared.getString("current_studentId", "defaultValue");
+        student = DatabaseLearningManagerSystem.getInstance(getContext()).studentDAO().getStudentById(Integer.parseInt(id_string));
+        tv_studentName.setText(student.getStudentName());
+        tv_studentId.setText(student.getStudentId()+"");
     }
 }

@@ -22,6 +22,7 @@ public class InteractionActivity extends Fragment {
     private ImageView imgVAssignments, imgVHomework, imgVAbsence;
     private  ImageView imgVPosts, imgVAnnouncements, imgVSupports;
 
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -132,6 +133,7 @@ public class InteractionActivity extends Fragment {
         imgVPosts = view.findViewById(R.id.imageViewPosts);
         imgVAnnouncements = view.findViewById(R.id.imageViewAnnouncements);
         imgVSupports = view.findViewById(R.id.imageViewSupports);
+
 
     }
 }
