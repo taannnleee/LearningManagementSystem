@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
@@ -33,7 +34,9 @@ import java.util.List;
 public class MainActivity extends Fragment  {
 
 //    String[] newArr = new String[10];
-    private String[] arr = null;
+    private String[] arr = {};
+
+//    private String[] arr = null;
 
     //    private List<String> arr = new ArrayList<>();
     private ImageView imvAvatar;
@@ -102,7 +105,7 @@ public class MainActivity extends Fragment  {
         // Inflate the layout for this fragment
         View  view =  inflater.inflate(R.layout.activity_main, container, false);
         loadData();
-//        getFormWidgets(view);
+        getFormWidgets(view);
         setList(view);
         addEvent();
 
@@ -110,6 +113,7 @@ public class MainActivity extends Fragment  {
     }
 
     private void loadData() {
+        List<String> classNames = new ArrayList<>();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
@@ -122,10 +126,9 @@ public class MainActivity extends Fragment  {
 
             Classes classes = new Classes();
             classes =  (Classes) DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(temp);
-
-            arr[i] = classes.getClassName();
-
+            classNames.add(classes.getClassName());
         }
+        arr = classNames.toArray(new String[0]);
     }
 
     private void setList(View view) {
@@ -135,7 +138,6 @@ public class MainActivity extends Fragment  {
         tvScheduleDetail = view.findViewById(R.id.tvScheduleDetail);
         tvName = view.findViewById(R.id.tvName);
         imvAvatar = view.findViewById(R.id.imvAvatar);
-
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arr);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
@@ -152,7 +154,6 @@ public class MainActivity extends Fragment  {
         //        classCourse.setText();
 //        tvSchedule.s
 //        tvScheduleDetail =
-
 //        imvAvatar
 
     }
@@ -184,9 +185,6 @@ public class MainActivity extends Fragment  {
         tvScheduleDetail = view.findViewById(R.id.tvScheduleDetail);
         tvName = view.findViewById(R.id.tvName);
         imvAvatar = view.findViewById(R.id.imvAvatar);
-
         textViewSupport = view.findViewById(R.id.textViewSupport);
-
-
     }
 }
