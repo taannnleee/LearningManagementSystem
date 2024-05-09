@@ -120,7 +120,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView3"
+                android:id="@+id/tvScheduleDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="72dp"
@@ -131,7 +131,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/tvName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="124dp"
@@ -203,7 +203,7 @@
                 tools:ignore="MissingConstraints">
 
                 <ImageView
-                    android:id="@+id/imageView22"
+                    android:id="@+id/imvAvatar"
                     android:layout_width="42dp"
                     android:layout_height="44dp"
                     android:background="@drawable/circle_background"
@@ -249,7 +249,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/tvSchedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="14/03/2003"

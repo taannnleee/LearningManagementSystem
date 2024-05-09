@@ -36,5 +36,8 @@ public interface StudentClassCrossRefDAO {
     @Query("SELECT * FROM student_class_crossref WHERE studentId = :studentId AND status=:status")
     List<StudentClassCrossRef> getLisstudentIdByStudentIdAndStatus(int studentId, String status);
 
+    @Query("SELECT * FROM student_class_crossref WHERE studentId = :studentId AND status=:status")
+    StudentClassCrossRef getLisstudentIdByStudentIdAndStatus1(int studentId, String status);
+
 
 }

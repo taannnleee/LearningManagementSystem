@@ -15,4 +15,7 @@ public interface AttendanceDAO {
     void insertAttendance(Attendance... attendances);
     @Query("SELECT * FROM attendance WHERE id  = :id")
     Attendance getAttendanceId(int id);
+
+    @Query("SELECT COUNT(*) FROM attendance WHERE scheduleId = :scheduleId AND studentClassCrossRefId = :studentClassCrossRefId")
+    int countAttendanceByScheduleIdAndStudentClassCrossRefId(int scheduleId, int studentClassCrossRefId);
 }

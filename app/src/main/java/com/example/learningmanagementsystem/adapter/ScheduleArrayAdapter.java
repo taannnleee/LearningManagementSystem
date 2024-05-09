@@ -3,9 +3,12 @@ package com.example.learningmanagementsystem.adapter;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.activity.ScheduleActivity;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Attendance;
 import com.example.learningmanagementsystem.models.Classes;
@@ -46,6 +50,9 @@ public class ScheduleArrayAdapter extends ArrayAdapter<Schedule> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
+
         LayoutInflater inflater = context.getLayoutInflater();
         View listItemView = inflater.inflate(R.layout.item_schedule_layout, null, true);
 
@@ -55,10 +62,20 @@ public class ScheduleArrayAdapter extends ArrayAdapter<Schedule> {
         TextView txttime = listItemView.findViewById(R.id.txttime);
         Button btnAbsent = listItemView.findViewById(R.id.btnabsent);
 
+
         btnAbsent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Schedule  schedule   = myArray.get(position);
+
+//                int count1 = DatabaseLearningManagerSystem.getInstance(context)
+//                        .attendanceDAO()
+//                        .countAttendanceByScheduleIdAndStudentClassCrossRefId(schedule.getScheduleId(), Integer.parseInt(current_studentId));
+//
+//                if (count1 > 0) {
+//                    btnAbsent.setBackgroundColor(context.getResources().getColor(R.color.blue));
+//                }
+
                 // Tạo một Dialog mới
                 Dialog dialog = new Dialog(context);
                 // Đặt layout cho Dialog
@@ -82,35 +99,53 @@ public class ScheduleArrayAdapter extends ArrayAdapter<Schedule> {
                 btnConfirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+
                         // Lấy nội dung từ EditText
                         String reason = editTextReason.getText().toString();
                         if (reason.equals(schedule.getClassScheduleCode())) {
                             Attendance attendance = new Attendance();
                             attendance.setScheduleId(schedule.getScheduleId());
                             attendance.setStatus("active");
+                            attendance.setStudentClassCrossRefId(Integer.parseInt(current_studentId));
 
-                            DatabaseLearningManagerSystem.getInstance(context).attendanceDAO().insertAttendance();
+                            DatabaseLearningManagerSystem.getInstance(context).attendanceDAO().insertAttendance(attendance);
 
                             Toast.makeText(context, "Absent Success", Toast.LENGTH_SHORT).show();
+                            // load lại trang hiện tại
+                            context.recreate();
                         } else {
 
                             Toast.makeText(context, "Absent Fail", Toast.LENGTH_SHORT).show();
+
                         }
                         dialog.dismiss();
 
                     }
                 });
 
-                // Hiển thị Dialog
-                dialog.show();
+                int count = DatabaseLearningManagerSystem.getInstance(context).attendanceDAO().countAttendanceByScheduleIdAndStudentClassCrossRefId(schedule.getScheduleId(), Integer.parseInt(current_studentId));
+
+                if(count ==  0){
+                    dialog.show();
+                }else {
+                    Toast.makeText(context, "You successfully checked in last time", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
 
 
         txttopicClass.setText(classes.getClassCourse());
         txtNameCourse.setText(classes.getClassName());
 
         Schedule  schedule   = myArray.get(position);
+        int count1 = DatabaseLearningManagerSystem.getInstance(context)
+                .attendanceDAO()
+                .countAttendanceByScheduleIdAndStudentClassCrossRefId(schedule.getScheduleId(), Integer.parseInt(current_studentId));
+
+        if (count1 > 0) {
+            btnAbsent.setBackgroundColor(context.getResources().getColor(R.color.blue));
+        }
         Date dateSpecificDate = schedule.getSpecificDate();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
