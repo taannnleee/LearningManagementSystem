@@ -25,7 +25,7 @@ import com.example.learningmanagementsystem.models.StudentClassCrossRef;
 import com.example.learningmanagementsystem.models.Support;
 import com.example.learningmanagementsystem.models.Teacher;
 
-@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class, Post.class, Attendance.class, Support.class}, version = 75)
+@Database(entities = {Student.class, Teacher.class, Classes.class, Admin.class, Schedule.class, StudentClassCrossRef.class, Post.class, Attendance.class, Support.class}, version = 79)
 
 public abstract class DatabaseLearningManagerSystem extends RoomDatabase {
 
