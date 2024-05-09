@@ -69,7 +69,7 @@ public class SupportActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SupportActivity.this, InteractionAdminActivity.class);
+                Intent intent = new Intent(SupportActivity.this, InteractionActivity.class);
                 startActivity(intent);
             }
         });

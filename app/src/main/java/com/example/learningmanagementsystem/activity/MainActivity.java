@@ -31,6 +31,7 @@ import java.util.List;
  * create an instance of this fragment.
  */
 public class MainActivity extends Fragment  {
+
 //    String[] newArr = new String[10];
     private String[] arr = null;
 
@@ -38,6 +39,8 @@ public class MainActivity extends Fragment  {
     private ImageView imvAvatar;
     private TextView tv_absent, tvSchedule, tvScheduleDetail, tvName;
     Spinner spClassCourse;
+
+    private TextView textViewSupport;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -163,15 +166,27 @@ public class MainActivity extends Fragment  {
                 startActivity(intent);
             }
         });
+        textViewSupport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(getContext(), "Succes", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getContext(), SupportActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getFormWidgets(View view) {
         tv_absent = view.findViewById(R.id.tv_absent);
+
         spClassCourse = view.findViewById(R.id.spClassCourse);
         tvSchedule = view.findViewById(R.id.tvSchedule);
         tvScheduleDetail = view.findViewById(R.id.tvScheduleDetail);
         tvName = view.findViewById(R.id.tvName);
         imvAvatar = view.findViewById(R.id.imvAvatar);
+
+        textViewSupport = view.findViewById(R.id.textViewSupport);
+
 
     }
 }

@@ -20,7 +20,7 @@ import com.example.learningmanagementsystem.R;
 public class InteractionActivity extends Fragment {
     private ImageView imgVToeic, imgVIelts, imgVCommunication;
     private ImageView imgVAssignments, imgVHomework, imgVAbsence;
-    private  ImageView imgVPosts, imgVAnnouncements, imgVSupports;
+    private  ImageView imgVPosts, imgVAnnouncements, imgVSupports, imageViewAbsence;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -119,21 +119,25 @@ public class InteractionActivity extends Fragment {
                 startActivity(intent);
             }
         });
+        imageViewAbsence.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent  intent  = new Intent(getContext(), AbsenceRequestActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void getFormWidgets(View view) {
         imgVToeic = view.findViewById(R.id.imageViewToeic);
         imgVIelts = view.findViewById(R.id.imageViewIelts);
         imgVCommunication = view.findViewById(R.id.imageViewCommunication);
-
-
-
-        //mấy cái dưới chưa dùng đến nha Trung nhớ xóa
-        imgVAbsence = view.findViewById(R.id.imageViewAbsence);
-        imgVPosts = view.findViewById(R.id.imageViewPosts);
+        imageViewAbsence = view.findViewById(R.id.imageViewAbsence);
         imgVAnnouncements = view.findViewById(R.id.imageViewAnnouncements);
         imgVSupports = view.findViewById(R.id.imageViewSupports);
 
 
     }
+
 }

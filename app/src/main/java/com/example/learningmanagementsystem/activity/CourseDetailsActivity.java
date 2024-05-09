@@ -93,7 +93,7 @@ public class CourseDetailsActivity extends AppCompatActivity {
         //lấy id student đang tương tác với hệ thống
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
-        //Toast.makeText(CourseDetailsActivity.this, current_studentId, Toast.LENGTH_SHORT).show();
+
         // từ id lấy ra student
         Student student = DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).studentDAO().getStudentById(Integer.parseInt(current_studentId));
         //lấy id khóa học

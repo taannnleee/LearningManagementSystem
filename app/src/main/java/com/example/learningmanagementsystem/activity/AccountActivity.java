@@ -92,6 +92,7 @@ public class AccountActivity extends Fragment {
         textViewLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clearSession();
                 Intent  intent  = new Intent(getContext(), LoginActivity.class);
                 startActivity(intent);
             }
@@ -114,5 +115,11 @@ public class AccountActivity extends Fragment {
         student = DatabaseLearningManagerSystem.getInstance(getContext()).studentDAO().getStudentById(Integer.parseInt(id_string));
         tv_studentName.setText(student.getStudentName());
         tv_studentId.setText(student.getStudentId()+"");
+    }
+    private void clearSession() {
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove("current_studentId");
+        editor.apply();
     }
 }

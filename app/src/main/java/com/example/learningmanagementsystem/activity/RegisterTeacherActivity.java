@@ -176,12 +176,24 @@ public class RegisterTeacherActivity extends AppCompatActivity {
 
     private void addTeacher() throws ParseException {
         if (isFieldsNotEmpty()) {
-            Teacher teacher = setTeacherData();
-            DatabaseLearningManagerSystem.getInstance(this).teacherDAO().insertTeacher(teacher);
-            Toast.makeText(this, "Teacher registered successfully!", Toast.LENGTH_SHORT).show();
+            String email = edtEmail.getText().toString();
+            // Kiểm tra xem email đã tồn tại trong cơ sở dữ liệu hay chưa
+            if (isEmailAlreadyExists(email)) {
+                Toast.makeText(this, "Email already exists!", Toast.LENGTH_SHORT).show();
+            } else {
+                // Email chưa tồn tại, thêm giáo viên mới vào cơ sở dữ liệu
+                Teacher teacher = setTeacherData();
+                DatabaseLearningManagerSystem.getInstance(this).teacherDAO().insertTeacher(teacher);
+                Toast.makeText(this, "Teacher registered successfully!", Toast.LENGTH_SHORT).show();
+                clearInput();
+            }
         } else {
             Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
         }
+    }
+    private boolean isEmailAlreadyExists(String email) {
+        Teacher existingTeacher = DatabaseLearningManagerSystem.getInstance(this).teacherDAO().getTeacherByEmail(email);
+        return existingTeacher != null;
     }
 
     private boolean isFieldsNotEmpty() {
@@ -260,5 +272,15 @@ public class RegisterTeacherActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
+    }
+    protected void clearInput() {
+        edtEmail.setText("");
+        edtPassword.setText("");
+        edtFirstName.setText("");
+        edtPhoneNumber.setText("");
+        edtLastName.setText("");
+        imgBirthday.setImageDrawable(null);
+        edtBirthday.setText("");
+
     }
 }

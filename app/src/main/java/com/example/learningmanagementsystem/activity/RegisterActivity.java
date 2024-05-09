@@ -63,17 +63,24 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void addStudent() {
         if (isFieldsNotEmpty()) {
-            Student student = setStudentData();
-            DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
-
-            Toast.makeText(this, "Student registered successfully!", Toast.LENGTH_SHORT).show();
-
-            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-            startActivity(intent);
-            finish();
+            String email = edtEmail.getText().toString();
+            if (isEmailAlreadyExists(email)) {
+                Toast.makeText(this, "Email already exists!", Toast.LENGTH_SHORT).show();
+            } else {
+                Student student = setStudentData();
+                DatabaseLearningManagerSystem.getInstance(this).studentDAO().insertStudent(student);
+                Toast.makeText(this, "Student registered successfully!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         } else {
             Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_SHORT).show();
         }
+    }
+    private boolean isEmailAlreadyExists(String email) {
+        Student existingStudent = DatabaseLearningManagerSystem.getInstance(this).studentDAO().getStudentByEmail(email);
+        return existingStudent != null;
     }
 
     private boolean isFieldsNotEmpty() {
