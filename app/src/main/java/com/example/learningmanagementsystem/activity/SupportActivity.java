@@ -123,6 +123,7 @@ public class SupportActivity extends AppCompatActivity {
                 try {
                     addSupport();
                     dialogSure.dismiss();
+                    clearInputs();
                     Toast.makeText(SupportActivity.this, "Success", Toast.LENGTH_SHORT).show();
                 } catch (ParseException e) {
                     Toast.makeText(SupportActivity.this, "Fail", Toast.LENGTH_SHORT).show();
@@ -167,6 +168,11 @@ public class SupportActivity extends AppCompatActivity {
         bmp.compress (Bitmap.CompressFormat. PNG, 100, stream);
         byte[] byteArray =  stream.toByteArray();
         return byteArray;
+
+    }
+
+    public void clearInputs() {
+        edt_message.setText("");
 
     }
 

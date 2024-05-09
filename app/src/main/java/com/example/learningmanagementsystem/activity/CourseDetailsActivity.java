@@ -93,12 +93,12 @@ public class CourseDetailsActivity extends AppCompatActivity {
         //lấy id student đang tương tác với hệ thống
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
-        Toast.makeText(CourseDetailsActivity.this, current_studentId, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(CourseDetailsActivity.this, current_studentId, Toast.LENGTH_SHORT).show();
         // từ id lấy ra student
         Student student = DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).studentDAO().getStudentById(Integer.parseInt(current_studentId));
         //lấy id khóa học
         Classes classes =  (Classes) DatabaseLearningManagerSystem.getInstance(CourseDetailsActivity.this).classDAO().getClassesById(Integer.parseInt(selectedClassId));
-        if (!registered(student, classes)) {
+        if (registered(student, classes) == 1) {
             try {
                 dialogSure = new Dialog(CourseDetailsActivity.this);
                 dialogSure.setContentView(R.layout.custom_dialog_sure);
@@ -113,9 +113,10 @@ public class CourseDetailsActivity extends AppCompatActivity {
             } catch (Exception e) {
                 Toast.makeText(CourseDetailsActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
             }
-        }
-        else {
+        } else if (registered(student, classes) == 2){
             Toast.makeText(CourseDetailsActivity.this, "Đang xử lý", Toast.LENGTH_SHORT).show();
+        } else if (registered(student,classes) == 3) {
+            Toast.makeText(CourseDetailsActivity.this, "Student are studying this class", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -157,13 +158,18 @@ public class CourseDetailsActivity extends AppCompatActivity {
         });
     }
 
-    protected boolean registered(Student student, Classes classes) {
+    protected int registered(Student student, Classes classes) {
         //kiếm dữ liệu trong db
-        StudentClassCrossRef registerdCourse = DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getStudentClassCrossRefByStudentAndCourse(student.getStudentId(), classes.getClassId());
+        StudentClassCrossRef registeredCourse = DatabaseLearningManagerSystem.getInstance(this).studentClassCrossRefDAO().getStudentClassCrossRefByStudentAndCourse(student.getStudentId(), classes.getClassId());
         //nếu mà chưa đăng ký thì trả về null
-        if (registerdCourse == null)
-            return false;
-        return true;
+        if (registeredCourse == null) {
+            return 1; //học viên chưa đăng kí lớp này
+        } else if (registeredCourse.getStatus().equals("active")) {
+            return 3; //học viên đang học lớp này và đã được duyệt
+        } else {
+            return 2; //học viên đã đăng kí nhưng chưa được duyệt
+        }
+
     }
 
     private void getFormWidgets() {
