@@ -10,6 +10,8 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.learningmanagementsystem.R;
@@ -32,6 +34,7 @@ public class ScheduleActivity extends AppCompatActivity {
     ListView lvSchedule = null;
     Dialog dialog;
     Button back_button;
+    ImageButton logout_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,13 +69,21 @@ public class ScheduleActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainAbsentActivity.this, NavigationBarActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(ScheduleActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScheduleActivity.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }
     private void getFormWidgets() {
         lvSchedule = findViewById(R.id.lvSchedule);
         back_button = findViewById(R.id.back_button);
+        logout_button = findViewById(R.id.logout_button);
     }
 }

@@ -12,6 +12,7 @@ public class InteractionAdminActivity extends AppCompatActivity {
     ImageView btnclass;
     private ImageView imageViewAddTeacher, imageViewAddCourse, imageViewConfirm;
     private ImageView imageViewPosts, imageViewAnnouncements, imageViewSupports;
+    private  ImageView imageViewLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,13 @@ public class InteractionAdminActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        imageViewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(InteractionAdminActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 
@@ -78,6 +86,7 @@ public class InteractionAdminActivity extends AppCompatActivity {
         imageViewSupports = findViewById(R.id.imageViewSupports);
         imageViewPosts = findViewById(R.id.imageViewPosts);
         imageViewAnnouncements = findViewById(R.id.imageViewAnnouncements);
+        imageViewLogout = findViewById(R.id.imageViewLogout);
 
 
 

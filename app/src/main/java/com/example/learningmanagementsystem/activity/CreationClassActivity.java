@@ -93,20 +93,23 @@ public class CreationClassActivity extends AppCompatActivity {
         btn_createClass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                try {
-                    dialogSure = new Dialog(CreationClassActivity.this);
-                    dialogSure.setContentView(R.layout.custom_dialog_sure);
-                    dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
-                    dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
-                    dialogSure.setCancelable(false);
-                    dialogSure.show(); // Hiển thị dialog
+                if (validateInputs()) {
+                    try {
+                        dialogSure = new Dialog(CreationClassActivity.this);
+                        dialogSure.setContentView(R.layout.custom_dialog_sure);
+                        dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                        dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                        dialogSure.setCancelable(false);
+                        dialogSure.show(); // Hiển thị dialog
 
-                    btnSure = dialogSure.findViewById(R.id.btnYes);
-                    btnCancel = dialogSure.findViewById(R.id.btnCancle);
-                    eventDialogSure();
-                }
-                catch (Exception e) {
-                    Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                        btnSure = dialogSure.findViewById(R.id.btnYes);
+                        btnCancel = dialogSure.findViewById(R.id.btnCancle);
+                        eventDialogSure();
+                    } catch (Exception e) {
+                        Toast.makeText(CreationClassActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(CreationClassActivity.this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -230,6 +233,20 @@ public class CreationClassActivity extends AppCompatActivity {
         et_classEnd.setText("");
         et_classFee.setText("");
         cmbBox_classDescription.setText("");
+    }
+    private boolean validateInputs() {
+        String className = et_className.getText().toString();
+        String classSize = et_classSize.getText().toString();
+        String courseStart = et_courseStart.getText().toString();
+        String courseEnd = et_courseEnd.getText().toString();
+        String classStart = et_classStart.getText().toString();
+        String classEnd = et_classEnd.getText().toString();
+        String classFee = et_classFee.getText().toString();
+        String classDescription = cmbBox_classDescription.getText().toString();
+
+        return !className.isEmpty() && !classSize.isEmpty() && !courseStart.isEmpty() && !courseEnd.isEmpty() &&
+                !classStart.isEmpty() && !classEnd.isEmpty() && !classFee.isEmpty() &&
+                !classDescription.isEmpty();
     }
 
     @Override
