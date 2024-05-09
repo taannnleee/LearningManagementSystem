@@ -84,7 +84,6 @@ public class ScheduleArrayAdapter extends ArrayAdapter<Schedule> {
                     public void onClick(View v) {
                         // Lấy nội dung từ EditText
                         String reason = editTextReason.getText().toString();
-                        Toast.makeText(context, schedule.getClassScheduleCode(), Toast.LENGTH_SHORT).show();
                         if (reason.equals(schedule.getClassScheduleCode())) {
                             Attendance attendance = new Attendance();
                             attendance.setScheduleId(schedule.getScheduleId());
