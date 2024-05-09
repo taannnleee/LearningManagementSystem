@@ -1,81 +1,51 @@
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:padding="8dp">
-
-
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="34dp"
-        android:layout_height="41dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_back_arrow"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/tv_title"
-        android:layout_width="0dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Create support request"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@id/btn_send"
-        app:layout_constraintStart_toEndOf="@id/btn_back"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Post"
+        android:textSize="24sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 
+    <EditText
+        android:id="@+id/editTextTopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewTitle"
+        android:hint="Chủ đề"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextContent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editTextTopic"
+        android:hint="Nội dung"
+        android:layout_marginTop="16dp"
+        android:lines="3"
+        android:inputType="textMultiLine"
+        android:scrollbars="vertical" />
     <Button
-        android:id="@+id/btn_send"
-        android:layout_width="101dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
-        android:textColor="#008080"
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:backgroundTint="@color/orange"
+        android:layout_alignTop="@id/textViewTitle"
+        android:layout_alignParentEnd="true"/>
+    <Button
+        android:id="@+id/buttonSend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Send"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/chat_frame"
-        android:layout_width="0dp"
-        android:layout_height="151dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title"
-        app:layout_constraintVertical_bias="0.1">
-
-        <EditText
-            android:id="@+id/edt_message"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="start|top"
-            android:hint="Type your message here"
-            android:inputType="textMultiLine" />
-    </FrameLayout>
-
-
-    <ImageButton
-        android:id="@+id/btn_add_image"
-        android:layout_width="134dp"
-        android:layout_height="96dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:background="@color/white"
-        android:scaleType="centerInside"
-        android:src="@drawable/add_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/chat_frame" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:backgroundTint="@color/orange"
+        android:layout_below="@id/editTextContent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"/>
+</RelativeLayout>

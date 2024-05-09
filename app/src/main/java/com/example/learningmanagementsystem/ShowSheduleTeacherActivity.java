@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.learningmanagementsystem.activity.LoginActivity;
+
 import com.example.learningmanagementsystem.activity.MainTeacherActivity;
 import com.example.learningmanagementsystem.activity.ScheduleActivity;
 import com.example.learningmanagementsystem.activity.ShowListStudentTeacherActivity;
@@ -76,7 +78,8 @@ public class ShowSheduleTeacherActivity extends AppCompatActivity {
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ShowSheduleTeacherActivity.this, MainTeacherActivity.class);
+
+                Intent intent = new Intent(ShowSheduleTeacherActivity.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
