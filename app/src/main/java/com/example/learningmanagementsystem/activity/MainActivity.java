@@ -10,13 +10,20 @@ import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.learningmanagementsystem.R;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
+import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,8 +31,14 @@ import com.example.learningmanagementsystem.models.StudentClassCrossRef;
  * create an instance of this fragment.
  */
 public class MainActivity extends Fragment  {
+//    String[] newArr = new String[10];
+    private String[] arr = null;
+
+    //    private List<String> arr = new ArrayList<>();
     private ImageView imvAvatar;
-    private TextView tv_absent, classCourse, tvSchedule, tvScheduleDetail, tvName;
+    private TextView tv_absent, tvSchedule, tvScheduleDetail, tvName;
+    Spinner spClassCourse;
+
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -49,6 +62,7 @@ public class MainActivity extends Fragment  {
      * @return A new instance of fragment BlankFragment.
      */
     // TODO: Rename and change types and number of parameters
+
     public static MainActivity newInstance(String param1, String param2) {
         MainActivity fragment = new MainActivity();
         Bundle args = new Bundle();
@@ -56,6 +70,18 @@ public class MainActivity extends Fragment  {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
+    }
+    private class MyProcessEvent implements AdapterView.OnItemSelectedListener {
+        @Override
+        public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            tvName.setText(arr[position]);
+
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> parent) {
+            tvName.setText("");
+        }
     }
 
     @Override
@@ -72,22 +98,54 @@ public class MainActivity extends Fragment  {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View  view =  inflater.inflate(R.layout.activity_main, container, false);
-
-
-        getFormWidgets(view);
-        addEvent();
         loadData();
+//        getFormWidgets(view);
+        setList(view);
+        addEvent();
+
         return view;
     }
 
     private void loadData() {
+
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
 
-        StudentClassCrossRef studentClassCrossRef =  DatabaseLearningManagerSystem.getInstance(getContext()).studentClassCrossRefDAO().getLisstudentIdByStudentIdAndStatus1(Integer.parseInt(current_studentId), "active");
+        List<StudentClassCrossRef> listStudentClassCrossRef =  DatabaseLearningManagerSystem.getInstance(getContext()).studentClassCrossRefDAO().getLisstudentIdByStudentIdAndStatus(Integer.parseInt(current_studentId), "active");
 
-        Student student = DatabaseLearningManagerSystem.getInstance(getContext()).studentDAO().getStudentById(Integer.parseInt(current_studentId));
-        tvName.setText(student.getStudentName());
+        for (int i = 0; i < listStudentClassCrossRef.size(); i++) {
+            StudentClassCrossRef studentClassCrossRef = listStudentClassCrossRef.get(i);
+            int temp = studentClassCrossRef.getCourseId();
+
+            Classes classes = new Classes();
+            classes =  (Classes) DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(temp);
+
+            arr[i] = classes.getClassName();
+
+        }
+    }
+
+    private void setList(View view) {
+        tv_absent = view.findViewById(R.id.tv_absent);
+        spClassCourse = view.findViewById(R.id.spClassCourse);
+        tvSchedule = view.findViewById(R.id.tvSchedule);
+        tvScheduleDetail = view.findViewById(R.id.tvScheduleDetail);
+        tvName = view.findViewById(R.id.tvName);
+        imvAvatar = view.findViewById(R.id.imvAvatar);
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arr);
+        adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
+        spClassCourse.setAdapter(adapter);
+        spClassCourse.setOnItemSelectedListener(new MyProcessEvent());
+
+//        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
+//        String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
+//
+//        StudentClassCrossRef studentClassCrossRef =  DatabaseLearningManagerSystem.getInstance(getContext()).studentClassCrossRefDAO().getLisstudentIdByStudentIdAndStatus1(Integer.parseInt(current_studentId), "active");
+//
+//        Student student = DatabaseLearningManagerSystem.getInstance(getContext()).studentDAO().getStudentById(Integer.parseInt(current_studentId));
+//        tvName.setText(student.getStudentName());
         //        classCourse.setText();
 //        tvSchedule.s
 //        tvScheduleDetail =
@@ -109,10 +167,11 @@ public class MainActivity extends Fragment  {
 
     private void getFormWidgets(View view) {
         tv_absent = view.findViewById(R.id.tv_absent);
-        classCourse = view.findViewById(R.id.textView11);
+        spClassCourse = view.findViewById(R.id.spClassCourse);
         tvSchedule = view.findViewById(R.id.tvSchedule);
         tvScheduleDetail = view.findViewById(R.id.tvScheduleDetail);
         tvName = view.findViewById(R.id.tvName);
         imvAvatar = view.findViewById(R.id.imvAvatar);
+
     }
 }
