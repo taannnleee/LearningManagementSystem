@@ -15,6 +15,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.learningmanagementsystem.R;
+import com.example.learningmanagementsystem.models.Post;
 import com.example.learningmanagementsystem.models.Support;
 
 import java.util.ArrayList;
@@ -26,28 +27,23 @@ public class SupportArrayAdapter extends ArrayAdapter<Support> {
     int layoutId;
 
     public SupportArrayAdapter(@NonNull Activity context, int layoutId, ArrayList<Support> arr) {
-        super(context, layoutId, arr);
+        super(context, layoutId,arr);
         this.context = context;
         this.myArray = arr;
         this.layoutId = layoutId;
     }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View listItemView = inflater.inflate(layoutId, null, true);
+        View listItemView = inflater.inflate(R.layout.announcements_item, null, true);
 
+        TextView textViewTitle = listItemView.findViewById(R.id.textViewTitle);
         TextView textViewContent = listItemView.findViewById(R.id.textViewContent);
-        ImageView imgVSupport = listItemView.findViewById(R.id.imageView);
-        Support support = myArray.get(position);
+        Support support  = myArray.get(position);
 
+        textViewTitle.setText(support.getSupportTitle());
         textViewContent.setText(support.getSupportContent());
-
-        // Convert byte array to Bitmap and set it to the ImageView
-        Bitmap bitmap = BitmapFactory.decodeByteArray(support.getPictureSupport(), 0, support.getPictureSupport().length);
-        imgVSupport.setImageBitmap(bitmap);
-
         return listItemView;
     }
 }

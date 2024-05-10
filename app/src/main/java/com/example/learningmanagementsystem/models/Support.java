@@ -7,17 +7,16 @@ import androidx.room.PrimaryKey;
 public class Support {
     @PrimaryKey(autoGenerate = true)
     private int supportId;
+
+    private String supportTitle;
     private String supportContent;
 
-    private  byte[] pictureSupport;
-
-    public Support(int supportId, String supportContent, byte[] pictureSupport) {
-        this.supportId = supportId;
-        this.supportContent = supportContent;
-        this.pictureSupport = pictureSupport;
+    public Support() {
     }
 
-    public Support() {
+    public Support(String supportTitle, String supportContent) {
+        this.supportTitle = supportTitle;
+        this.supportContent = supportContent;
     }
 
     public int getSupportId() {
@@ -28,19 +27,19 @@ public class Support {
         this.supportId = supportId;
     }
 
+    public String getSupportTitle() {
+        return supportTitle;
+    }
+
+    public void setSupportTitle(String supportTitle) {
+        this.supportTitle = supportTitle;
+    }
+
     public String getSupportContent() {
         return supportContent;
     }
 
     public void setSupportContent(String supportContent) {
         this.supportContent = supportContent;
-    }
-
-    public byte[] getPictureSupport() {
-        return pictureSupport;
-    }
-
-    public void setPictureSupport(byte[] pictureSupport) {
-        this.pictureSupport = pictureSupport;
     }
 }
