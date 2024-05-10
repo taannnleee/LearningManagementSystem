@@ -101,28 +101,16 @@ public class MainActivity extends Fragment  {
 
             tvSchedule.setText(formattedDateStart +"-"+ formattedDateEnd);
 
-
-
             Date tempDate_classStart = classes.getClassStart();
             int hour = tempDate_classStart.getHours();
             int minute = tempDate_classStart.getMinutes();
+            Toast.makeText(getContext(), String.valueOf(minute), Toast.LENGTH_SHORT).show();
 
-            String StrHour;
-            String StrMinute;
-
-            if (hour < 10) {
-                StrHour = "0" + hour;
-            } else {
-                StrHour = String.valueOf(hour);
-            }
-
-            if (minute < 10) {
-                StrMinute = "0" + minute;
-            } else {
-                StrMinute = String.valueOf(minute);
-            }
+            String StrHour = hour < 10 ? "0" + hour : String.valueOf(hour);
+            String StrMinute = minute < 10 ? "0" + minute : String.valueOf(minute);
 
             tvScheduleDetail.setText(StrHour + " : " + StrMinute);
+
 
 
             byte[] byteArray = teacher.getPictureTeacher();

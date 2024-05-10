@@ -33,7 +33,6 @@ public class ScheduleActivity extends AppCompatActivity {
     ScheduleArrayAdapter adapter = null;
     ListView lvSchedule = null;
     Dialog dialog;
-    Button back_button;
     ImageButton logout_button;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,24 +65,17 @@ public class ScheduleActivity extends AppCompatActivity {
 
             }
         });
-        back_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScheduleActivity.this, MainTeacherActivity.class);
-                startActivity(intent);
-            }
-        });
+
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScheduleActivity.this, LoginActivity.class);
+                Intent intent = new Intent(ScheduleActivity.this, MainAbsentActivity.class);
                 startActivity(intent);
             }
         });
     }
     private void getFormWidgets() {
         lvSchedule = findViewById(R.id.lvSchedule);
-        back_button = findViewById(R.id.back_button);
         logout_button = findViewById(R.id.logout_button);
     }
 }
