@@ -9,9 +9,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
+import com.example.learningmanagementsystem.activity.MainTeacherActivity;
 import com.example.learningmanagementsystem.activity.ScheduleActivity;
+import com.example.learningmanagementsystem.activity.ShowListStudentTeacherActivity;
 import com.example.learningmanagementsystem.adapter.ScheduleArrayAdapter;
 import com.example.learningmanagementsystem.adapter.ScheduleArrayAdapterTeacher;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
@@ -28,6 +31,7 @@ public class ShowSheduleTeacherActivity extends AppCompatActivity {
     ListView lvSchedule = null;
     Dialog dialog;
     Button back_button;
+    ImageButton logout_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,13 +68,23 @@ public class ShowSheduleTeacherActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(MainAbsentActivity.this, NavigationBarActivity.class);
-//                startActivity(intent);
+                Intent intent = new Intent(ShowSheduleTeacherActivity.this, MainTeacherActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+        logout_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ShowSheduleTeacherActivity.this, MainTeacherActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
     private void getFormWidgets() {
         lvSchedule = findViewById(R.id.lvSchedule);
         back_button = findViewById(R.id.back_button);
+        logout_button = findViewById(R.id.logout_button);
     }
 }

@@ -2,6 +2,8 @@ package com.example.learningmanagementsystem.activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -22,8 +24,11 @@ import com.example.learningmanagementsystem.database.DatabaseLearningManagerSyst
 import com.example.learningmanagementsystem.models.Classes;
 import com.example.learningmanagementsystem.models.Student;
 import com.example.learningmanagementsystem.models.StudentClassCrossRef;
+import com.example.learningmanagementsystem.models.Teacher;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -34,7 +39,7 @@ import java.util.List;
 public class MainActivity extends Fragment  {
 
 //    String[] newArr = new String[10];
-    private String[] arr = {};
+    private StudentClassCrossRef[] studentClassCrossRefArr = {};
 
 //    private String[] arr = null;
 
@@ -80,13 +85,63 @@ public class MainActivity extends Fragment  {
     private class MyProcessEvent implements AdapterView.OnItemSelectedListener {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-            tvName.setText(arr[position]);
+            Student student =  DatabaseLearningManagerSystem.getInstance(getContext()).studentDAO().getStudentById(studentClassCrossRefArr[position].getStudentId());
+            Classes classes = DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(studentClassCrossRefArr[position].getCourseId());
+            Teacher teacher = DatabaseLearningManagerSystem.getInstance(getContext()).teacherDAO().getTeacherById(classes.getTeacherId());
+            tvName.setText(student.getStudentName());
+
+            Date dateCourseStart = classes.getCourseStart();
+            Date dateCourseEnd = classes.getCourseEnd();
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String formattedDateStart = sdf.format(dateCourseStart);
+
+            SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+            String formattedDateEnd = sdf1.format(dateCourseEnd);
+
+            tvSchedule.setText(formattedDateStart +"-"+ formattedDateEnd);
+
+
+
+            Date tempDate_classStart = classes.getClassStart();
+            int hour = tempDate_classStart.getHours();
+            int minute = tempDate_classStart.getMinutes();
+
+            String StrHour;
+            String StrMinute;
+
+            if (hour < 10) {
+                StrHour = "0" + hour;
+            } else {
+                StrHour = String.valueOf(hour);
+            }
+
+            if (minute < 10) {
+                StrMinute = "0" + minute;
+            } else {
+                StrMinute = String.valueOf(minute);
+            }
+
+            tvScheduleDetail.setText(StrHour + " : " + StrMinute);
+
+
+            byte[] byteArray = teacher.getPictureTeacher();
+            if(byteArray != null) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+                imvAvatar.setImageBitmap(bitmap);
+            } else {
+            }
+
 
         }
 
         @Override
         public void onNothingSelected(AdapterView<?> parent) {
             tvName.setText("");
+            tvSchedule.setText("");
+            tvScheduleDetail.setText("");
+
+
         }
     }
 
@@ -113,22 +168,21 @@ public class MainActivity extends Fragment  {
     }
 
     private void loadData() {
-        List<String> classNames = new ArrayList<>();
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getContext());
         String current_studentId = sharedPreferences.getString("current_studentId", "defaultValue");
 
         List<StudentClassCrossRef> listStudentClassCrossRef =  DatabaseLearningManagerSystem.getInstance(getContext()).studentClassCrossRefDAO().getLisstudentIdByStudentIdAndStatus(Integer.parseInt(current_studentId), "active");
-
-        for (int i = 0; i < listStudentClassCrossRef.size(); i++) {
-            StudentClassCrossRef studentClassCrossRef = listStudentClassCrossRef.get(i);
-            int temp = studentClassCrossRef.getCourseId();
-
-            Classes classes = new Classes();
-            classes =  (Classes) DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(temp);
-            classNames.add(classes.getClassName());
-        }
-        arr = classNames.toArray(new String[0]);
+        studentClassCrossRefArr = listStudentClassCrossRef.toArray(new StudentClassCrossRef[0]);
+//        for (int i = 0; i < listStudentClassCrossRef.size(); i++) {
+//            StudentClassCrossRef studentClassCrossRef = listStudentClassCrossRef.get(i);
+//            int temp = studentClassCrossRef.getCourseId();
+//
+//            Classes classes = new Classes();
+//            classes =  (Classes) DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(temp);
+//            classNames.add(classes.getClassName());
+//        }
+//        arr = classNames.toArray(new String[0]);
     }
 
     private void setList(View view) {
@@ -139,7 +193,15 @@ public class MainActivity extends Fragment  {
         tvName = view.findViewById(R.id.tvName);
         imvAvatar = view.findViewById(R.id.imvAvatar);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, arr);
+        List<String> classNames = new ArrayList<>();
+
+        // Tạo mảng chuỗi chứa thông tin về lớp học
+        for (StudentClassCrossRef studentClassCrossRef : studentClassCrossRefArr) {
+            Classes classes = DatabaseLearningManagerSystem.getInstance(getContext()).classDAO().getClassesById(studentClassCrossRef.getCourseId());
+            classNames.add(classes.getClassName());
+        }
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, classNames);
         adapter.setDropDownViewResource(android.R.layout.simple_list_item_single_choice);
         spClassCourse.setAdapter(adapter);
         spClassCourse.setOnItemSelectedListener(new MyProcessEvent());
