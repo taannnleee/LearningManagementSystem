@@ -23,7 +23,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
 
     Student student;
     EditText edt_oldPassword, edt_newPassword, edt_retypeNewPassword;
-    Button btn_confirm;
+    Button btn_confirm, btn_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +48,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
         edt_oldPassword = findViewById(R.id.edt_old_password);
         edt_retypeNewPassword = findViewById(R.id.edt_retype_new_password);
         btn_confirm = findViewById(R.id.btn_confirm);
+        btn_back = findViewById(R.id.btn_change_password_activity_back);
     }
 
     public void addEvent() {
@@ -62,6 +63,14 @@ public class PasswordChangeActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), "Can not change password. Please check the input", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btn_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+                startActivity(intent);
             }
         });
     }
