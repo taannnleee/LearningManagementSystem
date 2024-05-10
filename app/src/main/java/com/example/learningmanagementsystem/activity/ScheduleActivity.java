@@ -69,14 +69,14 @@ public class ScheduleActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScheduleActivity.this, MainAbsentActivity.class);
+                Intent intent = new Intent(ScheduleActivity.this, MainTeacherActivity.class);
                 startActivity(intent);
             }
         });
         logout_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ScheduleActivity.this, MainAbsentActivity.class);
+                Intent intent = new Intent(ScheduleActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
