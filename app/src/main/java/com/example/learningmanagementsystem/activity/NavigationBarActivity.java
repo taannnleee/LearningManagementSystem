@@ -27,7 +27,7 @@ public class NavigationBarActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.view_pager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
 
-        ViewPageAdapter adapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        ViewPageAdapter adapter = new ViewPageAdapter(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, NavigationBarActivity.this);
         viewPager.setAdapter(adapter);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

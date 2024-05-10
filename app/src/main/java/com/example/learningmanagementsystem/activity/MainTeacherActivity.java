@@ -11,6 +11,7 @@ import android.preference.PreferenceManager;
 import android.view.ContextMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
@@ -23,6 +24,7 @@ import com.example.learningmanagementsystem.adapter.ClassesArrayAdapterTeacher;
 import com.example.learningmanagementsystem.database.DatabaseLearningManagerSystem;
 import com.example.learningmanagementsystem.models.Classes;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 
 public class MainTeacherActivity extends AppCompatActivity {
@@ -32,12 +34,14 @@ public class MainTeacherActivity extends AppCompatActivity {
     ClassesArrayAdapterTeacher adapter = null;
     ListView lvListClass = null;
     Dialog dialog;
-    Button back_button;
+    Button back_button, btnSure, btnCancel;
+
+    Dialog dialogSure;
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstanceState1) {
+        super.onCreate(savedInstanceState1);
         setContentView(R.layout.activity_main_teacher);
 
         getFormWidgets();
@@ -70,8 +74,43 @@ public class MainTeacherActivity extends AppCompatActivity {
         back_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainTeacherActivity.this, LoginActivity.class);
-                startActivity(intent);
+                try {
+                    dialogSure = new Dialog(MainTeacherActivity.this);
+                    dialogSure.setContentView(R.layout.custom_dialog_sure);
+                    dialogSure.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+                    dialogSure.getWindow().setBackgroundDrawable(getDrawable(R.drawable.custom_dialog_bg));
+                    dialogSure.setCancelable(false);
+                    dialogSure.show(); // Hiển thị dialog
+
+                    btnSure = dialogSure.findViewById(R.id.btnYes);
+                    btnCancel = dialogSure.findViewById(R.id.btnCancle);
+                    eventDialogSure();
+                } catch (Exception e) {
+                    Toast.makeText(MainTeacherActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+    }
+
+    private void eventDialogSure() {
+        btnSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Intent intent = new Intent(MainTeacherActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    dialogSure.dismiss();
+                } catch (Exception e) {
+                    Toast.makeText(MainTeacherActivity.this, "Fail", Toast.LENGTH_SHORT).show();
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialogSure.dismiss();
             }
         });
     }
