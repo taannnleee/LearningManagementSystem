@@ -47,7 +47,7 @@ public class ClassesArrayAdapter extends ArrayAdapter<Classes> {
         Classes  classes   = myArray.get(position);
 
         txtnamecourse.setText(classes.getClassName());
-        txtprices.setText(classes.getClassFee()+"");
+        txtprices.setText(classes.getClassFee()+"$");
 
         // Chuyển đổi byte[] thành Bitmap
         byte[] byteArray = classes.getClassPicture();

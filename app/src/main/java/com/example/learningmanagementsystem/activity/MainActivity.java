@@ -109,7 +109,17 @@ public class MainActivity extends Fragment  {
             String StrHour = hour < 10 ? "0" + hour : String.valueOf(hour);
             String StrMinute = minute < 10 ? "0" + minute : String.valueOf(minute);
 
-            tvScheduleDetail.setText(StrHour + " : " + StrMinute);
+
+
+            Date tempDate_classEnd = classes.getClassEnd();
+            int hour1 = tempDate_classEnd.getHours();
+            int minute1 = tempDate_classEnd.getMinutes();
+            Toast.makeText(getContext(), String.valueOf(minute), Toast.LENGTH_SHORT).show();
+
+            String StrHour1 = hour1 < 10 ? "0" + hour1 : String.valueOf(hour1);
+            String StrMinute1 = minute1 < 10 ? "0" + minute1 : String.valueOf(minute1);
+
+            tvScheduleDetail.setText(StrHour + " : " + StrMinute+ " - " +StrHour1 + " : " + StrMinute1);
 
 
 

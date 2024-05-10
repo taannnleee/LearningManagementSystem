@@ -58,7 +58,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
                 if (checkTheSameNewPasswordInput()) {
                     DatabaseLearningManagerSystem.getInstance(getApplicationContext()).studentDAO().updatePassword(edt_newPassword.getText().toString(), student.getStudentId());
                     Toast.makeText(getApplicationContext(), "Changed successfully", Toast.LENGTH_SHORT).show();
-                    Intent  intent  = new Intent(getApplicationContext(), AccountActivity.class);
+                    Intent  intent  = new Intent(getApplicationContext(), NavigationBarActivity.class);
                     startActivity(intent);
                 } else {
                     Toast.makeText(getApplicationContext(), "Can not change password. Please check the input", Toast.LENGTH_SHORT).show();
@@ -69,7 +69,7 @@ public class PasswordChangeActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NavigationBarActivity.class);
                 startActivity(intent);
             }
         });

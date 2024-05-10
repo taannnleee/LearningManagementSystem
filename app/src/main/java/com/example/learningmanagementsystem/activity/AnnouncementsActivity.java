@@ -44,7 +44,7 @@ public class AnnouncementsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AnnouncementsActivity.this, InteractionActivity.class);
+                Intent intent = new Intent(AnnouncementsActivity.this, NavigationBarActivity.class);
                 startActivity(intent);
             }
         });
