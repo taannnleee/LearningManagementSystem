@@ -119,21 +119,12 @@ public class InteractionActivity extends Fragment {
                 startActivity(intent);
             }
         });
-        imageViewAbsence.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent  intent  = new Intent(getContext(), AbsenceRequestActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void getFormWidgets(View view) {
         imgVToeic = view.findViewById(R.id.imageViewToeic);
         imgVIelts = view.findViewById(R.id.imageViewIelts);
         imgVCommunication = view.findViewById(R.id.imageViewCommunication);
-        imageViewAbsence = view.findViewById(R.id.imageViewAbsence);
         imgVAnnouncements = view.findViewById(R.id.imageViewAnnouncements);
         imgVSupports = view.findViewById(R.id.imageViewSupports);
 

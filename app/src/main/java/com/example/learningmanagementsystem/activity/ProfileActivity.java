@@ -57,7 +57,7 @@ public class ProfileActivity extends AppCompatActivity {
         btn_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), AccountActivity.class);
+                Intent intent = new Intent(getApplicationContext(), NavigationBarActivity.class);
                 startActivity(intent);
             }
         });
