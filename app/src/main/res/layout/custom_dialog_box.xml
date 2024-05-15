@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="15dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="333dp"
+        android:layout_height="240dp">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="189dp"
+            android:layout_height="46dp"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="Do you have a picture yet?"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:fontFamily="@font/bebas_neue"
+            android:text="CONFIRM"
+            android:textSize="23sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.476"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="72dp"
+            android:layout_marginTop="88dp"
+            android:backgroundTint="@color/lavender"
+            android:text="Yes"
+            android:textColor="@color/material_dynamic_neutral20"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8"
+            app:layout_constraintVertical_bias="0.391" />
+
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="80dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="108dp"
+            android:layout_marginEnd="52dp"
+            android:backgroundTint="@color/design_default_color_error"
+            android:shadowColor="@color/orange"
+            android:text="No"
+            android:textColor="@color/color_selected_bottom_nav"
+            android:textSize="18sp"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnYes"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
